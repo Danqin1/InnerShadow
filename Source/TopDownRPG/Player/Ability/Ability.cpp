@@ -81,7 +81,7 @@ void AAbility::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if(RechargeTime > 0)
 	{
-		RechargeTime = FMathf::Max(0, RechargeTime - DeltaSeconds);
+		RechargeTime = FMath::Max(0, RechargeTime - DeltaSeconds);
 		if(UISlot)
 		{
 			UISlot->UpdateRecharge(RechargeTime / Cooldown);

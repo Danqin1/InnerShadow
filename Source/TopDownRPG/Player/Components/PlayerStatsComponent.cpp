@@ -49,13 +49,13 @@ void UPlayerStatsComponent::Dispose()
 
 void UPlayerStatsComponent::AddHP(float Value)
 {
-	HP = FMathf::Clamp(HP + Value, 0, MaxHP);
+	HP = FMath::Clamp(HP + Value, 0, MaxHP);
 	UpdateHUD();
 }
 
 void UPlayerStatsComponent::RemoveHP(float Value)
 {
-	HP = FMathf::Clamp(HP - Value, 0, MaxHP);
+	HP = FMath::Clamp(HP - Value, 0, MaxHP);
 	UpdateHUD();
 }
 
@@ -68,13 +68,13 @@ void UPlayerStatsComponent::AddMaxHP(float Value)
 
 void UPlayerStatsComponent::AddMana(float Value)
 {
-	Mana = FMathf::Clamp(Mana + Value, 0, MaxMana);
+	Mana = FMath::Clamp(Mana + Value, 0, MaxMana);
 	UpdateHUD();
 }
 
 void UPlayerStatsComponent::RemoveMana(float Value)
 {
-	Mana = FMathf::Clamp(Mana - Value, 0, MaxMana);
+	Mana = FMath::Clamp(Mana - Value, 0, MaxMana);
 	UpdateHUD();
 }
 
@@ -101,7 +101,7 @@ void UPlayerStatsComponent::UpdateHUD()
 void UPlayerStatsComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
                                          AController* InstigatedBy, AActor* DamageCauser)
 {
-	HP = FMathf::Clamp(HP - Damage, 0, MaxHP);
+	HP = FMath::Clamp(HP - Damage, 0, MaxHP);
 	if(HP <= 0 && OnDied.IsBound())
 	{
 		OnDied.Broadcast();

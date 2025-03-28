@@ -53,7 +53,6 @@ protected:
 	bool bIsTracingSword = false;
 	float lastSwordTrace = 0;
 
-	UPROPERTY()
 	TArray<IIDamageable*> DamagedActors;
 
 	float CurrentDamage = 0;

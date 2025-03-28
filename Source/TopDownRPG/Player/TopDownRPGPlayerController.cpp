@@ -12,7 +12,6 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Enemy/Enemy.h"
 #include "TopDownRPG/Enemy/EnemyCharacter.h"
 #include "TopDownRPG/Interfaces/IDamageable.h"
 #include "TopDownRPG/Interfaces/Interactable.h"
