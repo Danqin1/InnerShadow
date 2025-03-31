@@ -141,15 +141,19 @@ void UCombatComponent::OnTargetLock()
 
 void UCombatComponent::OnEnemyDied()
 {
+	if (IEnemy* Enemy = Cast<IEnemy>(LockTarget))
+	{
+		Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
+	}
 	LockTarget = nullptr;
-	SoftLockTarget = nullptr;
+	SoftLockOff();
 }
 
 void UCombatComponent::SoftLockOn()
 {
 	bAttackChangeRotation = true;
 	attackRotAlpha = 0;
-	if (LockTarget) return;
+	if (LockTarget || SoftLockTarget) return;
 
 	if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 	{
@@ -207,6 +211,13 @@ void UCombatComponent::OnCharacterStateChanged(ECharacterState State)
 
 void UCombatComponent::SoftLockOff()
 {
+	if(SoftLockTarget)
+	{
+		if (IEnemy* Enemy = Cast<IEnemy>(SoftLockTarget))
+		{
+			Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
+		}
+	}
 	SoftLockTarget = nullptr;
 }
 
@@ -443,7 +454,7 @@ void UCombatComponent::TryContinueCombo()
 		else
 		{
 			CharacterState->ClearState(Attacking);
-			SoftLockTarget = nullptr;
+			SoftLockOff();
 		}
 	}
 	else if (CharacterState->GetState() == Dragon)
