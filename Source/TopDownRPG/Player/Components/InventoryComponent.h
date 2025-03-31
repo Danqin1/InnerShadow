@@ -23,9 +23,14 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, Category="Weapon")
 	UStaticMeshComponent* WeaponMeleeHandle; // for tests
-	
 	UPROPERTY(EditDefaultsOnly, Category="Weapon")
-	UStaticMeshComponent* WeaponMeleeBackIdle; // for tests
+	UStaticMeshComponent* WeaponMeleeHandleLeft; // for tests
+
+	UPROPERTY(EditDefaultsOnly, Category="Weapon")
+	UStaticMesh* DefaultSwordR;
+
+	UPROPERTY(EditDefaultsOnly, Category="Weapon")
+	UStaticMesh* DefaultSwordL;
 
 	UPROPERTY(EditDefaultsOnly, Category="Weapon")
 	UInputAction* EquipAction;

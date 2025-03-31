@@ -10,7 +10,7 @@ void UAN_AttackRotation::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequ
 {
 	if(auto* Character = Cast<ARPGCharacter>(MeshComp->GetOwner()))
 	{
-		if(!Character->CombatComponent->GetLockTarget() && !Character->CombatComponent->GetSoftLockTarget())
+		if(!Character->CombatComponent->GetSoftLockTarget())
 		{
 			Character->GetCharacterMovement()->bAllowPhysicsRotationDuringAnimRootMotion = true;
 		}

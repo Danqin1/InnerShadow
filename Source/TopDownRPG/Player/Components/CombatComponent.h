@@ -20,9 +20,9 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	GENERATED_BODY()
 
 	bool bIsTracingSword = false;
-	bool bTimeSlowed = false;
+	/*bool bTimeSlowed = false;
 	float timeSLowDuration = 0;
-	bool bCanSlowTime = false;
+	bool bCanSlowTime = false;*/
 	bool bAttackChangeRotation = false;
 	float attackRotAlpha = 0;
 	float currentDamage = 0;
@@ -49,7 +49,6 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 	void TryContinueCombo();
-	AActor* GetLockTarget();
 	AActor* GetSoftLockTarget();
 	void StartSwordTrace();
 	void EndSwordTrace();
@@ -72,10 +71,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputAction* DodgeAction;
-
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* TargetLockAction;
-
+	
 	UPROPERTY(EditDefaultsOnly, Category = "Indication")
 	TSubclassOf<ADamageIndicatorActor> DamageIndicator;
 
@@ -102,18 +98,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float PushEnemiesStrength = 10;
-
-	UPROPERTY(EditAnywhere, Category = "Dragon")
-	TObjectPtr<UNiagaraSystem> AirFireBlow;
-	UPROPERTY(EditAnywhere, Category = "Dragon")
-	float AirFireBlowDamage = 10;
-
-
-	UPROPERTY()
-	TObjectPtr<UNiagaraComponent> SpawnedAirFireBlow;
-
-	UPROPERTY()
-	AActor* LockTarget = nullptr;
+	
 	UPROPERTY()
 	AActor* SoftLockTarget = nullptr;
 	
@@ -131,14 +116,10 @@ protected:
 	void OnDodge();
 
 	UFUNCTION()
-	void OnTargetLock();
-
-	UFUNCTION()
 	void OnEnemyDied();
 
 	UFUNCTION()
 	void OnCharacterStateChanged(ECharacterState State);
 
 	void PlayMontage(UAnimMontage* Montage);
-	void HandleAirFireBlowTrace();
 };

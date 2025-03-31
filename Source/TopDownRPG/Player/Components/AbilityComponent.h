@@ -29,9 +29,6 @@ protected:
 	TWeakInterfacePtr<IICharacterState> CharacterState;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* SkillCastingAction;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputAction* Ability1Action;
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputAction* Ability2Action;
@@ -68,8 +65,6 @@ protected:
 	void OnAbility3();
 	UFUNCTION()
 	void OnAbility4();
-	UFUNCTION()
-	void ToggleUsingSkill();
 
 	void CastAbility(AAbility* Ability);
 	void TryUseAbility(AAbility* Ability);

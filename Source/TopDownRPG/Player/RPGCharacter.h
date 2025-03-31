@@ -65,17 +65,6 @@ public:
 	USkeletalMesh* CharacterMesh;
 	UPROPERTY(EditDefaultsOnly, Category="Character")
 	TSubclassOf<UAnimInstance> CharacterAnimBP;
-
-	UPROPERTY(EditDefaultsOnly, Category="Dragon")
-	USkeletalMesh* DragonMesh;
-	UPROPERTY(EditDefaultsOnly, Category="Dragon")
-	TSubclassOf<UAnimInstance> DragonAnimBP;
-	UPROPERTY(EditDefaultsOnly, Category="Dragon")
-	FVector DragonSocketOffset;
-	UPROPERTY(EditDefaultsOnly, Category="Dragon")
-	float DragonArmLength = 1000;
-	UPROPERTY(EditDefaultsOnly, Category="Effects")
-	TObjectPtr<UNiagaraSystem> ChangeFormFX = nullptr;
 	
 	UPROPERTY()
 	UPlayerHUD* PlayerHUD;
@@ -92,8 +81,5 @@ public:
 
 	virtual void Damage(float Damage) override;
 	virtual bool CanDamage() override;
-	void ChangeForm();
-	void ToggleFlying();
-	bool IsFlying() const { return bIsFlying; }
 };
 

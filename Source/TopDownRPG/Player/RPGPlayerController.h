@@ -25,35 +25,20 @@ class ARPGPlayerController : public APlayerController
 	UInputMappingContext* DefaultMappingContext;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* ZoomInOutAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* LookAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* JumpAction;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* DragonForm;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(AllowPrivateAccess = "true"))
 	UPlayerSettings* Settings = nullptr;
 protected:
 	
 	void Move(const FInputActionValue& Value);
-	void Look(const FInputActionValue& Value);
-	void Jump(const FInputActionValue& Value);
-	void StopJumping(const FInputActionValue& Value);
-	void OnDragonForm();
 
-	void MoveEnd();
 	virtual void SetupInputComponent() override;
 	
 	// To add mapping context
 	virtual void BeginPlay();
 	virtual void Tick(float DeltaSeconds) override;
 
-	void OnZoomInOut(const FInputActionValue& Value);
 public:
 	ARPGPlayerController();
 };

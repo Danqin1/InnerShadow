@@ -110,59 +110,6 @@ bool ARPGCharacter::CanDamage()
 	return CombatComponent->CanDamage();
 }
 
-void ARPGCharacter::ChangeForm()
-{
-	if(GetState() != Dragon)
-	{
-		GetMesh()->SetSkeletalMesh(DragonMesh);
-		GetMesh()->SetAnimInstanceClass(DragonAnimBP);
-		CameraBoom->TargetArmLength = DragonArmLength;
-		GetCharacterMovement()->MaxAcceleration = 10000;
-		SetState(Dragon);
-		if(ChangeFormFX.Get())
-		{
-			UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ChangeFormFX, GetActorLocation(),
-				FRotator::ZeroRotator, FVector::One() * 3);
-		}
-
-		PlayerStatsComponent->SetMaxHP(500);
-	}
-	else
-	{
-		GetMesh()->SetSkeletalMesh(CharacterMesh);
-		GetMesh()->SetAnimInstanceClass(CharacterAnimBP);
-		CameraBoom->TargetArmLength = 400.0f;
-		GetCharacterMovement()->GravityScale = 1;
-		GetCharacterMovement()->MaxAcceleration = 2048;
-		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-		if(ChangeFormFX.Get())
-		{
-			UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ChangeFormFX, GetActorLocation(),
-				FRotator::ZeroRotator, FVector::One());
-		}
-		SetState(Nothing);
-
-		PlayerStatsComponent->SetMaxHP(100);
-	}
-
-	
-}
-
-void ARPGCharacter::ToggleFlying()
-{
-	bIsFlying = !bIsFlying;
-	if(bIsFlying)
-	{
-		GetCharacterMovement()->GravityScale = 0;
-		//GetCharacterMovement()->SetMovementMode(MOVE_Flying); defined from AnimNotify take off
-	}
-	else
-	{
-		GetCharacterMovement()->GravityScale = 1;
-		GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-	}
-}
-
 void ARPGCharacter::BeginPlay()
 {
 	Super::BeginPlay();

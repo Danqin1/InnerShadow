@@ -13,10 +13,10 @@
 UInventoryComponent::UInventoryComponent()
 {
 	WeaponMeleeHandle = CreateDefaultSubobject<UStaticMeshComponent>("WeaponMeleeHandle");
-	WeaponMeleeBackIdle = CreateDefaultSubobject<UStaticMeshComponent>("WeaponMeleeBackIdle");
+	WeaponMeleeHandleLeft = CreateDefaultSubobject<UStaticMeshComponent>("WeaponMeleeBackIdle");
 
 	WeaponMeleeHandle->SetCollisionProfileName("NoCollision");
-	WeaponMeleeBackIdle->SetCollisionProfileName("NoCollision");
+	WeaponMeleeHandleLeft->SetCollisionProfileName("NoCollision");
 }
 
 void UInventoryComponent::BeginPlay()
@@ -26,29 +26,16 @@ void UInventoryComponent::BeginPlay()
 	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
 	{
 		WeaponMeleeHandle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "weapon_r");
-		WeaponMeleeBackIdle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "weapon_back");
+		WeaponMeleeHandleLeft->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "WeaponL");
 
 		Character->OnStateChanged.AddDynamic(this, &UInventoryComponent::OnStateChanged);
 	}
 
-	if(UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
-	{
-		Input->BindAction(EquipAction, ETriggerEvent::Started, this, &UInventoryComponent::ToggleMelee);
-	}
+	ToggleMelee();
 }
 
 void UInventoryComponent::OnStateChanged(ECharacterState State)
 {
-	if(State == Dragon)
-	{
-		WeaponMeleeHandle->SetVisibility(false);
-		WeaponMeleeBackIdle->SetVisibility(false);
-	}
-	else
-	{
-		WeaponMeleeHandle->SetVisibility(true);
-		WeaponMeleeBackIdle->SetVisibility(true);
-	}
 }
 
 float UInventoryComponent::GetCurrentWeaponDamage()
@@ -60,10 +47,6 @@ void UInventoryComponent::ToggleMelee()
 {
 	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
 	{
-		if(Character->GetState() == Dragon)
-		{
-			return;
-		}
 		if(!bEquippedWeapon)
 		{
 			if(GetWeaponAnim)
@@ -83,14 +66,14 @@ void UInventoryComponent::ToggleMelee()
 
 void UInventoryComponent::EquipWeapon()
 {
-	WeaponMeleeHandle->SetStaticMesh(WeaponMeleeBackIdle->GetStaticMesh());
-	WeaponMeleeBackIdle->SetStaticMesh(nullptr);
+	WeaponMeleeHandle->SetStaticMesh(DefaultSwordR);
+	WeaponMeleeHandleLeft->SetStaticMesh(DefaultSwordL);
 	bEquippedWeapon = true;
 }
 
 void UInventoryComponent::HideWeapon()
 {
-	WeaponMeleeBackIdle->SetStaticMesh(WeaponMeleeHandle->GetStaticMesh());
+	WeaponMeleeHandleLeft->SetStaticMesh(nullptr);
 	WeaponMeleeHandle->SetStaticMesh(nullptr);
 	bEquippedWeapon = false;
 }

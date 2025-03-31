@@ -74,7 +74,7 @@ void AEnemyCharacter::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelo
 	{
 		PlayAnimMontage(HitReactionLeft);
 	}
-	//LaunchCharacter(HitVelocity, false, false);
+	LaunchCharacter(HitVelocity, false, false);
 	if(bIsDead)
 	{
 		GetMesh()->AddForceToAllBodiesBelow(HitVelocity, "pelvis", true);

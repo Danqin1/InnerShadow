@@ -58,8 +58,6 @@ void UAbilityComponent::BeginPlay()
 		Input->BindAction(Ability2Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility2);
 		Input->BindAction(Ability3Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility3);
 		Input->BindAction(Ability4Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility4);
-		Input->BindAction(SkillCastingAction, ETriggerEvent::Started, this, &UAbilityComponent::ToggleUsingSkill);
-		Input->BindAction(SkillCastingAction, ETriggerEvent::Completed, this, &UAbilityComponent::ToggleUsingSkill);
 	}
 }
 
@@ -88,26 +86,11 @@ void UAbilityComponent::OnAbility4()
 	TryUseAbility(CurrentAbilities[3]);
 }
 
-void UAbilityComponent::ToggleUsingSkill()
-{
-	if(CharacterState->GetState() != Skill)
-	{
-		CharacterState->SetState(Skill);
-	}
-	else
-	{
-		CharacterState->ClearState(Skill);
-	}
-}
-
 void UAbilityComponent::TryUseAbility(AAbility* Ability)
 {
-	if(CharacterState->GetState() == Skill)
+	if(Ability && Ability->CanUseAbility())
 	{
-		if(Ability && Ability->CanUseAbility())
-		{
-			CastAbility(Ability);
-		}
+		CastAbility(Ability);
 	}
 }
 

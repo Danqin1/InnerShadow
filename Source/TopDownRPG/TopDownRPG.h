@@ -31,9 +31,7 @@ enum ECharacterState
 	Nothing,
 	Chasing,
 	Attacking,
-	Skill,
 	Interaction,
 	Cutscene,
-	Dead,
-	Dragon
+	Dead
 };

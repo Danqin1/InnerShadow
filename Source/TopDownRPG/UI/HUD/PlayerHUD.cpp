@@ -44,11 +44,6 @@ void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
 
 void UPlayerHUD::StateChanged(ECharacterState State)
 {
-	Action_0->SetVisibility(State == Skill ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-	Action_1->SetVisibility(State == Skill ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-	Action_2->SetVisibility(State == Skill ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-	Action_3->SetVisibility(State == Skill ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-
 	FString enumName = "ECharacterState";
 	StateDebug->SetText(FText::FromString(EnumToString(enumName, State)));
 }

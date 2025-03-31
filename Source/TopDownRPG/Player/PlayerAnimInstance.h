@@ -38,9 +38,6 @@ public:
 	bool bIsFalling = false;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-	bool bIsFlying = false;
-
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	FVector Velocity = FVector::Zero();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

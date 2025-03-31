@@ -50,13 +50,12 @@ void UCombatComponent::BeginPlay()
 	{
 		Input->BindAction(AttackAction, ETriggerEvent::Started, this, &UCombatComponent::OnAttack);
 		Input->BindAction(DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
-		Input->BindAction(TargetLockAction, ETriggerEvent::Started, this, &UCombatComponent::OnTargetLock);
 	}
 }
 
 void UCombatComponent::OnDodge()
 {
-	if (DodgeAnim && CharacterState->GetState() != Skill && CharacterState->GetState() != Dragon)
+	if (DodgeAnim)
 	{
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 		{
@@ -84,68 +83,8 @@ void UCombatComponent::OnDodge()
 	}
 }
 
-void UCombatComponent::OnTargetLock()
-{
-	if (!LockTarget)
-	{
-		if(CharacterState->GetState() == Dragon)
-		{
-			return;
-		}
-		if (SoftLockTarget)
-		{
-			if (IEnemy* Enemy = Cast<IEnemy>(SoftLockTarget))
-			{
-				Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
-			}
-		}
-		if (UCameraComponent* Camera = GetOwner()->GetComponentByClass<UCameraComponent>())
-		{
-			TArray<FHitResult> OutResults;
-			FVector Start = Camera->GetComponentLocation();
-			FVector End = Start + Camera->GetForwardVector() * 1000;
-			TArray<AActor*> ToIgnore;
-			ToIgnore.Add(GetOwner());
-			TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
-			ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
-			ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
-
-			UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, 150,
-			                                                 ObjectTypes,
-			                                                 false,
-			                                                 ToIgnore,
-			                                                 EDrawDebugTrace::ForDuration, OutResults, true,
-			                                                 FLinearColor::Red,
-			                                                 FLinearColor::Green, 1);
-
-			for (FHitResult OutResult : OutResults)
-			{
-				if (IEnemy* Enemy = Cast<IEnemy>(OutResult.GetActor()))
-				{
-					LockTarget = OutResult.GetActor();
-					Enemy->OnDie.AddDynamic(this, &UCombatComponent::OnEnemyDied);
-					return;
-				}
-			}
-		}
-	}
-	else
-	{
-		if (IEnemy* Enemy = Cast<IEnemy>(LockTarget))
-		{
-			Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
-		}
-		LockTarget = nullptr;
-	}
-}
-
 void UCombatComponent::OnEnemyDied()
 {
-	if (IEnemy* Enemy = Cast<IEnemy>(LockTarget))
-	{
-		Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
-	}
-	LockTarget = nullptr;
 	SoftLockOff();
 }
 
@@ -153,14 +92,10 @@ void UCombatComponent::SoftLockOn()
 {
 	bAttackChangeRotation = true;
 	attackRotAlpha = 0;
-	if (LockTarget || SoftLockTarget) return;
+	if (SoftLockTarget) return;
 
 	if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 	{
-		if (RPGPlayer->GetState() == Dragon)
-		{
-			return;
-		}
 		FVector Direction = RPGPlayer->GetLastMovementInputVector();
 
 		TArray<FHitResult> OutResults;
@@ -224,22 +159,27 @@ void UCombatComponent::SoftLockOff()
 void UCombatComponent::StartSwordTrace()
 {
 	DamagedActors.Empty();
+	if (!CharacterMovement) return;
+	
 	CharacterMovement->MaxWalkSpeed = 100.f;
 	bIsTracingSword = true;
-	bCanSlowTime = true;
+	//bCanSlowTime = true;
 	bAttackChangeRotation = false;
 
-	SwordTraceVFXComponent->ActivateSystem(true);
-	FVector Start = CharacterMesh->GetSocketLocation("weapon_base");
-	FVector End = CharacterMesh->GetSocketLocation("weapon_tip");
-	SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
-	SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+	if (SwordTraceVFXComponent)
+	{
+		SwordTraceVFXComponent->ActivateSystem(true);
+		FVector Start = CharacterMesh->GetSocketLocation("weapon_base");
+		FVector End = CharacterMesh->GetSocketLocation("weapon_tip");
+		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
+		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+	}
 }
 
 void UCombatComponent::EndSwordTrace()
 {
 	bIsTracingSword = false;
-	bCanSlowTime = false;
+	//bCanSlowTime = false;
 	CharacterMovement->bAllowPhysicsRotationDuringAnimRootMotion = true;
 	CharacterMovement->MaxWalkSpeed = 500.f;
 	CharacterMovement->bOrientRotationToMovement = true;
@@ -260,13 +200,13 @@ void UCombatComponent::ClearDamageModifier()
 void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                      FActorComponentTickFunction* ThisTickFunction)
 {
-	timeSLowDuration += DeltaTime;
+	/*timeSLowDuration += DeltaTime;
 
 	if (bTimeSlowed && timeSLowDuration > .02)
 	{
 		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1);
 		bTimeSlowed = false;
-	}
+	}*/
 
 	if (bIsTracingSword)
 	{
@@ -276,7 +216,6 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		TArray<AActor*> ToIgnore;
 		ToIgnore.Add(GetOwner());
 		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
-		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
 		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, SwordTraceRadius,
@@ -288,6 +227,19 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+
+		Start = CharacterMesh->GetSocketLocation("WeaponL");
+		End = CharacterMesh->GetSocketLocation("WeaponLTip");
+		TArray<FHitResult> OutResultsSecondSword;
+		
+		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, SwordTraceRadius,
+														 ObjectTypes,
+														 false,
+														 ToIgnore,
+														 EDrawDebugTrace::None, OutResultsSecondSword, true, FLinearColor::Red,
+														 FLinearColor::Green, SwordTraceDelay);
+
+		OutResults.Append(OutResultsSecondSword);
 
 		for (FHitResult OutResult : OutResults)
 		{
@@ -313,13 +265,14 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 								ENCPoolMethod::None, true);
 						}
 
+						/*
 						if (!bTimeSlowed && bCanSlowTime)
 						{
 							UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.2);
 							timeSLowDuration = 0;
 							bTimeSlowed = true;
 							bCanSlowTime = false;
-						}
+						}*/
 					}
 
 					if (DamageIndicator)
@@ -338,11 +291,11 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		}
 	}
 
-	if (bAttackChangeRotation && (SoftLockTarget || LockTarget))
+	if (bAttackChangeRotation && SoftLockTarget)
 	{
 		CharacterMovement->bOrientRotationToMovement = false;
 		attackRotAlpha += DeltaTime * 20;
-		AActor* Target = LockTarget ? LockTarget : SoftLockTarget;
+		AActor* Target = SoftLockTarget;
 		FRotator CurrentRot = GetOwner()->GetActorRotation();
 		FRotator TargetRotation = UKismetMathLibrary::FindLookAtRotation(
 			GetOwner()->GetActorLocation(), Target->GetActorLocation());
@@ -353,11 +306,6 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			bAttackChangeRotation = false;
 		}
-	}
-
-	if(SpawnedAirFireBlow && SpawnedAirFireBlow.Get()->IsActive())
-	{
-		HandleAirFireBlowTrace();
 	}
 }
 
@@ -371,7 +319,7 @@ void UCombatComponent::OnAttack()
 			{
 				return;
 			}
-			else if (RPGPlayer->GetCurrentMontage() == DodgeAnim)
+			if (RPGPlayer->GetCurrentMontage() == DodgeAnim)
 			{
 				if (RPGPlayer->InventoryComponent->HasEquippedWeapon())
 				{
@@ -390,34 +338,6 @@ void UCombatComponent::OnAttack()
 	else if (CharacterState->GetState() == Attacking)
 	{
 		bShouldContinueCombo = true;
-	}
-	else if (CharacterState->GetState() == Dragon)
-	{
-		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
-		{
-			if(RPGPlayer->GetCharacterMovement()->MovementMode == MOVE_Flying)
-			{
-				if(!SpawnedAirFireBlow || !SpawnedAirFireBlow.Get()->IsActive())
-				{
-					SpawnedAirFireBlow = UNiagaraFunctionLibrary::SpawnSystemAttached(AirFireBlow, RPGPlayer->GetMesh(), FName("FireSocket"),
-					FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::SnapToTarget, true);
-				}
-			}
-			else
-			{
-				auto* Montage = RPGPlayer->GetCurrentMontage();
-				if (DragonAttackComboAnimations.Contains(Montage))
-				{
-					bShouldContinueCombo = true;
-				}
-				else
-				{
-					currentComboIndex = 0;
-					PlayMontage(DragonAttackComboAnimations[currentComboIndex]);
-					bShouldContinueCombo = false;
-				}
-			}
-		}
 	}
 }
 
@@ -457,20 +377,6 @@ void UCombatComponent::TryContinueCombo()
 			SoftLockOff();
 		}
 	}
-	else if (CharacterState->GetState() == Dragon)
-	{
-		if (bShouldContinueCombo)
-		{
-			currentComboIndex++;
-			if (DragonAttackComboAnimations.Num() <= currentComboIndex)
-			{
-				currentComboIndex = 0;
-			}
-			PlayMontage(DragonAttackComboAnimations[currentComboIndex]);
-
-			bShouldContinueCombo = false;
-		}
-	}
 }
 
 void UCombatComponent::PlayMontage(UAnimMontage* Montage)
@@ -488,11 +394,6 @@ void UCombatComponent::TryDodgeSpecialAttack()
 	{
 		TryContinueCombo();
 	}
-}
-
-AActor* UCombatComponent::GetLockTarget()
-{
-	return LockTarget;
 }
 
 AActor* UCombatComponent::GetSoftLockTarget()
@@ -535,41 +436,6 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 						DamageIndicatorActor->Show(Damage);
 					}
 				}
-			}
-		}
-	}
-
-	DamagedActors.Empty();
-}
-
-
-void UCombatComponent::HandleAirFireBlowTrace()
-{
-	FVector Start = CharacterMesh->GetSocketLocation("FireSocket");
-	FVector End = Start + UKismetMathLibrary::GetForwardVector(CharacterMesh->GetSocketRotation("FireSocket")) * 1000;
-	TArray<FHitResult> OutResults;
-	TArray<AActor*> ToIgnore;
-	ToIgnore.Add(GetOwner());
-	DamagedActors.Empty();
-	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
-	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
-	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
-
-	UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, 500,
-													 ObjectTypes,
-													 false,
-													 ToIgnore,
-													 EDrawDebugTrace::None, OutResults, true, FLinearColor::Red,
-													 FLinearColor::Green, 2);
-
-	for (FHitResult OutResult : OutResults)
-	{
-		if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
-		{
-			if (!DamagedActors.Contains(Damageable))
-			{
-				Damageable->Damage(AirFireBlowDamage);
-				DamagedActors.Add(Damageable);
 			}
 		}
 	}

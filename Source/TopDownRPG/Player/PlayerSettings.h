@@ -15,15 +15,6 @@ class TOPDOWNRPG_API UPlayerSettings : public UDataAsset
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere)
-	float MinCameraDistance = 100;
-
-	UPROPERTY(EditAnywhere)
-	float MaxCameraDistance = 100;
-
-	UPROPERTY(EditAnywhere)
-	float ZoomSpeed = 1;
-
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float MeleeAttackRange = 300;
 	UPROPERTY(EditAnywhere, Category = "Combat")
