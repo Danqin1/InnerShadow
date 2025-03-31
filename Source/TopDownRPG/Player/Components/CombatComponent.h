@@ -27,8 +27,8 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	float attackRotAlpha = 0;
 	float currentDamage = 0;
 	
-	UPROPERTY()
 	TArray<IIDamageable*> DamagedActors;
+	
 	UPROPERTY()
 	USkeletalMeshComponent* CharacterMesh;
 	UPROPERTY()

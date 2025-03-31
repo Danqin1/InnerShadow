@@ -16,7 +16,7 @@ UAbilityComponent::UAbilityComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 	PrimaryComponentTick.bStartWithTickEnabled = true;
 
-	CurrentAbilities.SetNum(MAX_ABILITIES_COUNT, false);
+	CurrentAbilities.SetNum(MAX_ABILITIES_COUNT);
 }
 
 void UAbilityComponent::SetupComponent()

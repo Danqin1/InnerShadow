@@ -102,7 +102,7 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 
 void ARPGPlayerController::Look(const FInputActionValue& Value)
 {
-	FVector2D LookAxisVector = Value.Get<FVector2D>();
+	/*FVector2D LookAxisVector = Value.Get<FVector2D>();
 	
 	if(ARPGCharacter* RPGCharacter = Cast<ARPGCharacter>(GetCharacter()))
 	{
@@ -113,7 +113,7 @@ void ARPGPlayerController::Look(const FInputActionValue& Value)
 	}
 	
 	AddYawInput(LookAxisVector.X);
-	AddPitchInput(LookAxisVector.Y / 2);
+	AddPitchInput(LookAxisVector.Y / 2);*/
 }
 
 void ARPGPlayerController::Jump(const FInputActionValue& Value)
@@ -140,10 +140,10 @@ void ARPGPlayerController::StopJumping(const FInputActionValue& Value)
 
 void ARPGPlayerController::OnDragonForm()
 {
-	if(auto* RPGPlayer = Cast<ARPGCharacter>(GetCharacter()))
+	/*if(auto* RPGPlayer = Cast<ARPGCharacter>(GetCharacter()))
 	{
 		RPGPlayer->ChangeForm();
-	}
+	}*/
 }
 
 void ARPGPlayerController::MoveEnd()
@@ -152,9 +152,9 @@ void ARPGPlayerController::MoveEnd()
 
 void ARPGPlayerController::OnZoomInOut(const FInputActionValue& Value)
 {
-	if(ARPGCharacter* TopDownCharacter = Cast<ARPGCharacter>(GetCharacter()))
+	/*if(ARPGCharacter* TopDownCharacter = Cast<ARPGCharacter>(GetCharacter()))
 	{
 		const float CurrentZoom = TopDownCharacter->GetCameraBoom()->TargetArmLength;
 		TopDownCharacter->GetCameraBoom()->TargetArmLength = FMath::Clamp(CurrentZoom + Value.Get<float>() * Settings->ZoomSpeed, Settings->MinCameraDistance, Settings->MaxCameraDistance);
-	}
+	}*/
 }
