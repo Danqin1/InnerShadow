@@ -128,7 +128,7 @@ void ARPGCharacter::BeginPlay()
 	{
 		if (URPGActorComponentBase* RPGComponent = Cast<URPGActorComponentBase>(Component))
 		{
-			RPGComponent->SetupComponent();
+			RPGComponent->SetupComponent(Settings);
 		}
 	}
 

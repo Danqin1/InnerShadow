@@ -19,10 +19,13 @@ UCombatComponent::UCombatComponent()
 	PrimaryComponentTick.bStartWithTickEnabled = true;
 
 	SwordTraceVFXComponent = CreateDefaultSubobject<UNiagaraComponent>("SwordTraceVFXComponent");
+	SecondSwordTraceVFXComponent = CreateDefaultSubobject<UNiagaraComponent>("SecondSwordTraceVFXComponent");
 }
 
-void UCombatComponent::SetupComponent()
+void UCombatComponent::SetupComponent(UPlayerSettings* Settings)
 {
+	Super::SetupComponent(Settings);
+	
 	if (auto* Character = Cast<ARPGCharacter>(GetOwner()))
 	{
 		CharacterMesh = Character->GetMesh();
@@ -34,6 +37,13 @@ void UCombatComponent::SetupComponent()
 
 		CharacterState->OnStateChanged.AddDynamic(this, &UCombatComponent::OnCharacterStateChanged);
 		SwordTraceVFXComponent->DeactivateImmediate();
+		SecondSwordTraceVFXComponent->DeactivateImmediate();
+	}
+
+	if (UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
+	{
+		Input->BindAction(PlayerSettings->AttackAction, ETriggerEvent::Started, this, &UCombatComponent::OnAttack);
+		Input->BindAction(PlayerSettings->DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
 	}
 }
 
@@ -42,24 +52,13 @@ void UCombatComponent::Dispose()
 	CharacterState->OnStateChanged.RemoveDynamic(this, &UCombatComponent::OnCharacterStateChanged);
 }
 
-void UCombatComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	if (UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
-	{
-		Input->BindAction(AttackAction, ETriggerEvent::Started, this, &UCombatComponent::OnAttack);
-		Input->BindAction(DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
-	}
-}
-
 void UCombatComponent::OnDodge()
 {
-	if (DodgeAnim)
+	if (PlayerSettings->DodgeAnim)
 	{
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 		{
-			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == DodgeAnim)
+			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim)
 			{
 				return;
 			}
@@ -75,7 +74,7 @@ void UCombatComponent::OnDodge()
 			GetOwner()->SetActorRotation(FinalRot);
 			CharacterMovement->bOrientRotationToMovement = true;
 			RPGPlayer->StopAnimMontage();
-			RPGPlayer->PlayAnimMontage(DodgeAnim);
+			RPGPlayer->PlayAnimMontage(PlayerSettings->DodgeAnim);
 			currentComboIndex = 0;
 			bShouldContinueCombo = false;
 			CharacterState->ClearState(Attacking);
@@ -131,7 +130,7 @@ bool UCombatComponent::CanDamage()
 {
 	if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 	{
-		return RPGPlayer->GetCurrentMontage() != DodgeAnim;
+		return RPGPlayer->GetCurrentMontage() != PlayerSettings->DodgeAnim;
 	}
 	return true;
 }
@@ -173,6 +172,11 @@ void UCombatComponent::StartSwordTrace()
 		FVector End = CharacterMesh->GetSocketLocation("weapon_tip");
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+
+		Start = CharacterMesh->GetSocketLocation("WeaponL");
+		End = CharacterMesh->GetSocketLocation("WeaponLTip");
+		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
 	}
 }
 
@@ -185,6 +189,7 @@ void UCombatComponent::EndSwordTrace()
 	CharacterMovement->bOrientRotationToMovement = true;
 	ClearDamageModifier();
 	SwordTraceVFXComponent->Deactivate();
+	SecondSwordTraceVFXComponent->Deactivate();
 }
 
 void UCombatComponent::ModifyDamage(float NewDamage)
@@ -218,77 +223,37 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, SwordTraceRadius,
+		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, PlayerSettings->SwordTraceRadius,
 		                                                 ObjectTypes,
 		                                                 false,
 		                                                 ToIgnore,
 		                                                 EDrawDebugTrace::None, OutResults, true, FLinearColor::Red,
-		                                                 FLinearColor::Green, SwordTraceDelay);
+		                                                 FLinearColor::Green, PlayerSettings->SwordTraceDelay);
 
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
 
+		DealSwordDamage(OutResults, End);
+
+		// second sword
 		Start = CharacterMesh->GetSocketLocation("WeaponL");
 		End = CharacterMesh->GetSocketLocation("WeaponLTip");
 		TArray<FHitResult> OutResultsSecondSword;
 		
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, SwordTraceRadius,
+		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, PlayerSettings->SwordTraceRadius,
 														 ObjectTypes,
 														 false,
 														 ToIgnore,
 														 EDrawDebugTrace::None, OutResultsSecondSword, true, FLinearColor::Red,
-														 FLinearColor::Green, SwordTraceDelay);
+														 FLinearColor::Green, PlayerSettings->SwordTraceDelay);
 
 		OutResults.Append(OutResultsSecondSword);
 
-		for (FHitResult OutResult : OutResults)
-		{
-			if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
-			{
-				if (!DamagedActors.Contains(Damageable))
-				{
-					Damageable->Damage(currentDamage);
-					if (auto* Enemy = Cast<IEnemy>(Damageable))
-					{
-						FVector Location = OutResult.GetActor()->GetActorLocation();
-						FVector LaunchDir = Location - GetOwner()->GetActorLocation();
-
-						Enemy->OnHit(GetOwner(), OutResult.Location,
-						             LaunchDir * currentDamage);
-
-						if (BloodVFX)
-						{
-							UNiagaraComponent* BloodFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
-								BloodVFX, OutResult.Location,
-								UKismetMathLibrary::FindLookAtRotation(End, OutResult.Location),
-								FVector(1.f, 1.f, 1.f), true, true,
-								ENCPoolMethod::None, true);
-						}
-
-						/*
-						if (!bTimeSlowed && bCanSlowTime)
-						{
-							UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.2);
-							timeSLowDuration = 0;
-							bTimeSlowed = true;
-							bCanSlowTime = false;
-						}*/
-					}
-
-					if (DamageIndicator)
-					{
-						ADamageIndicatorActor* Damage = GetWorld()->SpawnActor<ADamageIndicatorActor>(
-							DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
-						if (Damage)
-						{
-							Damage->Show(currentDamage);
-						}
-					}
-
-					DamagedActors.Add(Damageable);
-				}
-			}
-		}
+		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
+		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		
+		DamagedActors.Empty();
+		DealSwordDamage(OutResults, End);
 	}
 
 	if (bAttackChangeRotation && SoftLockTarget)
@@ -319,7 +284,7 @@ void UCombatComponent::OnAttack()
 			{
 				return;
 			}
-			if (RPGPlayer->GetCurrentMontage() == DodgeAnim)
+			if (RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim)
 			{
 				if (RPGPlayer->InventoryComponent->HasEquippedWeapon())
 				{
@@ -329,7 +294,7 @@ void UCombatComponent::OnAttack()
 			else if (RPGPlayer->InventoryComponent->HasEquippedWeapon())
 			{
 				currentComboIndex = 0;
-				PlayMontage(NormalAttackComboAnimations[currentComboIndex]);
+				PlayMontage(PlayerSettings->NormalAttackComboAnimations[currentComboIndex]);
 				CharacterState->SetState(Attacking);
 				bShouldContinueCombo = false;
 			}
@@ -346,7 +311,7 @@ void UCombatComponent::TryContinueCombo()
 	if (bShouldPerformAfterDodgeAttack)
 	{
 		currentComboIndex = -1;
-		PlayMontage(AfterDodgeAttack);
+		PlayMontage(PlayerSettings->AfterDodgeAttack);
 		CharacterState->SetState(Attacking);
 		bShouldContinueCombo = false;
 		bShouldPerformAfterDodgeAttack = false;
@@ -361,11 +326,11 @@ void UCombatComponent::TryContinueCombo()
 				if (RPGPlayer->InventoryComponent->HasEquippedWeapon())
 				{
 					currentComboIndex++;
-					if (NormalAttackComboAnimations.Num() <= currentComboIndex)
+					if (PlayerSettings->NormalAttackComboAnimations.Num() <= currentComboIndex)
 					{
 						currentComboIndex = 0;
 					}
-					PlayMontage(NormalAttackComboAnimations[currentComboIndex]);
+					PlayMontage(PlayerSettings->NormalAttackComboAnimations[currentComboIndex]);
 
 					bShouldContinueCombo = false;
 				}
@@ -426,11 +391,11 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 			{
 				Damageable->Damage(Damage);
 				DamagedActors.Add(Damageable);
-				if (DamageIndicator)
+				if (PlayerSettings->DamageIndicator)
 				{
 					// self destroyed
 					ADamageIndicatorActor* DamageIndicatorActor = GetWorld()->SpawnActor<ADamageIndicatorActor>(
-						DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
+						PlayerSettings->DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
 					if (DamageIndicatorActor)
 					{
 						DamageIndicatorActor->Show(Damage);
@@ -441,4 +406,47 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 	}
 
 	DamagedActors.Empty();
+}
+
+void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector WeaponTipEnd)
+{
+	for (FHitResult OutResult : Hitted)
+	{
+		if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
+		{
+			if (!DamagedActors.Contains(Damageable))
+			{
+				Damageable->Damage(currentDamage);
+				if (auto* Enemy = Cast<IEnemy>(Damageable))
+				{
+					FVector Location = OutResult.GetActor()->GetActorLocation();
+					FVector LaunchDir = Location - GetOwner()->GetActorLocation();
+
+					Enemy->OnHit(GetOwner(), OutResult.Location,
+								 LaunchDir * PlayerSettings->PushEnemiesStrength);
+
+					if (PlayerSettings->BloodVFX)
+					{
+						UNiagaraComponent* BloodFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
+							PlayerSettings->BloodVFX, OutResult.Location,
+							UKismetMathLibrary::FindLookAtRotation(WeaponTipEnd, OutResult.Location),
+							FVector(1.f, 1.f, 1.f), true, true,
+							ENCPoolMethod::None, true);
+					}
+				}
+
+				if (PlayerSettings->DamageIndicator)
+				{
+					ADamageIndicatorActor* Damage = GetWorld()->SpawnActor<ADamageIndicatorActor>(
+						PlayerSettings->DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
+					if (Damage)
+					{
+						Damage->Show(currentDamage);
+					}
+				}
+
+				DamagedActors.Add(Damageable);
+			}
+		}
+	}
 }

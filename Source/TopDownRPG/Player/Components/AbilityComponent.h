@@ -21,30 +21,12 @@ class TOPDOWNRPG_API UAbilityComponent : public URPGActorComponentBase
 public:
 	UAbilityComponent();
 	
-	virtual void SetupComponent() override;
+	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 		FActorComponentTickFunction* ThisTickFunction) override;
 protected:
 	TWeakInterfacePtr<IICharacterState> CharacterState;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* Ability1Action;
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* Ability2Action;
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* Ability3Action;
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* Ability4Action;
-
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	TSubclassOf<AAbility> Ability1;
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	TSubclassOf<AAbility> Ability2;
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	TSubclassOf<AAbility> Ability3;
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	TSubclassOf<AAbility> Ability4;
 	
 	UPROPERTY()
 	ARPGPlayerController* PlayerController;
@@ -53,8 +35,6 @@ protected:
 	UPROPERTY()
 	TArray<AAbility*> CurrentAbilities;
 	
-	// Called when the game starts
-	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 	UFUNCTION()

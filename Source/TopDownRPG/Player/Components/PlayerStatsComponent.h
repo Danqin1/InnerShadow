@@ -20,7 +20,7 @@ public:
 	UPlayerStatsComponent(const FObjectInitializer& ObjectInitializer);
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
-	virtual void SetupComponent() override;
+	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 
 	void AddHP(float Value);
@@ -40,11 +40,6 @@ protected:
 	float MaxHP = 100;
 	float Mana = 100;
 	float MaxMana = 100;
-
-	UPROPERTY(EditDefaultsOnly, Category="Regen")
-	float ManaRegen = .03;
-	UPROPERTY(EditDefaultsOnly, Category="Regen")
-	float HPRegen = .01;
 
 	void UpdateHUD();
 

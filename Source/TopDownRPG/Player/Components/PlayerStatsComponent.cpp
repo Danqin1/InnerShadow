@@ -21,16 +21,17 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 {
 	if(Mana < MaxMana)
 	{
-		AddMana(ManaRegen * DeltaTime);
+		AddMana(PlayerSettings->ManaRegen * DeltaTime);
 	}
 	if(HP < MaxHP)
 	{
-		AddHP(HPRegen * DeltaTime);
+		AddHP(PlayerSettings->HPRegen * DeltaTime);
 	}
 }
 
-void UPlayerStatsComponent::SetupComponent()
+void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 {
+	Super::SetupComponent(Settings);
 	if(ARPGCharacter* Player = Cast<ARPGCharacter>(GetOwner()))
 	{
 		PlayerHUD = Player->PlayerHUD;

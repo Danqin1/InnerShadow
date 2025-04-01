@@ -14,8 +14,9 @@ UInteractionComponent::UInteractionComponent()
 	PrimaryComponentTick.bStartWithTickEnabled = false;
 }
 
-void UInteractionComponent::SetupComponent()
+void UInteractionComponent::SetupComponent(UPlayerSettings* Settings)
 {
+	Super::SetupComponent(Settings);
 	if(UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
 	{
 		Input->BindAction(InteractAction, ETriggerEvent::Started, this, &UInteractionComponent::OnInteract);
@@ -100,7 +101,7 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	if(PlayerCamera && CurrentState == Nothing)
 	{
 		FVector Start = PlayerCamera->GetComponentLocation();
-		FVector End = Start + PlayerCamera->GetForwardVector() * InteractionMaxDistance;
+		FVector End = Start + PlayerCamera->GetForwardVector() * PlayerSettings->InteractionMaxDistance;
 		TArray<AActor*> ToIgnore;
 		TArray<FHitResult> OutResults;
 		ToIgnore.Add(GetOwner());

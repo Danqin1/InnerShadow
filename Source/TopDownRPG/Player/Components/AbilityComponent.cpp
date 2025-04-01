@@ -19,8 +19,10 @@ UAbilityComponent::UAbilityComponent()
 	CurrentAbilities.SetNum(MAX_ABILITIES_COUNT);
 }
 
-void UAbilityComponent::SetupComponent()
+void UAbilityComponent::SetupComponent(UPlayerSettings* Settings)
 {
+	Super::SetupComponent(Settings);
+	
 	if(ARPGPlayerController* CharacterPC = Cast<ARPGPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0)))
 	{
 		PlayerController = CharacterPC;
@@ -35,10 +37,18 @@ void UAbilityComponent::SetupComponent()
 	}
 	
 	//Initial setup abiities for tests
-	ChangeAbilityOnIndex(0, Ability1);
-	ChangeAbilityOnIndex(1, Ability2);
-	ChangeAbilityOnIndex(2, Ability3);
-	ChangeAbilityOnIndex(3, Ability4);
+	ChangeAbilityOnIndex(0, PlayerSettings->Ability1);
+	ChangeAbilityOnIndex(1, PlayerSettings->Ability2);
+	ChangeAbilityOnIndex(2, PlayerSettings->Ability3);
+	ChangeAbilityOnIndex(3, PlayerSettings->Ability4);
+
+	if(UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
+	{
+		Input->BindAction(PlayerSettings->Ability1Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility1);
+		Input->BindAction(PlayerSettings->Ability2Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility2);
+		Input->BindAction(PlayerSettings->Ability3Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility3);
+		Input->BindAction(PlayerSettings->Ability4Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility4);
+	}
 }
 
 void UAbilityComponent::Dispose()
@@ -47,19 +57,6 @@ void UAbilityComponent::Dispose()
 void UAbilityComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	FActorComponentTickFunction* ThisTickFunction)
 {}
-
-void UAbilityComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	if(UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
-	{
-		Input->BindAction(Ability1Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility1);
-		Input->BindAction(Ability2Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility2);
-		Input->BindAction(Ability3Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility3);
-		Input->BindAction(Ability4Action, ETriggerEvent::Started, this, &UAbilityComponent::OnAbility4);
-	}
-}
 
 void UAbilityComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {

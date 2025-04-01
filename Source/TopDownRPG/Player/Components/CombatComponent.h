@@ -41,7 +41,7 @@ public:
 	// Sets default values for this component's properties
 	UCombatComponent();
 
-	virtual void SetupComponent() override;
+	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 
 	// Called every frame
@@ -61,43 +61,11 @@ public:
 	void TryDodgeSpecialAttack();
 	
 protected:
-	UPROPERTY(EditDefaultsOnly, Category = "Sword Trace")
-	float SwordTraceRadius = 20;
-	UPROPERTY(EditDefaultsOnly, Category = "Sword Trace")
-	float SwordTraceDelay = 0.05;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* AttackAction;
-
-	UPROPERTY(EditDefaultsOnly, Category="Input")
-	UInputAction* DodgeAction;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "Indication")
-	TSubclassOf<ADamageIndicatorActor> DamageIndicator;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Indication")
-	UNiagaraSystem* BloodVFX;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Indication")
 	UNiagaraComponent* SwordTraceVFXComponent;
 
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	TArray<UAnimMontage*> NormalAttackComboAnimations;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	TArray<UAnimMontage*> DragonAttackComboAnimations;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* AfterDodgeAttack;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* DodgeAnim;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	TSubclassOf<UHitCameraShake> SwordHitCameraShake;
-
-	UPROPERTY(EditAnywhere, Category = "Combat")
-	float PushEnemiesStrength = 10;
+	UPROPERTY(EditDefaultsOnly, Category = "Indication")
+	UNiagaraComponent* SecondSwordTraceVFXComponent;
 	
 	UPROPERTY()
 	AActor* SoftLockTarget = nullptr;
@@ -105,9 +73,6 @@ protected:
 	int currentComboIndex = 0;
 	bool bShouldContinueCombo = false;
 	bool bShouldPerformAfterDodgeAttack = false;
-
-	// Called when the game starts
-	virtual void BeginPlay() override;
 
 	UFUNCTION()
 	void OnAttack();
@@ -122,4 +87,5 @@ protected:
 	void OnCharacterStateChanged(ECharacterState State);
 
 	void PlayMontage(UAnimMontage* Montage);
+	void DealSwordDamage(TArray<FHitResult> Hitted, FVector WeaponTipEnd);
 };

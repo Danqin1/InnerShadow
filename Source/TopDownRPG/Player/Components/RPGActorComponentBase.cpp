@@ -14,3 +14,8 @@ URPGActorComponentBase::URPGActorComponentBase()
 	bAutoActivate = true;
 	// ...
 }
+
+void URPGActorComponentBase::SetupComponent(UPlayerSettings* Settings)
+{
+	PlayerSettings = Settings;
+}

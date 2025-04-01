@@ -20,7 +20,7 @@ class TOPDOWNRPG_API UInteractionComponent : public URPGActorComponentBase
 	
 public:
 	UInteractionComponent();
-	virtual void SetupComponent() override;
+	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 	
 protected:
@@ -31,9 +31,6 @@ protected:
 	UInputAction* InteractAction;
 	
 	TWeakInterfacePtr<IInteractable> InteractionTarget;
-
-	UPROPERTY(EditDefaultsOnly, Category="Interaction")
-	float InteractionMaxDistance = 1000;
 
 	ECharacterState CurrentState = Dead;
 	
