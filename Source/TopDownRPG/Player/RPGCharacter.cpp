@@ -2,6 +2,7 @@
 
 #include "RPGCharacter.h"
 
+#include "NiagaraComponent.h"
 #include "NiagaraFunctionLibrary.h"
 #include "RPGPlayerController.h"
 #include "Camera/CameraComponent.h"
@@ -60,6 +61,9 @@ ARPGCharacter::ARPGCharacter()
 	CombatComponent = CreateDefaultSubobject<UCombatComponent>(TEXT("Combat Component"));
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	StimulusSourceComponent = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("Stimulus Source"));
+	DarknessVFXComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("DarknessVFX"));
+
+	DarknessVFXComponent->SetupAttachment(RootComponent);
 }
 
 void ARPGCharacter::AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
@@ -82,6 +86,15 @@ void ARPGCharacter::SetState(ECharacterState NewState)
 			OnStateChanged.Broadcast(PlayerState);
 		}
 		PlayerHUD->StateChanged(PlayerState);
+
+		if (PlayerState == Darkness)
+		{
+			DarknessVFXComponent->Activate(true);
+		}
+		else
+		{
+			DarknessVFXComponent->Deactivate();
+		}
 	}
 }
 

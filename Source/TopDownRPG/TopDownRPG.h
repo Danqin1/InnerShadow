@@ -33,5 +33,6 @@ enum ECharacterState
 	Attacking,
 	Interaction,
 	Cutscene,
-	Dead
+	Dead,
+	Darkness
 };

@@ -54,6 +54,10 @@ void UCombatComponent::Dispose()
 
 void UCombatComponent::OnDodge()
 {
+	if (CharacterState->GetState() == ECharacterState::Darkness)
+	{
+		return;
+	}
 	if (PlayerSettings->DodgeAnim)
 	{
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
@@ -61,6 +65,11 @@ void UCombatComponent::OnDodge()
 			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim)
 			{
 				return;
+			}
+
+			if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
+			{
+				PlayerStats->AddDarkness(PlayerSettings->DashDarknessCost);
 			}
 			FVector Direction = RPGPlayer->GetLastMovementInputVector();
 

@@ -24,7 +24,7 @@ public:
 	AAbility();
 
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	float ManaCost = 5;
+	float DarknessCost = 5;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	float Cooldown = 5;

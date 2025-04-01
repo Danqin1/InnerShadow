@@ -63,9 +63,9 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 	
-	if(ARPGCharacter* RPGCharacter = Cast<ARPGCharacter>(GetCharacter()))
+	if(IICharacterState* RPGCharacter = Cast<IICharacterState>(GetCharacter()))
 	{
-		if(RPGCharacter->GetState() == Interaction)
+		if(RPGCharacter->GetState() == Interaction || RPGCharacter->GetState() == Darkness)
 		{
 			return;
 		}

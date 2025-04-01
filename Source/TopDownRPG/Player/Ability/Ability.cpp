@@ -5,6 +5,7 @@
 
 #include "GameFramework/Character.h"
 #include "TopDownRPG/DevDebug.h"
+#include "TopDownRPG/Interfaces/ICharacterState.h"
 #include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 
 
@@ -23,9 +24,9 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
+	if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 	{
-		return Stats->GetMana() > ManaCost && RechargeTime <= 0;
+		return CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking;
 	}
 	return false;
 }
@@ -36,7 +37,7 @@ void AAbility::Activate(ACharacter* Caster)
 	RechargeTime = Cooldown;
 	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
 	{
-		Stats->RemoveMana(ManaCost);
+		Stats->AddDarkness(DarknessCost);
 	}
 
 	for (auto Effect : Effects)

@@ -37,6 +37,9 @@ class ARPGCharacter : public ACharacter, public  IICharacterState, public IIDama
 	
 	UPROPERTY(EditDefaultsOnly, Category="HUD")
 	TSubclassOf<class UPlayerHUD> PlayerHUDClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	UNiagaraComponent* DarknessVFXComponent;
 	
 protected:
 	bool bIsFlying = false;

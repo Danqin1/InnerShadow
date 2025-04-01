@@ -64,11 +64,14 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float PushEnemiesStrength = 10;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float DashDarknessCost = 5;
+
 	UPROPERTY(EditAnywhere, Category = "VFX")
 	UNiagaraSystem* Blood_FX;
 
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
-	float ManaRegen = .03;
+	float DarknessRegen = .03;
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
 	float HPRegen = .01;
 

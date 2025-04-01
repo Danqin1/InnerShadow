@@ -11,11 +11,16 @@ void UPlayerHUD::SetHP(float Percent)
 	}
 }
 
-void UPlayerHUD::SetMana(float Percent)
+void UPlayerHUD::SetDarkness(float Percent)
 {
-	if(ManaBar)
+	if(DarknessBar)
 	{
-		ManaBar->SetPercent(Percent);
+		DarknessBar->SetPercent(Percent);
+	}
+
+	if (DarknesIndicator)
+	{
+		DarknesIndicator->SetBrushTintColor(FLinearColor(1,1,1, Percent));
 	}
 }
 

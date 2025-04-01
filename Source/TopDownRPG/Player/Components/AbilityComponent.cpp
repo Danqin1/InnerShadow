@@ -85,7 +85,7 @@ void UAbilityComponent::OnAbility4()
 
 void UAbilityComponent::TryUseAbility(AAbility* Ability)
 {
-	if(Ability && Ability->CanUseAbility())
+	if(Ability && Ability->CanUseAbility() && CharacterState->GetState() != Darkness)
 	{
 		CastAbility(Ability);
 	}

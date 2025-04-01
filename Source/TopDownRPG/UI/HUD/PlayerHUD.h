@@ -23,7 +23,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UProgressBar* HealthBar;
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
-	UProgressBar* ManaBar;
+	UProgressBar* DarknessBar;
+	
+	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
+	UImage* DarknesIndicator;
 
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UW_ActionSlot* Action_0;
@@ -39,7 +42,7 @@ protected:
 	
 public:
 	void SetHP(float Percent);
-	void SetMana(float Percent);
+	void SetDarkness(float Percent);
 	void SetAction(int slot, FString name, UTexture2D* icon);
 	void StateChanged(ECharacterState State);
 

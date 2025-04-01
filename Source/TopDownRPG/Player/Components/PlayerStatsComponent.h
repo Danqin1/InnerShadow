@@ -28,18 +28,16 @@ public:
 	void AddMaxHP(float Value);
 	void SetMaxHP(float Value);
 	
-	void AddMana(float Value);
-	void RemoveMana(float Value);
-	void AddMaxMana(float Value);
-	float GetMana();
+	void AddDarkness(float Value);
+	void RemoveDarkness(float Value);
 protected:
 	UPROPERTY(Transient)
 	UPlayerHUD* PlayerHUD = nullptr;
 
 	float HP = 100;
 	float MaxHP = 100;
-	float Mana = 100;
-	float MaxMana = 100;
+	float Darkness = 0;
+	float MaxDarkness = 100;
 
 	void UpdateHUD();
 

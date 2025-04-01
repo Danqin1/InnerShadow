@@ -19,9 +19,21 @@ UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectIni
 void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	FActorComponentTickFunction* ThisTickFunction)
 {
-	if(Mana < MaxMana)
+	if(Darkness > 0)
 	{
-		AddMana(PlayerSettings->ManaRegen * DeltaTime);
+		Darkness -= PlayerSettings->DarknessRegen * DeltaTime;
+		if (Darkness <= 0)
+		{
+			Darkness = 0;
+			if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+			{
+				if (CharacterState->GetState() == ECharacterState::Darkness)
+				{
+					CharacterState->SetState(ECharacterState::Nothing);
+				}
+			}
+		}
+		UpdateHUD();
 	}
 	if(HP < MaxHP)
 	{
@@ -78,28 +90,20 @@ void UPlayerStatsComponent::SetMaxHP(float Value)
 	UpdateHUD();
 }
 
-void UPlayerStatsComponent::AddMana(float Value)
+void UPlayerStatsComponent::AddDarkness(float Value)
 {
-	Mana = FMath::Clamp(Mana + Value, 0, MaxMana);
+	if (Darkness + Value > MaxDarkness)
+	{
+		if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+		{
+			if (CharacterState->GetState() != ECharacterState::Darkness)
+			{
+				CharacterState->SetState(ECharacterState::Darkness);
+			}
+		}
+	}
+	Darkness = FMath::Clamp(Darkness + Value, 0, MaxDarkness);
 	UpdateHUD();
-}
-
-void UPlayerStatsComponent::RemoveMana(float Value)
-{
-	Mana = FMath::Clamp(Mana - Value, 0, MaxMana);
-	UpdateHUD();
-}
-
-void UPlayerStatsComponent::AddMaxMana(float Value)
-{
-	MaxMana += Value;
-	Mana = MaxMana;
-	UpdateHUD();
-}
-
-float UPlayerStatsComponent::GetMana()
-{
-	return Mana;
 }
 
 void UPlayerStatsComponent::UpdateHUD()
@@ -107,7 +111,7 @@ void UPlayerStatsComponent::UpdateHUD()
 	if(!PlayerHUD) return;
 	
 	PlayerHUD->SetHP(HP/MaxHP);
-	PlayerHUD->SetMana(Mana/MaxMana);
+	PlayerHUD->SetDarkness(Darkness/MaxDarkness);
 }
 
 void UPlayerStatsComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
