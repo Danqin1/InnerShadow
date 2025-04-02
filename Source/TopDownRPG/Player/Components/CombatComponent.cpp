@@ -181,11 +181,13 @@ void UCombatComponent::StartSwordTrace()
 		FVector End = CharacterMesh->GetSocketLocation("weapon_tip");
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		SwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 
 		Start = CharacterMesh->GetSocketLocation("WeaponL");
 		End = CharacterMesh->GetSocketLocation("WeaponLTip");
+		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
 		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
-		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 	}
 }
 
@@ -241,6 +243,7 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		SwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 
 		DealSwordDamage(OutResults, End);
 
@@ -260,6 +263,7 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
 		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
+		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 		
 		DamagedActors.Empty();
 		DealSwordDamage(OutResults, End);

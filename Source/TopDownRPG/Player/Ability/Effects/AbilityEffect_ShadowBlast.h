@@ -4,35 +4,33 @@
 
 #include "CoreMinimal.h"
 #include "TopDownRPG/Player/Ability/AbilityEffect.h"
-#include "AbilityEffect_Slash.generated.h"
+#include "AbilityEffect_ShadowBlast.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AAbilityEffect_Slash : public AAbilityEffect
+class TOPDOWNRPG_API AAbilityEffect_ShadowBlast : public AAbilityEffect
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AAbilityEffect_Slash();
+	AAbilityEffect_ShadowBlast();
 protected:
 	UPROPERTY(EditDefaultsOnly)
-	float SkillDuration = 4;
-	
-	UPROPERTY(EditDefaultsOnly)
-	float AirHitsDuration = 1;
+	float ImpactDelay = 4;
 
 	UPROPERTY(EditDefaultsOnly)
-	float AttachDelay = .5;
+	float TraceRadius = 100;
+
 	UPROPERTY(EditDefaultsOnly)
-	FName AttachSocketName = "";
-	
+	FVector VFXOffset = FVector(0, 0, 0);
+
 	UPROPERTY(EditDefaultsOnly)
 	float TraceLength = 700;
 	UPROPERTY(EditDefaultsOnly)
-	UAnimMontage* SlashAnimation = nullptr;
+	UAnimMontage* BlastAnimation = nullptr;
 	UPROPERTY(EditDefaultsOnly)
-	UAnimMontage* SlashReactionAnimation = nullptr;
-	
+	UAnimMontage* BlastReactionAnimation = nullptr;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 public:

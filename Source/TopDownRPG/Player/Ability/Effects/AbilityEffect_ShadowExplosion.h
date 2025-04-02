@@ -5,23 +5,30 @@
 #include "CoreMinimal.h"
 #include "NiagaraSystem.h"
 #include "TopDownRPG/Player/Ability/AbilityEffect.h"
-#include "AbilityEffect_ConeOfFlames.generated.h"
+#include "AbilityEffect_ShadowExplosion.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AAbilityEffect_ConeOfFlames : public AAbilityEffect
+class TOPDOWNRPG_API AAbilityEffect_ShadowExplosion : public AAbilityEffect
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AAbilityEffect_ConeOfFlames();
+	AAbilityEffect_ShadowExplosion();
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category="Effects")
 	UAnimMontage* CastAnimation;
+
 	UPROPERTY(EditDefaultsOnly, Category="Effects")
-	UNiagaraSystem* FlamesEffect;
-	
+	float ImpactRadius = 500;
+
+	UPROPERTY(EditDefaultsOnly, Category="Effects")
+	FVector VFXOffset;
+
+	UPROPERTY(EditDefaultsOnly, Category="Effects")
+	float ImpactDelay = .5f;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

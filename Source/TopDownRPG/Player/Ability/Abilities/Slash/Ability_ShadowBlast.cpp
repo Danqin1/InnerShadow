@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Ability_Slash.h"
+#include "Ability_ShadowBlast.h"
 
 #include "GameFramework/Character.h"
 #include "GameFramework/PawnMovementComponent.h"
@@ -9,26 +9,26 @@
 
 
 // Sets default values
-AAbility_Slash::AAbility_Slash()
+AAbility_ShadowBlast::AAbility_ShadowBlast()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = false;
 }
 
 // Called when the game starts or when spawned
-void AAbility_Slash::BeginPlay()
+void AAbility_ShadowBlast::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
 // Called every frame
-void AAbility_Slash::Tick(float DeltaTime)
+void AAbility_ShadowBlast::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	DevDebug::OnScreenLog("Slash recharge:" +FString::SanitizeFloat(RechargeTime), FColor::Black, .1);
+	DevDebug::OnScreenLog("Shadown blast recharge:" +FString::SanitizeFloat(RechargeTime), FColor::Black, .1);
 }
 
-void AAbility_Slash::Activate(ACharacter* Caster)
+void AAbility_ShadowBlast::Activate(ACharacter* Caster)
 {
 	Super::Activate(Caster);
 }

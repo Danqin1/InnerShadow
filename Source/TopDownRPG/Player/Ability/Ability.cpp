@@ -24,9 +24,13 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-	if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+	if(IICharacterState* CharacterState = Cast<IICharacterState>(CasterCharacter))
 	{
-		return CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking;
+		return RechargeTime <= 0 && ( CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking);
+	}
+	else
+	{
+		DevDebug::OnScreenLog("IICharacterState is NULL");
 	}
 	return false;
 }

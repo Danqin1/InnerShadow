@@ -62,22 +62,27 @@ void AEnemyCharacter::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelo
 	Dir.Normalize();
 	FVector Right = GetActorRightVector();
 	Right.Normalize();
+	StopAnimMontage();
 	
-	if(Dir.Dot(Right) > 0)
-	{
-		if(HitReactionRight && !GetCurrentMontage())
-		{
-			PlayAnimMontage(HitReactionRight);
-		}
-	}
-	else if(HitReactionLeft && !GetCurrentMontage())
-	{
-		PlayAnimMontage(HitReactionLeft);
-	}
 	LaunchCharacter(HitVelocity, false, false);
 	if(bIsDead)
 	{
+		
 		GetMesh()->AddForceToAllBodiesBelow(HitVelocity, "pelvis", true);
+	}
+	else
+	{
+		if(Dir.Dot(Right) > 0)
+		{
+			if(HitReactionRight && !GetCurrentMontage())
+			{
+				PlayAnimMontage(HitReactionRight);
+			}
+		}
+		else if(HitReactionLeft && !GetCurrentMontage())
+		{
+			PlayAnimMontage(HitReactionLeft);
+		}
 	}
 }
 

@@ -89,6 +89,10 @@ void UAbilityComponent::TryUseAbility(AAbility* Ability)
 	{
 		CastAbility(Ability);
 	}
+	else
+	{
+		DevDebug::OnScreenLog("Cant use this ability", FColor::Red);
+	}
 }
 
 void UAbilityComponent::CastAbility(AAbility* Ability)

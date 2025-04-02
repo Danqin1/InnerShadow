@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "TopDownRPG/Player/Ability/Ability.h"
-#include "Ability_Slash.generated.h"
+#include "Ability_ShadowBlast.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AAbility_Slash : public AAbility
+class TOPDOWNRPG_API AAbility_ShadowBlast : public AAbility
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AAbility_Slash();
+	AAbility_ShadowBlast();
 
 protected:
 	

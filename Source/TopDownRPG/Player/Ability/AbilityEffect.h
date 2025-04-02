@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NiagaraSystem.h"
 #include "GameFramework/Actor.h"
 #include "AbilityEffect.generated.h"
 
@@ -23,7 +24,13 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly)
-	float PushEnemiesStrength = 1000;
+	float PushEnemiesStrength = 50;
+
+	UPROPERTY(EditDefaultsOnly)
+	UNiagaraSystem* VFXSystem;
+
+	UPROPERTY(EditDefaultsOnly)
+	float Duration = 1;
 
 	UPROPERTY()
 	ACharacter* Character;

@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "TopDownRPG/Player/Ability/Ability.h"
-#include "Ability_ConeOfFlames.generated.h"
+#include "Ability_ShadowExplosion.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AAbility_ConeOfFlames : public AAbility
+class TOPDOWNRPG_API AAbility_ShadowExplosion : public AAbility
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AAbility_ConeOfFlames();
+	AAbility_ShadowExplosion();
 
 protected:
 	// Called when the game starts or when spawned
