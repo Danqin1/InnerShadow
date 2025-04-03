@@ -17,40 +17,48 @@ UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectIni
 }
 
 void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
-	FActorComponentTickFunction* ThisTickFunction)
+                                          FActorComponentTickFunction* ThisTickFunction)
 {
-	if(Darkness > 0)
+	if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 	{
-		Darkness -= PlayerSettings->DarknessRegen * DeltaTime;
-		if (Darkness <= 0)
+		if (CharacterState->GetState() == Dead)
 		{
-			Darkness = 0;
-			if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+			return;
+		}
+		if (Darkness > 0)
+		{
+			Darkness -= (CharacterState->GetState() == ECharacterState::Darkness
+				             ? PlayerSettings->DarknessRegen
+				             : PlayerSettings->DarknessDefaultRegen) * DeltaTime;
+			if (Darkness <= 0)
 			{
+				Darkness = 0;
+
 				if (CharacterState->GetState() == ECharacterState::Darkness)
 				{
 					CharacterState->SetState(ECharacterState::Nothing);
 				}
 			}
+
+			UpdateHUD();
 		}
-		UpdateHUD();
-	}
-	if(HP < MaxHP)
-	{
-		AddHP(PlayerSettings->HPRegen * DeltaTime);
+		if (HP < MaxHP)
+		{
+			AddHP(PlayerSettings->HPRegen * DeltaTime);
+		}
 	}
 }
 
 void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 {
 	Super::SetupComponent(Settings);
-	if(ARPGCharacter* Player = Cast<ARPGCharacter>(GetOwner()))
+	if (ARPGCharacter* Player = Cast<ARPGCharacter>(GetOwner()))
 	{
 		PlayerHUD = Player->PlayerHUD;
 		check(PlayerHUD);
 		PlayerHUD->SetHP(MaxHP);
 
-		Player->OnTakeAnyDamage.AddDynamic(this, &UPlayerStatsComponent::OnTakeDamage);
+		//Player->OnTakeAnyDamage.AddDynamic(this, &UPlayerStatsComponent::OnTakeDamage);
 	}
 
 	UpdateHUD();
@@ -58,22 +66,29 @@ void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 
 void UPlayerStatsComponent::Dispose()
 {
-	if(ARPGCharacter* Player = Cast<ARPGCharacter>(GetOwner()))
-	{
-		Player->OnTakeAnyDamage.RemoveDynamic(this, &UPlayerStatsComponent::OnTakeDamage);
-	}
 }
 
 void UPlayerStatsComponent::AddHP(float Value)
 {
+	
 	HP = FMath::Clamp(HP + Value, 0, MaxHP);
 	UpdateHUD();
 }
 
 void UPlayerStatsComponent::RemoveHP(float Value)
 {
-	HP = FMath::Clamp(HP - Value, 0, MaxHP);
-	UpdateHUD();
+	if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+	{
+		if (CharacterState->GetState() != ECharacterState::Dead)
+		{
+			HP = FMath::Clamp(HP - Value, 0, MaxHP);
+			if (HP <= 0)
+			{
+				OnDied.Broadcast();
+			}
+			UpdateHUD();
+		}
+	}
 }
 
 void UPlayerStatsComponent::AddMaxHP(float Value)
@@ -94,7 +109,7 @@ void UPlayerStatsComponent::AddDarkness(float Value)
 {
 	if (Darkness + Value > MaxDarkness)
 	{
-		if(IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+		if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 		{
 			if (CharacterState->GetState() != ECharacterState::Darkness)
 			{
@@ -108,20 +123,11 @@ void UPlayerStatsComponent::AddDarkness(float Value)
 
 void UPlayerStatsComponent::UpdateHUD()
 {
-	if(!PlayerHUD) return;
-	
-	PlayerHUD->SetHP(HP/MaxHP);
-	PlayerHUD->SetDarkness(Darkness/MaxDarkness);
-}
-
-void UPlayerStatsComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
-                                         AController* InstigatedBy, AActor* DamageCauser)
-{
-	HP = FMath::Clamp(HP - Damage, 0, MaxHP);
-	if(HP <= 0 && OnDied.IsBound())
+	if (!PlayerHUD)
 	{
-		OnDied.Broadcast();
+		return;
 	}
-	UpdateHUD();
-}
 
+	PlayerHUD->SetHP(HP / MaxHP);
+	PlayerHUD->SetDarkness(Darkness / MaxDarkness);
+}

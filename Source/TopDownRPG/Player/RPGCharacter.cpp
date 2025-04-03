@@ -13,6 +13,8 @@
 #include "Materials/Material.h"
 #include "Engine/World.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/GameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AISense_Hearing.h"
 #include "Perception/AISense_Sight.h"
@@ -152,7 +154,12 @@ void ARPGCharacter::BeginPlay()
 		StimulusSourceComponent->RegisterWithPerceptionSystem();
 	}
 
+	PlayerStatsComponent->OnDied.AddDynamic(this, &ARPGCharacter::Die);
+
 	SetState(Nothing);
+
+	StartLocation = GetActorLocation();
+	StartRotation = GetActorRotation();
 }
 
 void ARPGCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -182,4 +189,26 @@ void ARPGCharacter::Tick(float DeltaSeconds)
 	{
 		UAISense_Hearing::ReportNoiseEvent(GetWorld(), GetActorLocation(), 1, this);
 	}
+}
+
+void ARPGCharacter::Die()
+{
+	SetState(Dead);
+	GetController()->DisableInput(UGameplayStatics::GetPlayerController(this, 0));
+
+	PlayAnimMontage(Settings->DieAnim);
+	
+	FTimerHandle TimerHandle;
+	FTimerDelegate Delegate;
+	Delegate.BindUFunction(this, "Respawn");
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, Delegate, 3, false, 3);
+}
+
+void ARPGCharacter::Respawn()
+{
+	GetController()->EnableInput(UGameplayStatics::GetPlayerController(this, 0));
+	PlayerStatsComponent->AddHP(100);
+	SetActorLocation(StartLocation);
+	SetActorRotation(StartRotation);
+	SetState(Nothing);
 }

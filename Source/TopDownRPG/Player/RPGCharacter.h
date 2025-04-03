@@ -40,7 +40,9 @@ class ARPGCharacter : public ACharacter, public  IICharacterState, public IIDama
 
 	UPROPERTY(EditDefaultsOnly)
 	UNiagaraComponent* DarknessVFXComponent;
-	
+	FVector StartLocation;
+	FRotator StartRotation;
+
 protected:
 	bool bIsFlying = false;
 	ECharacterState PlayerState = Dead;
@@ -84,5 +86,11 @@ public:
 
 	virtual void Damage(float Damage) override;
 	virtual bool CanDamage() override;
+
+	UFUNCTION()
+	void Die();
+
+	UFUNCTION()
+	void Respawn();
 };
 

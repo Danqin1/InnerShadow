@@ -59,6 +59,9 @@ public:
 	UAnimMontage* DodgeAnim;
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UAnimMontage* DieAnim;
+
+	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	TSubclassOf<UHitCameraShake> SwordHitCameraShake;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
@@ -71,7 +74,11 @@ public:
 	UNiagaraSystem* Blood_FX;
 
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
-	float DarknessRegen = .03;
+	float DarknessRegen = 40;
+
+	UPROPERTY(EditDefaultsOnly, Category="Regen")
+	float DarknessDefaultRegen = 10;
+	
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
 	float HPRegen = .01;
 

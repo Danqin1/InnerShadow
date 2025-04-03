@@ -40,7 +40,4 @@ protected:
 	float MaxDarkness = 100;
 
 	void UpdateHUD();
-
-	UFUNCTION()
-	void OnTakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser );
 };
