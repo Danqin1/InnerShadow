@@ -26,7 +26,7 @@ void UInventoryComponent::BeginPlay()
 	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
 	{
 		WeaponMeleeHandle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "weapon_r");
-		WeaponMeleeHandleLeft->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "WeaponL");
+		//WeaponMeleeHandleLeft->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "WeaponL");
 
 		Character->OnStateChanged.AddDynamic(this, &UInventoryComponent::OnStateChanged);
 	}
@@ -67,13 +67,13 @@ void UInventoryComponent::ToggleMelee()
 void UInventoryComponent::EquipWeapon()
 {
 	WeaponMeleeHandle->SetStaticMesh(DefaultSwordR);
-	WeaponMeleeHandleLeft->SetStaticMesh(DefaultSwordL);
+	//WeaponMeleeHandleLeft->SetStaticMesh(DefaultSwordL);
 	bEquippedWeapon = true;
 }
 
 void UInventoryComponent::HideWeapon()
 {
-	WeaponMeleeHandleLeft->SetStaticMesh(nullptr);
+	//WeaponMeleeHandleLeft->SetStaticMesh(nullptr);
 	WeaponMeleeHandle->SetStaticMesh(nullptr);
 	bEquippedWeapon = false;
 }

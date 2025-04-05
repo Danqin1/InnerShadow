@@ -4,6 +4,7 @@
 
 #include "AbilityComponent.h"
 #include "EnhancedInputComponent.h"
+#include "MovieSceneTracksComponentTypes.h"
 #include "NiagaraFunctionLibrary.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -34,6 +35,7 @@ void UCombatComponent::SetupComponent(UPlayerSettings* Settings)
 		ClearDamageModifier();
 		CharacterState = Cast<IICharacterState>(Character);
 		check(CharacterState.Get());
+		SwordTraceVFXComponent->AttachToComponent(CharacterMesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, "SwordVFX");
 
 		CharacterState->OnStateChanged.AddDynamic(this, &UCombatComponent::OnCharacterStateChanged);
 		SwordTraceVFXComponent->DeactivateImmediate();
@@ -183,11 +185,11 @@ void UCombatComponent::StartSwordTrace()
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
 		SwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 
-		Start = CharacterMesh->GetSocketLocation("WeaponL");
+		/*Start = CharacterMesh->GetSocketLocation("WeaponL");
 		End = CharacterMesh->GetSocketLocation("WeaponLTip");
 		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
 		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
-		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
+		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);*/
 	}
 }
 
@@ -200,7 +202,7 @@ void UCombatComponent::EndSwordTrace()
 	CharacterMovement->bOrientRotationToMovement = true;
 	ClearDamageModifier();
 	SwordTraceVFXComponent->Deactivate();
-	SecondSwordTraceVFXComponent->Deactivate();
+	//SecondSwordTraceVFXComponent->Deactivate();
 }
 
 void UCombatComponent::ModifyDamage(float NewDamage)
@@ -248,7 +250,7 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		DealSwordDamage(OutResults, End);
 
 		// second sword
-		Start = CharacterMesh->GetSocketLocation("WeaponL");
+		/*Start = CharacterMesh->GetSocketLocation("WeaponL");
 		End = CharacterMesh->GetSocketLocation("WeaponLTip");
 		TArray<FHitResult> OutResultsSecondSword;
 		
@@ -266,7 +268,7 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 		
 		DamagedActors.Empty();
-		DealSwordDamage(OutResults, End);
+		DealSwordDamage(OutResults, End);*/
 	}
 
 	if (bAttackChangeRotation && SoftLockTarget)

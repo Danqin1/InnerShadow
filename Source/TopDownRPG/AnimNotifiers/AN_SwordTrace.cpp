@@ -23,7 +23,7 @@ void UAN_SwordTrace::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBa
 	if(auto* Player = Cast<ARPGCharacter>(MeshComp->GetOwner()))
 	{
 		Player->CombatComponent->EndSwordTrace();
-	}
+	} 
 	else if(auto* Enemy = Cast<AEnemyCharacter>(MeshComp->GetOwner()))
 	{
 		Enemy->EndSwordTrace();
