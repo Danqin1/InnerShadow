@@ -48,7 +48,7 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 			                                                 ObjectTypes,
 			                                                 false,
 			                                                 ToIgnore,
-			                                                 EDrawDebugTrace::ForDuration, OutResults, true,
+			                                                 EDrawDebugTrace::None, OutResults, true,
 			                                                 FLinearColor::Red,
 			                                                 FLinearColor::Green, 3);
 

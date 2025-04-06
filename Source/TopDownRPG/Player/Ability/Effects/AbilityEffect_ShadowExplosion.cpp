@@ -40,21 +40,6 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 	{
 		FTimerHandle AttachHandle;
 
-		TArray<FHitResult> OutResults;
-		FVector Start = Caster->GetActorLocation();
-		TArray<AActor*> ToIgnore;
-		ToIgnore.Add(Caster);
-		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
-		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
-
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, Start, ImpactRadius,
-		                                                 ObjectTypes,
-		                                                 false,
-		                                                 ToIgnore,
-		                                                 EDrawDebugTrace::ForDuration, OutResults, true,
-		                                                 FLinearColor::Red,
-		                                                 FLinearColor::Green, 3);
-
 
 		Caster->GetMovementComponent()->StopMovementImmediately();
 		if (CastAnimation)
@@ -63,12 +48,28 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 		}
 		if (VFXSystem)
 		{
-			auto* system = UNiagaraFunctionLibrary::SpawnSystemAtLocation(
-				GetWorld(), VFXSystem, Caster->GetActorLocation() + VFXOffset);
+			auto* system = UNiagaraFunctionLibrary::SpawnSystemAttached(VFXSystem, Caster->GetMesh(), "root",
+			                                                            FVector(0, 0, 50), FRotator::ZeroRotator,
+			                                                            EAttachLocation::Type::SnapToTarget, true);
 		}
 
-		GetWorld()->GetTimerManager().SetTimer(AttachHandle, [this, Caster, OutResults]()
+		GetWorld()->GetTimerManager().SetTimer(AttachHandle, [this, Caster]()
 		{
+			TArray<FHitResult> OutResults;
+			FVector Start = Caster->GetActorLocation();
+			TArray<AActor*> ToIgnore;
+			ToIgnore.Add(Caster);
+			TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
+			ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
+
+			UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, Start, ImpactRadius,
+			                                                 ObjectTypes,
+			                                                 false,
+			                                                 ToIgnore,
+			                                                 EDrawDebugTrace::None, OutResults, true,
+			                                                 FLinearColor::Red,
+			                                                 FLinearColor::Green, 3);
+
 			for (FHitResult OutResult : OutResults)
 			{
 				if (Caster)
@@ -78,9 +79,9 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 						damageable->Damage(Damage);
 						if (auto* enemy = Cast<IEnemy>(OutResult.GetActor()))
 						{
-							enemy->OnHit(Caster, OutResult.Location,
-							             (OutResult.Location - Caster->GetActorLocation()) *
-							             PushEnemiesStrength + FVector::UpVector * PushEnemiesStrength);
+							enemy->OnHit(Caster, OutResult.Location, FVector::UpVector * PushEnemiesStrength);
+							//(OutResult.Location - Caster->GetActorLocation()) *
+							//PushEnemiesStrength + FVector::UpVector * PushEnemiesStrength);
 						}
 					}
 				}

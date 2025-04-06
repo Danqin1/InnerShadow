@@ -65,10 +65,19 @@ public:
 	TSubclassOf<UHitCameraShake> SwordHitCameraShake;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
+	float SoftLockDetectionRadius = 300;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	float PushEnemiesStrength = 10;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float DashDarknessCost = 5;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float SoftLockRotationSpeed =5;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	bool UseSoftLock = false;
 
 	UPROPERTY(EditAnywhere, Category = "VFX")
 	UNiagaraSystem* Blood_FX;

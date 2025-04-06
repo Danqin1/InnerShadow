@@ -116,7 +116,7 @@ void UCombatComponent::SoftLockOn()
 		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, 100,
+		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, Start, PlayerSettings->SoftLockDetectionRadius,
 		                                                 ObjectTypes,
 		                                                 false,
 		                                                 ToIgnore,
@@ -271,12 +271,14 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		DealSwordDamage(OutResults, End);*/
 	}
 
-	if (bAttackChangeRotation && SoftLockTarget)
+	if (bAttackChangeRotation && SoftLockTarget && PlayerSettings->UseSoftLock)
 	{
 		CharacterMovement->bOrientRotationToMovement = false;
-		attackRotAlpha += DeltaTime * 20;
+		attackRotAlpha += DeltaTime * PlayerSettings->SoftLockRotationSpeed;
 		AActor* Target = SoftLockTarget;
 		FRotator CurrentRot = GetOwner()->GetActorRotation();
+		FVector TargetLoc = Target->GetActorLocation();
+		TargetLoc.Z = GetOwner()->GetActorLocation().Z;
 		FRotator TargetRotation = UKismetMathLibrary::FindLookAtRotation(
 			GetOwner()->GetActorLocation(), Target->GetActorLocation());
 		FRotator FinalRot = FRotator(CurrentRot.Pitch, TargetRotation.Yaw, TargetRotation.Roll);
