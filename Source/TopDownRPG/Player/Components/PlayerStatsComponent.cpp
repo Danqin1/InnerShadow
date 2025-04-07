@@ -42,7 +42,7 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 			UpdateHUD();
 		}
-		if (HP < MaxHP)
+		if (HP < MaxHP && CharacterState->GetState() == ECharacterState::Nothing)
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
 		}

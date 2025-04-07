@@ -24,15 +24,7 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-	if(IICharacterState* CharacterState = Cast<IICharacterState>(CasterCharacter))
-	{
-		return RechargeTime <= 0 && ( CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking);
-	}
-	else
-	{
-		DevDebug::OnScreenLog("IICharacterState is NULL");
-	}
-	return false;
+	return RechargeTime <= 0;
 }
 
 void AAbility::Activate(ACharacter* Caster)

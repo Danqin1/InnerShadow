@@ -86,6 +86,8 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 					}
 				}
 			}
+
+			OnEffectFinished();
 		}, ImpactDelay, false, ImpactDelay);
 
 		FTimerHandle TimerHandle;

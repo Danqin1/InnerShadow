@@ -4,11 +4,11 @@
 #include "BTT_SetState.h"
 
 #include "AIController.h"
-#include "TopDownRPG/Enemy/EnemyCharacter.h"
+#include "TopDownRPG/Interfaces/ICharacterState.h"
 
 EBTNodeResult::Type UBTT_SetState::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if(AEnemyCharacter* Character = Cast<AEnemyCharacter>(OwnerComp.GetAIOwner()->GetPawn()))
+	if(IICharacterState* Character = Cast<IICharacterState>(OwnerComp.GetAIOwner()->GetPawn()))
 	{
 		Character->SetState(NewState);
 		FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);

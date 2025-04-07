@@ -5,23 +5,43 @@
 #include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
+#include "TopDownRPG/Enemy/Components/EnemyCombatBase.h"
 #include "TopDownRPG/Interfaces/Enemy.h"
 #include "TopDownRPG/Interfaces/EnemyCombat.h"
 #include "TopDownRPG/Interfaces/ICharacterState.h"
 #include "TopDownRPG/Interfaces/IDamageable.h"
-#include "EnemyCharacter.generated.h"
+#include "EnemyCharacterBase.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AEnemyCharacter : public ACharacter, public IIDamageable, public IEnemy, public IICharacterState, public IEnemyCombat
+class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IIDamageable, public IEnemy, public IICharacterState, public IEnemyCombat
 {
 private:
 	GENERATED_BODY()
+	
+protected:
+	UPROPERTY(EditDefaultsOnly, Category="Data")
+	FName EnemyDataName = "DefaultEnemy";
+	
+	UPROPERTY(EditDefaultsOnly, Category="Data")
+	UDataTable* Data;
 
-	bool bIsTracingSword = false;
+	UPROPERTY(EditDefaultsOnly)
+	UWidgetComponent* LifeBar;
+
+	UPROPERTY(EditAnywhere)
+	UEnemyCombatBase* Combat;
+	
+	ECharacterState CurrentState = Nothing;
+	
+	float MaxHP = 0;
+	float CurrentHP = 0;
+
+	void Die();
+	
 public:
 	FBoolEvent OnAirborne;
 	
-	AEnemyCharacter();
+	AEnemyCharacterBase();
 
 	virtual ECharacterState GetState() override;
 	virtual void SetState(ECharacterState NewState) override;
@@ -36,35 +56,6 @@ public:
 	virtual bool CanDamage() override;
 	void SetAirborne(bool isAirborne);
 	virtual float Attack() override;
-	void StartSwordTrace();
-	void EndSwordTrace();
-protected:
-	UPROPERTY(EditDefaultsOnly)
-	UStaticMeshComponent* WeaponMeshComponent;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Data")
-	FName EnemyDataName = "DefaultEnemy";
-	
-	UPROPERTY(EditDefaultsOnly, Category="Data")
-	UDataTable* Data;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* HitReactionLeft;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* HitReactionRight;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* AttackAnimation; /// move to combat component
-
-	UPROPERTY(EditDefaultsOnly)
-	UWidgetComponent* LifeBar;
-	ECharacterState CurrentState = Nothing;
-	float MaxHP = 0;
-	float CurrentHP = 0;
-	float CurrentDamage = 0;
-
-	bool bIsDead = false;
-
-	void Die();
+	virtual void StartTraceAttack() override;
+	virtual void EndTraceAttack() override;
 };

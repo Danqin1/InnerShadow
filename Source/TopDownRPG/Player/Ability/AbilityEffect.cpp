@@ -3,6 +3,10 @@
 
 #include "AbilityEffect.h"
 
+#include "TopDownRPG/DevDebug.h"
+#include "TopDownRPG/Interfaces/ICharacterState.h"
+#include "TopDownRPG/Player/RPGCharacter.h"
+
 
 // Sets default values
 AAbilityEffect::AAbilityEffect()
@@ -13,12 +17,24 @@ AAbilityEffect::AAbilityEffect()
 
 void AAbilityEffect::Activate(ACharacter* Caster)
 {
-	Destroy();
+	Player = Caster;
 }
 
 // Called when the game starts or when spawned
 void AAbilityEffect::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void AAbilityEffect::OnEffectFinished()
+{
+	if (ARPGCharacter* CharacterState = Cast<ARPGCharacter>(Player))
+	{
+		CharacterState->SetState(Nothing);
+	}
+	else
+	{
+		DevDebug::OnScreenLog("Cant cast to character");
+	}
 }
 

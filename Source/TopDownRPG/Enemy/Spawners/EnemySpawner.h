@@ -3,9 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EnemyCharacter.h"
 #include "GameFramework/Actor.h"
-#include "TopDownRPG/Interfaces/Enemy.h"
+#include "TopDownRPG/Enemy/Base/EnemyCharacterBase.h"
 #include "EnemySpawner.generated.h"
 
 UCLASS()
@@ -22,7 +21,7 @@ protected:
 	TArray<AActor*> SpawnedEnemies;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AEnemyCharacter> EnemyToSpawn;
+	TSubclassOf<AEnemyCharacterBase> EnemyToSpawn;
 	UPROPERTY(EditAnywhere)
 	int MaxEnemies = 1;
 	// Called when the game starts or when spawned

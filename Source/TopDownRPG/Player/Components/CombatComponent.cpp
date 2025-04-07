@@ -56,7 +56,7 @@ void UCombatComponent::Dispose()
 
 void UCombatComponent::OnDodge()
 {
-	if (CharacterState->GetState() == ECharacterState::Darkness)
+	if (!(CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking))
 	{
 		return;
 	}

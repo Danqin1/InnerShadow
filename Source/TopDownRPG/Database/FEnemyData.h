@@ -1,7 +1,7 @@
 #pragma once
 
+#include "BehaviorTree/BehaviorTree.h"
 #include "Engine/DataTable.h"
-#include "Perception/AISenseConfig_Sight.h"
 #include "FEnemyData.generated.h"
 
 USTRUCT(BlueprintType)

@@ -3,7 +3,7 @@
 
 #include "AN_SwordTrace.h"
 
-#include "TopDownRPG/Enemy/EnemyCharacter.h"
+#include "TopDownRPG/Interfaces/EnemyCombat.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 
 void UAN_SwordTrace::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration)
@@ -12,9 +12,9 @@ void UAN_SwordTrace::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequence
 	{
 		Player->CombatComponent->StartSwordTrace();
 	}
-	else if(auto* Enemy = Cast<AEnemyCharacter>(MeshComp->GetOwner()))
+	else if(auto* Enemy = Cast<IEnemyCombat>(MeshComp->GetOwner()))
 	{
-		Enemy->StartSwordTrace();
+		Enemy->StartTraceAttack();
 	}
 }
 
@@ -24,8 +24,8 @@ void UAN_SwordTrace::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBa
 	{
 		Player->CombatComponent->EndSwordTrace();
 	} 
-	else if(auto* Enemy = Cast<AEnemyCharacter>(MeshComp->GetOwner()))
+	else if(auto* Enemy = Cast<IEnemyCombat>(MeshComp->GetOwner()))
 	{
-		Enemy->EndSwordTrace();
+		Enemy->EndTraceAttack();
 	}
 }

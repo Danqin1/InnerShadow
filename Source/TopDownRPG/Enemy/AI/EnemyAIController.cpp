@@ -7,8 +7,6 @@
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig_Hearing.h"
 #include "Perception/AISenseConfig_Sight.h"
-#include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Enemy/EnemyCharacter.h"
 
 
 // Sets default values
@@ -66,7 +64,7 @@ void AEnemyAIController::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AEnemyAIController::OnPossess(APawn* InPawn)
 {
-	if(auto* EnemyCharacter = Cast<AEnemyCharacter>(InPawn))
+	if(auto* EnemyCharacter = Cast<AEnemyCharacterBase>(InPawn))
 	{
 		ControllerCharacter = EnemyCharacter;
 		EnemyCharacter->OnAirborne.AddDynamic(this, &AEnemyAIController::OnCharacterAirborne);
@@ -86,7 +84,7 @@ ETeamAttitude::Type AEnemyAIController::GetTeamAttitudeTowards(const AActor& Oth
 
 void AEnemyAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 {
-	if(!Cast<AEnemyCharacter>(Actor))
+	if(!Cast<AEnemyCharacterBase>(Actor))
 	{
 		if(Stimulus.WasSuccessfullySensed())
 		{

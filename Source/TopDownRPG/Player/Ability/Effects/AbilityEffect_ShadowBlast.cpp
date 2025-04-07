@@ -5,12 +5,8 @@
 
 #include "NiagaraComponent.h"
 #include "NiagaraFunctionLibrary.h"
-#include "Engine/SkeletalMeshSocket.h"
 #include "GameFramework/PawnMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Enemy/EnemyCharacter.h"
-#include "TopDownRPG/Interfaces/Combat.h"
 #include "TopDownRPG/Interfaces/Enemy.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 
@@ -30,6 +26,7 @@ void AAbilityEffect_ShadowBlast::BeginPlay()
 
 void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 {
+	Super::Activate(Caster);
 	if (Caster)
 	{
 		if (ARPGCharacter* CasterCharacter = Cast<ARPGCharacter>(Caster))
@@ -92,6 +89,8 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 						}
 					}
 				}
+
+				OnEffectFinished();
 			}, ImpactDelay, false, ImpactDelay);
 
 			FTimerHandle TimerHandle;

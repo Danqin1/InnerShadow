@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "TopDownRPG/Database/FEnemyData.h"
-#include "TopDownRPG/Enemy/EnemyCharacter.h"
+#include "TopDownRPG/Enemy/Base/EnemyCharacterBase.h"
 #include "EnemyAIController.generated.h"
 
 UCLASS()
@@ -23,7 +23,7 @@ public:
 
 protected:
 	UPROPERTY(Transient)
-	TObjectPtr<AEnemyCharacter> ControllerCharacter;
+	TObjectPtr<AEnemyCharacterBase> ControllerCharacter;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "AI")
 	TObjectPtr<UAIPerceptionComponent> AIPerceptionComponent = nullptr;

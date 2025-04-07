@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "AbilityEffect.generated.h"
 
+
 UCLASS(Abstract)
 class TOPDOWNRPG_API AAbilityEffect : public AActor
 {
@@ -33,5 +34,8 @@ protected:
 	float Duration = 1;
 
 	UPROPERTY()
-	ACharacter* Character;
+	ACharacter* Player = nullptr;
+
+	UFUNCTION()
+	void OnEffectFinished();
 };

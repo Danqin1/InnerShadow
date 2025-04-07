@@ -35,6 +35,6 @@ void AEnemySpawner::Tick(float DeltaTime)
 		return;
 	}
 	
-	auto* Enemy = GetWorld()->SpawnActor<AEnemyCharacter>(EnemyToSpawn, Location, FRotator::ZeroRotator);
+	auto* Enemy = GetWorld()->SpawnActor<AEnemyCharacterBase>(EnemyToSpawn, Location, FRotator::ZeroRotator);
 }
 
