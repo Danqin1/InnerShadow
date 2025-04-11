@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EnemyCombatBase.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
-#include "TopDownRPG/Enemy/Components/EnemyCombatBase.h"
 #include "TopDownRPG/Interfaces/Enemy.h"
 #include "TopDownRPG/Interfaces/EnemyCombat.h"
 #include "TopDownRPG/Interfaces/ICharacterState.h"
@@ -28,7 +28,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UWidgetComponent* LifeBar;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UEnemyCombatBase* Combat;
 	
 	ECharacterState CurrentState = Nothing;
@@ -56,6 +56,7 @@ public:
 	virtual bool CanDamage() override;
 	void SetAirborne(bool isAirborne);
 	virtual float Attack() override;
+	virtual bool CanAttack() override;
 	virtual void StartTraceAttack() override;
 	virtual void EndTraceAttack() override;
 };

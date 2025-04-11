@@ -7,7 +7,7 @@
 #include "IDamageable.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(meta=(CannotImplementInterfaceInBlueprint))
 class UIDamageable : public UInterface
 {
 	GENERATED_BODY()
@@ -22,6 +22,9 @@ class TOPDOWNRPG_API IIDamageable
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	UFUNCTION(BlueprintCallable)
 	virtual void Damage(float Damage) PURE_VIRTUAL();
+
+	UFUNCTION(BlueprintCallable)
 	virtual bool CanDamage() { return true; }
 };

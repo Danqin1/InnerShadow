@@ -71,6 +71,8 @@ void AEnemyCharacterBase::Damage(float Damage)
 		HPBar->HPBar->SetPercent(CurrentHP / MaxHP);
 	}
 
+	Combat->OnDamaged(CurrentHP);
+
 	if(CurrentHP <= 0 && GetState() != Dead)
 	{
 		Die();
@@ -139,6 +141,11 @@ float AEnemyCharacterBase::Attack()
 {
 	Combat->Attack();
 	return 1;
+}
+
+bool AEnemyCharacterBase::CanAttack()
+{
+	return Combat->CanAttack();
 }
 
 void AEnemyCharacterBase::StartTraceAttack()
