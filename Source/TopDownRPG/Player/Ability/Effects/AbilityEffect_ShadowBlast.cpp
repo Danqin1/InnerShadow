@@ -65,6 +65,7 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 
 			GetWorld()->GetTimerManager().SetTimer(AttachHandle, [this, CasterCharacter, OutResults]()
 			{
+				TArray<AActor*> Hitted;
 				for (FHitResult OutResult : OutResults)
 				{
 					if (IEnemy* Enemy = Cast<IEnemy>(OutResult.GetActor()))
@@ -78,12 +79,16 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 						{
 							if (auto* damageable = Cast<IIDamageable>(OutResult.GetActor()))
 							{
-								damageable->Damage(Damage);
 								if (auto* enemy = Cast<IEnemy>(OutResult.GetActor()))
 								{
-									enemy->OnHit(CasterCharacter, OutResult.Location,
-									             (OutResult.Location - CasterCharacter->GetActorLocation()) *
-									             PushEnemiesStrength);
+									if (!Hitted.Contains(OutResult.GetActor()))
+									{
+										damageable->Damage(Damage);
+										enemy->OnHit(CasterCharacter, OutResult.Location,
+												 (OutResult.Location - CasterCharacter->GetActorLocation()) *
+												 PushEnemiesStrength);
+										Hitted.Add(OutResult.GetActor());
+									}
 								}
 							}
 						}

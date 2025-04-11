@@ -26,14 +26,14 @@ void USpectrumCombat::OnDamaged(float CurrentHealth)
 	Super::OnDamaged(CurrentHealth);
 	for (TTuple<int, bool> EnemiesSpawnThreshold : EnemiesSpawnThresholds)
 	{
-		if (EnemiesSpawnThreshold.Key < CurrentHealth && !EnemiesSpawnThreshold.Value)
+		if (EnemiesSpawnThreshold.Key > CurrentHealth && !EnemiesSpawnThreshold.Value)
 		{
-			EnemiesSpawnThreshold.Value = true;
+			EnemiesSpawnThresholds[EnemiesSpawnThreshold.Key] = true;
 			for (AEnemySpawner* EnemySpawner : EnemySpawners)
 			{
 				EnemySpawner->Spawn();
 			}
-
+			DevDebug::OnScreenLog("Spawning enemies!" + FString::SanitizeFloat(CurrentHealth));
 			return;
 		}
 	}
@@ -48,6 +48,13 @@ void USpectrumCombat::Attack()
 
 bool USpectrumCombat::CanAttack()
 {
+	if (IICharacterState* state = Cast<IICharacterState>(GetOwner()))
+	{
+		if(state->GetState() == Dead)
+		{
+			return false;
+		}
+	}
 	return UGameplayStatics::GetTimeSeconds(GetWorld()) - lastAttackTime > AttackDelay;
 }
 

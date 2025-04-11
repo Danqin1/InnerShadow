@@ -70,16 +70,21 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 			                                                 FLinearColor::Red,
 			                                                 FLinearColor::Green, 3);
 
+			TArray<AActor*> Hitted;
 			for (FHitResult OutResult : OutResults)
 			{
 				if (Caster)
 				{
 					if (auto* damageable = Cast<IIDamageable>(OutResult.GetActor()))
 					{
-						damageable->Damage(Damage);
 						if (auto* enemy = Cast<IEnemy>(OutResult.GetActor()))
 						{
-							enemy->OnHit(Caster, OutResult.Location, FVector::UpVector * PushEnemiesStrength);
+							if (!Hitted.Contains(OutResult.GetActor()))
+							{
+								damageable->Damage(Damage);
+								enemy->OnHit(Caster, OutResult.Location, FVector::UpVector * PushEnemiesStrength);
+								Hitted.Add(OutResult.GetActor());
+							}
 							//(OutResult.Location - Caster->GetActorLocation()) *
 							//PushEnemiesStrength + FVector::UpVector * PushEnemiesStrength);
 						}
