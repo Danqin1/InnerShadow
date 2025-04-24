@@ -82,7 +82,8 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 							if (!Hitted.Contains(OutResult.GetActor()))
 							{
 								damageable->Damage(Damage);
-								enemy->OnHit(Caster, OutResult.Location, FVector::UpVector * PushEnemiesStrength);
+								enemy->OnHit(Caster, OutResult.Location, (OutResult.Location - Caster->GetActorLocation()) * PushEnemiesStrength
+									+ FVector::UpVector * PushEnemiesStrength);
 								Hitted.Add(OutResult.GetActor());
 							}
 							//(OutResult.Location - Caster->GetActorLocation()) *
