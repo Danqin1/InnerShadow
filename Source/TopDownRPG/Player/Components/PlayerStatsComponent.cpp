@@ -19,7 +19,7 @@ UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectIni
 void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                           FActorComponentTickFunction* ThisTickFunction)
 {
-	if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+	/*if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 	{
 		if (CharacterState->GetState() == Dead)
 		{
@@ -46,7 +46,7 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
 		}
-	}
+	}*/
 }
 
 void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
@@ -107,7 +107,7 @@ void UPlayerStatsComponent::SetMaxHP(float Value)
 
 void UPlayerStatsComponent::AddDarkness(float Value)
 {
-	if (Darkness + Value > MaxDarkness)
+	/*if (Darkness + Value > MaxDarkness)
 	{
 		if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 		{
@@ -116,8 +116,14 @@ void UPlayerStatsComponent::AddDarkness(float Value)
 				CharacterState->SetState(ECharacterState::Darkness);
 			}
 		}
-	}
+	}*/
 	Darkness = FMath::Clamp(Darkness + Value, 0, MaxDarkness);
+	UpdateHUD();
+}
+
+void UPlayerStatsComponent::RemoveDarkness(float Value)
+{
+	Darkness -= Value;
 	UpdateHUD();
 }
 

@@ -24,6 +24,14 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
+
+	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
+	{
+		if (Stats->GetEnergy() < DarknessCost)
+		{
+			return false;
+		}
+	}
 	return RechargeTime <= 0;
 }
 
@@ -33,7 +41,7 @@ void AAbility::Activate(ACharacter* Caster)
 	RechargeTime = Cooldown;
 	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
 	{
-		Stats->AddDarkness(DarknessCost);
+		Stats->RemoveDarkness(DarknessCost);
 	}
 
 	for (auto Effect : Effects)

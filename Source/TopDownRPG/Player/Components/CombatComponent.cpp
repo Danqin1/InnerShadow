@@ -69,10 +69,10 @@ void UCombatComponent::OnDodge()
 				return;
 			}
 
-			if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
+			/*if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
 			{
 				PlayerStats->AddDarkness(PlayerSettings->DashDarknessCost);
-			}
+			}*/
 			FVector Direction = RPGPlayer->GetLastMovementInputVector();
 
 			FVector Start = RPGPlayer->GetActorLocation();
@@ -427,42 +427,45 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 
 void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector WeaponTipEnd)
 {
-	for (FHitResult OutResult : Hitted)
+	if (UPlayerStatsComponent* Stats = GetOwner()->FindComponentByClass<UPlayerStatsComponent>())
 	{
-		if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
+		for (FHitResult OutResult : Hitted)
 		{
-			if (!DamagedActors.Contains(Damageable))
+			if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
 			{
-				Damageable->Damage(currentDamage);
-				if (auto* Enemy = Cast<IEnemy>(Damageable))
+				if (!DamagedActors.Contains(Damageable))
 				{
-					FVector Location = OutResult.GetActor()->GetActorLocation();
-					FVector LaunchDir = Location - GetOwner()->GetActorLocation();
-
-					Enemy->OnHit(GetOwner(), OutResult.Location,
-								 LaunchDir * PlayerSettings->PushEnemiesStrength);
-
-					if (PlayerSettings->BloodVFX)
+					Damageable->Damage(currentDamage);
+					if (auto* Enemy = Cast<IEnemy>(Damageable))
 					{
-						UNiagaraComponent* BloodFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
-							PlayerSettings->BloodVFX, OutResult.Location,
-							UKismetMathLibrary::FindLookAtRotation(WeaponTipEnd, OutResult.Location),
-							FVector(1.f, 1.f, 1.f), true, true,
-							ENCPoolMethod::None, true);
-					}
-				}
+						FVector Location = OutResult.GetActor()->GetActorLocation();
+						FVector LaunchDir = Location - GetOwner()->GetActorLocation();
 
-				if (PlayerSettings->DamageIndicator)
-				{
-					ADamageIndicatorActor* Damage = GetWorld()->SpawnActor<ADamageIndicatorActor>(
-						PlayerSettings->DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
-					if (Damage)
+						Enemy->OnHit(GetOwner(), OutResult.Location,
+									 LaunchDir * PlayerSettings->PushEnemiesStrength);
+
+						if (PlayerSettings->BloodVFX)
+						{
+							UNiagaraComponent* BloodFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this,
+								PlayerSettings->BloodVFX, OutResult.Location,
+								UKismetMathLibrary::FindLookAtRotation(WeaponTipEnd, OutResult.Location),
+								FVector(1.f, 1.f, 1.f), true, true,
+								ENCPoolMethod::None, true);
+						}
+					}
+
+					if (PlayerSettings->DamageIndicator)
 					{
-						Damage->Show(currentDamage);
+						ADamageIndicatorActor* Damage = GetWorld()->SpawnActor<ADamageIndicatorActor>(
+							PlayerSettings->DamageIndicator, OutResult.Location, FRotator::ZeroRotator);
+						if (Damage)
+						{
+							Damage->Show(currentDamage);
+						}
 					}
+					Stats->AddDarkness(PlayerSettings->DarknessRegen);
+					DamagedActors.Add(Damageable);
 				}
-
-				DamagedActors.Add(Damageable);
 			}
 		}
 	}

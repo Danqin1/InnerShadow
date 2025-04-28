@@ -27,6 +27,7 @@ public:
 	void RemoveHP(float Value);
 	void AddMaxHP(float Value);
 	void SetMaxHP(float Value);
+	float GetEnergy() {return Darkness;}
 	
 	void AddDarkness(float Value);
 	void RemoveDarkness(float Value);
