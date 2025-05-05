@@ -62,7 +62,7 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 	
 	if(IICharacterState* RPGCharacter = Cast<IICharacterState>(GetCharacter()))
 	{
-		if(RPGCharacter->GetState() == Interaction || RPGCharacter->GetState() == Darkness)
+		if(RPGCharacter->GetState() == Interaction)
 		{
 			return;
 		}

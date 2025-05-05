@@ -5,8 +5,10 @@
 
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "TopDownRPG/Database/FEnemyData.h"
 #include "TopDownRPG/Enemy/AI/EnemyAIController.h"
+#include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 #include "TopDownRPG/UI/Enemy/EnemyLifebar.h"
 
 
@@ -187,6 +189,19 @@ void AEnemyCharacterBase::Die()
 		LifeBar->SetVisibility(false);
 	}
 	FTimerHandle DisappearHandle;
+
+	const FString ContextString(TEXT("Enemy data Context"));
+	FEnemyData* EnemyData = Data->FindRow<FEnemyData>(EnemyDataName, ContextString, true);
+	if(EnemyData)
+	{
+		if (AActor* player =  UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))
+		{
+			if (UPlayerStatsComponent* StatsComponent = player->FindComponentByClass<UPlayerStatsComponent>())
+			{
+				StatsComponent->AddPrize(EnemyData->KillPrize);
+			}
+		}
+	}
 
 	GetWorldTimerManager().SetTimer(DisappearHandle, [this]()
 	{

@@ -24,10 +24,9 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-
 	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
 	{
-		if (Stats->GetEnergy() < DarknessCost)
+		if (Stats->GetDarkness() < DarknessCost)
 		{
 			return false;
 		}
@@ -74,6 +73,7 @@ void AAbility::SetUISlot(UW_ActionSlot* Slot)
 		}
 		UISlot->Name->SetText(FText::FromString(Name));
 		UISlot->UpdateRecharge(RechargeTime / Cooldown);
+		UISlot->Cost->SetText(FText::FromString(FString::SanitizeFloat(DarknessCost)));
 	}
 	else
 	{

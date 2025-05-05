@@ -59,7 +59,8 @@ public:
 	void SoftLockOn();
 	bool CanDamage();
 	void TryDodgeSpecialAttack();
-	
+	void ResetAttack();
+
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Indication")
 	UNiagaraComponent* SwordTraceVFXComponent;
@@ -77,8 +78,9 @@ protected:
 	UFUNCTION()
 	void OnAttack();
 
+	/*
 	UFUNCTION()
-	void OnDodge();
+	void OnDodge();*/
 
 	UFUNCTION()
 	void OnEnemyDied();

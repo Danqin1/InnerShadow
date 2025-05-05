@@ -45,7 +45,7 @@ void UCombatComponent::SetupComponent(UPlayerSettings* Settings)
 	if (UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
 	{
 		Input->BindAction(PlayerSettings->AttackAction, ETriggerEvent::Started, this, &UCombatComponent::OnAttack);
-		Input->BindAction(PlayerSettings->DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
+		//Input->BindAction(PlayerSettings->DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
 	}
 }
 
@@ -54,7 +54,7 @@ void UCombatComponent::Dispose()
 	CharacterState->OnStateChanged.RemoveDynamic(this, &UCombatComponent::OnCharacterStateChanged);
 }
 
-void UCombatComponent::OnDodge()
+/*void UCombatComponent::OnDodge()
 {
 	if (!(CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking))
 	{
@@ -69,10 +69,10 @@ void UCombatComponent::OnDodge()
 				return;
 			}
 
-			/*if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
+			if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
 			{
 				PlayerStats->AddDarkness(PlayerSettings->DashDarknessCost);
-			}*/
+			}
 			FVector Direction = RPGPlayer->GetLastMovementInputVector();
 
 			FVector Start = RPGPlayer->GetActorLocation();
@@ -91,7 +91,7 @@ void UCombatComponent::OnDodge()
 			CharacterState->ClearState(Attacking);
 		}
 	}
-}
+}*/
 
 void UCombatComponent::OnEnemyDied()
 {
@@ -248,27 +248,6 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		SwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
 
 		DealSwordDamage(OutResults, End);
-
-		// second sword
-		/*Start = CharacterMesh->GetSocketLocation("WeaponL");
-		End = CharacterMesh->GetSocketLocation("WeaponLTip");
-		TArray<FHitResult> OutResultsSecondSword;
-		
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, PlayerSettings->SwordTraceRadius,
-														 ObjectTypes,
-														 false,
-														 ToIgnore,
-														 EDrawDebugTrace::None, OutResultsSecondSword, true, FLinearColor::Red,
-														 FLinearColor::Green, PlayerSettings->SwordTraceDelay);
-
-		OutResults.Append(OutResultsSecondSword);
-
-		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start + (End - Start) / 2);
-		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
-		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
-		
-		DamagedActors.Empty();
-		DealSwordDamage(OutResults, End);*/
 	}
 
 	if (bAttackChangeRotation && SoftLockTarget && PlayerSettings->UseSoftLock)
@@ -378,6 +357,13 @@ void UCombatComponent::TryDodgeSpecialAttack()
 	}
 }
 
+void UCombatComponent::ResetAttack()
+{
+	currentComboIndex = 0;
+	bShouldContinueCombo = false;
+	CharacterState->ClearState(Attacking);
+}
+
 AActor* UCombatComponent::GetSoftLockTarget()
 {
 	return SoftLockTarget;
@@ -463,7 +449,6 @@ void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector Weapon
 							Damage->Show(currentDamage);
 						}
 					}
-					Stats->AddDarkness(PlayerSettings->DarknessRegen);
 					DamagedActors.Add(Damageable);
 				}
 			}

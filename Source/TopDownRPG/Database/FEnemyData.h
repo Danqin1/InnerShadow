@@ -2,6 +2,7 @@
 
 #include "BehaviorTree/BehaviorTree.h"
 #include "Engine/DataTable.h"
+#include "TopDownRPG/Enemy/FKillPrize.h"
 #include "FEnemyData.generated.h"
 
 USTRUCT(BlueprintType)
@@ -38,4 +39,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="AI")
 	UBehaviorTree* MainBehaviourTree;
+
+	UPROPERTY(EditAnywhere, Category= "General")
+	FKillPrize KillPrize;
 };

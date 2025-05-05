@@ -6,6 +6,7 @@
 #include "RPGActorComponentBase.h"
 #include "Components/ActorComponent.h"
 #include "TopDownRPG/TopDownRPG.h"
+#include "TopDownRPG/Database/FEnemyData.h"
 #include "TopDownRPG/UI/HUD/PlayerHUD.h"
 #include "PlayerStatsComponent.generated.h"
 
@@ -27,10 +28,12 @@ public:
 	void RemoveHP(float Value);
 	void AddMaxHP(float Value);
 	void SetMaxHP(float Value);
-	float GetEnergy() {return Darkness;}
 	
 	void AddDarkness(float Value);
 	void RemoveDarkness(float Value);
+	float GetDarkness() const {return Darkness;}
+	void AddPrize(FKillPrize KillPrize);
+
 protected:
 	UPROPERTY(Transient)
 	UPlayerHUD* PlayerHUD = nullptr;

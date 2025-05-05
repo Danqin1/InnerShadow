@@ -18,10 +18,10 @@ void UPlayerHUD::SetDarkness(float Percent)
 		DarknessBar->SetPercent(Percent);
 	}
 
-	if (DarknesIndicator)
+	/*if (DarknesIndicator)
 	{
 		DarknesIndicator->SetBrushTintColor(FLinearColor(1,1,1, Percent));
-	}
+	}*/
 }
 
 void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
