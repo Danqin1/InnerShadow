@@ -13,10 +13,7 @@
 UInventoryComponent::UInventoryComponent()
 {
 	WeaponMeleeHandle = CreateDefaultSubobject<UStaticMeshComponent>("WeaponMeleeHandle");
-	WeaponMeleeHandleLeft = CreateDefaultSubobject<UStaticMeshComponent>("WeaponMeleeBackIdle");
-
 	WeaponMeleeHandle->SetCollisionProfileName("NoCollision");
-	WeaponMeleeHandleLeft->SetCollisionProfileName("NoCollision");
 }
 
 void UInventoryComponent::BeginPlay()
@@ -25,9 +22,7 @@ void UInventoryComponent::BeginPlay()
 
 	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
 	{
-		WeaponMeleeHandle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "weapon_r");
-		//WeaponMeleeHandleLeft->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, "WeaponL");
-
+		WeaponMeleeHandle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, "weapon_r");
 		Character->OnStateChanged.AddDynamic(this, &UInventoryComponent::OnStateChanged);
 	}
 
@@ -67,14 +62,11 @@ void UInventoryComponent::ToggleMelee()
 void UInventoryComponent::EquipWeapon()
 {
 	WeaponMeleeHandle->SetStaticMesh(DefaultSwordR);
-	//WeaponMeleeHandleLeft->SetStaticMesh(DefaultSwordL);
 	bEquippedWeapon = true;
 }
 
 void UInventoryComponent::HideWeapon()
 {
-	//WeaponMeleeHandleLeft->SetStaticMesh(nullptr);
 	WeaponMeleeHandle->SetStaticMesh(nullptr);
 	bEquippedWeapon = false;
 }
-
