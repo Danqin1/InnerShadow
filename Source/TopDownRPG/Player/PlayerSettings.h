@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "HitCameraShake.h"
+#include "CameraShake.h"
 #include "InputAction.h"
 #include "NiagaraSystem.h"
 #include "Ability/Ability.h"
@@ -62,7 +62,7 @@ public:
 	UAnimMontage* DieAnim;
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	TSubclassOf<UHitCameraShake> SwordHitCameraShake;
+	TSubclassOf<UCameraShake> SwordHitCameraShake;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float SoftLockDetectionRadius = 300;

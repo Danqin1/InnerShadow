@@ -184,12 +184,6 @@ void UCombatComponent::StartSwordTrace()
 		SwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
 		SwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
 		SwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);
-
-		/*Start = CharacterMesh->GetSocketLocation("WeaponL");
-		End = CharacterMesh->GetSocketLocation("WeaponLTip");
-		SecondSwordTraceVFXComponent->SetVectorParameter("BeamStart", Start);
-		SecondSwordTraceVFXComponent->SetVectorParameter("Normal", End - Start);
-		SecondSwordTraceVFXComponent->SetVectorParameter("BeamEnd", End);*/
 	}
 }
 
@@ -202,7 +196,6 @@ void UCombatComponent::EndSwordTrace()
 	CharacterMovement->bOrientRotationToMovement = true;
 	ClearDamageModifier();
 	SwordTraceVFXComponent->Deactivate();
-	//SecondSwordTraceVFXComponent->Deactivate();
 }
 
 void UCombatComponent::ModifyDamage(float NewDamage)

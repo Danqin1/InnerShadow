@@ -7,6 +7,7 @@
 #include "NiagaraFunctionLibrary.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/PawnMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "TopDownRPG/Interfaces/Enemy.h"
 #include "TopDownRPG/Interfaces/IDamageable.h"
@@ -92,6 +93,8 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 					}
 				}
 			}
+
+			UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0)->StartCameraShake(CameraShake);
 
 			OnEffectFinished();
 		}, ImpactDelay, false, ImpactDelay);

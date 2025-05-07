@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NiagaraSystem.h"
+#include "TopDownRPG/Player/CameraShake.h"
 #include "TopDownRPG/Player/Ability/AbilityEffect.h"
 #include "AbilityEffect_ShadowExplosion.generated.h"
 
@@ -25,6 +26,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Effects")
 	FVector VFXOffset;
+
+	UPROPERTY(EditDefaultsOnly, Category="Effects")
+	TSubclassOf<UCameraShake> CameraShake;
 
 	UPROPERTY(EditDefaultsOnly, Category="Effects")
 	float ImpactDelay = .5f;

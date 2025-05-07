@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Camera/CameraShakeBase.h"
-#include "HitCameraShake.generated.h"
+#include "CameraShake.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TOPDOWNRPG_API UHitCameraShake : public UCameraShakeBase
+class TOPDOWNRPG_API UCameraShake : public UCameraShakeBase
 {
 	GENERATED_BODY()
 };

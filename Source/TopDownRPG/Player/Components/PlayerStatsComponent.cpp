@@ -57,8 +57,6 @@ void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 		PlayerHUD = Player->PlayerHUD;
 		check(PlayerHUD);
 		PlayerHUD->SetHP(MaxHP);
-
-		//Player->OnTakeAnyDamage.AddDynamic(this, &UPlayerStatsComponent::OnTakeDamage);
 	}
 
 	UpdateHUD();
@@ -107,7 +105,7 @@ void UPlayerStatsComponent::SetMaxHP(float Value)
 
 void UPlayerStatsComponent::AddDarkness(float Value)
 {
-	if (Darkness + Value > MaxDarkness)
+	/*if (Darkness + Value > MaxDarkness)
 	{
 		if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
 		{
@@ -116,7 +114,7 @@ void UPlayerStatsComponent::AddDarkness(float Value)
 				CharacterState->SetState(ECharacterState::Darkness);
 			}
 		}
-	}
+	}*/
 	Darkness = FMath::Clamp(Darkness + Value, 0, MaxDarkness);
 	UpdateHUD();
 }

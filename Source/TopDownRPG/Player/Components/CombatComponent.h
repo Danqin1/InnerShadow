@@ -10,7 +10,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "TopDownRPG/Interfaces/ICharacterState.h"
 #include "TopDownRPG/Interfaces/IDamageable.h"
-#include "TopDownRPG/Player/HitCameraShake.h"
+#include "TopDownRPG/Player/CameraShake.h"
 #include "TopDownRPG/UI/DamageIndicatorActor.h"
 #include "CombatComponent.generated.h"
 
