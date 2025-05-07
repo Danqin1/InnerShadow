@@ -111,4 +111,9 @@ public:
 	TSubclassOf<AAbility> Ability3;
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	TSubclassOf<AAbility> Ability4;
+
+	UPROPERTY(EditDefaultsOnly, Category="Audio")
+	USoundBase* OnHitSound;
+	UPROPERTY(EditDefaultsOnly, Category="Audio")
+	float HitAudioMinDelay = 0.1f;
 };

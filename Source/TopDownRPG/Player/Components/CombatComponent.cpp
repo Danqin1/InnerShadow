@@ -413,6 +413,7 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 
 void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector WeaponTipEnd)
 {
+	bool canPlayAudio = true;
 	if (UPlayerStatsComponent* Stats = GetOwner()->FindComponentByClass<UPlayerStatsComponent>())
 	{
 		for (FHitResult OutResult : Hitted)
@@ -450,6 +451,13 @@ void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector Weapon
 						}
 					}
 					DamagedActors.Add(Damageable);
+					if(canPlayAudio && UGameplayStatics::GetTimeSeconds(GetWorld()) - lastHitAudioPlayedTime > PlayerSettings->HitAudioMinDelay)
+					{
+						UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0)->StartCameraShake(PlayerSettings->SwordHitCameraShake);
+						UGameplayStatics::PlaySound2D(GetWorld(), PlayerSettings->OnHitSound);
+						canPlayAudio = false;
+						lastHitAudioPlayedTime = UGameplayStatics::GetTimeSeconds(GetWorld());
+					}
 				}
 			}
 		}

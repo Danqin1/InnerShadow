@@ -26,6 +26,7 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	bool bAttackChangeRotation = false;
 	float attackRotAlpha = 0;
 	float currentDamage = 0;
+	float lastHitAudioPlayedTime = 0;
 	
 	TArray<IIDamageable*> DamagedActors;
 	
@@ -37,6 +38,8 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	UInventoryComponent* InventoryComponent;
 
 	TWeakInterfacePtr<IICharacterState> CharacterState;
+	
+
 public:
 	// Sets default values for this component's properties
 	UCombatComponent();

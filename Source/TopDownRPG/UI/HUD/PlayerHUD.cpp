@@ -50,7 +50,10 @@ void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
 void UPlayerHUD::StateChanged(ECharacterState State)
 {
 	FString enumName = "ECharacterState";
-	StateDebug->SetText(FText::FromString(EnumToString(enumName, State)));
+	if(StateDebug)
+	{
+		StateDebug->SetText(FText::FromString(EnumToString(enumName, State)));
+	}
 }
 
 UW_ActionSlot* UPlayerHUD::GetUISlot(int index)
