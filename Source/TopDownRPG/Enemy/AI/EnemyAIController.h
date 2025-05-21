@@ -50,6 +50,7 @@ protected:
 	UFUNCTION()
 	void OnStateChanged(ECharacterState State);
 public:
+	FVector StartLocation;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	void SetAIData(FEnemyData* Data);

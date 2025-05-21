@@ -72,6 +72,7 @@ void AEnemyAIController::OnPossess(APawn* InPawn)
 		{
 			StateCharacter->OnStateChanged.AddDynamic(this, &AEnemyAIController::OnStateChanged);
 		}
+		StartLocation = EnemyCharacter->GetActorLocation();
 	}
 	
 	Super::OnPossess(InPawn);

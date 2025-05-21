@@ -19,7 +19,7 @@ EBTNodeResult::Type UBTT_SetRandomTargetLocation::ExecuteTask(UBehaviorTreeCompo
 		auto* pawn = aiController->GetPawn();
 		if(pawn)
 		{
-			FVector const origin = pawn->GetActorLocation();
+			FVector const origin = aiController->StartLocation;
 
 			// get navmesh
 			if(UNavigationSystemV1* const NavSys = UNavigationSystemV1::GetCurrent(GetWorld()))
