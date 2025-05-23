@@ -26,12 +26,30 @@ class ARPGPlayerController : public APlayerController
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
+	const UInputAction* LookAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(AllowPrivateAccess = "true"))
 	UPlayerSettings* Settings = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	float CameraSpeedYaw = .5f;
+
+	UPROPERTY(EditAnywhere)
+	float CameraSpeedPitch = .3f;
+
+	UPROPERTY(EditAnywhere)
+	float PitchLimitMin = -30;
+
+	UPROPERTY(EditAnywhere)
+	float PitchLimitMax = 30;
+
 protected:
+	float PitchInput = 0;
 	
 	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 
 	virtual void SetupInputComponent() override;
 	
