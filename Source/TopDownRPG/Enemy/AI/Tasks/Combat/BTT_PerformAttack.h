@@ -24,4 +24,8 @@ class TOPDOWNRPG_API UBTT_PerformAttack : public UBTTask_BlackboardBase
 	virtual void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
 
 	virtual uint16 GetInstanceMemorySize() const override;
+
+protected:
+	UPROPERTY(EditAnywhere)
+	float RotationSpeed = 1;
 };

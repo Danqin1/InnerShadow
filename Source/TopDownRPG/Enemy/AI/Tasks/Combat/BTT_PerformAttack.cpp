@@ -4,6 +4,8 @@
 #include "BTT_PerformAttack.h"
 
 #include "AIController.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "TopDownRPG/Interfaces/EnemyCombat.h"
 
 UBTT_PerformAttack::UBTT_PerformAttack()
@@ -22,6 +24,23 @@ void UBTT_PerformAttack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* Node
 	}
 	else
 	{
+		AActor* target = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValueAsObject( BlackboardKey.SelectedKeyName ));
+		if (target)
+		{
+			if(auto Pawn = OwnerComp.GetAIOwner()->GetPawn())
+			{
+				FVector TargetLocation = target->GetActorLocation();
+				FRotator CurrentRotation = Pawn->GetActorRotation();
+				FVector PawnLocation = Pawn->GetActorLocation();
+				FVector Direction = TargetLocation - PawnLocation;
+				Direction.Z = 0;
+				FRotator TargetRotation = UKismetMathLibrary::MakeRotFromX(Direction);
+				FRotator SmoothRotation = FMath::RInterpTo(CurrentRotation, TargetRotation, DeltaSeconds, RotationSpeed);
+			
+				Pawn->SetActorRotation(SmoothRotation);
+			}
+		}
+		
 		MyMemory->ElapsedTime += DeltaSeconds;
 		FinishLatentTask(OwnerComp, EBTNodeResult::InProgress);
 	}

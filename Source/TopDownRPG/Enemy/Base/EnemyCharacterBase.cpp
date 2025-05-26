@@ -160,6 +160,25 @@ void AEnemyCharacterBase::EndTraceAttack()
 	Combat->EndAttackTrace();
 }
 
+void AEnemyCharacterBase::ChangeMovementMode(EMovementType NewMovement)
+{
+	UCharacterMovementComponent* Movement = GetCharacterMovement();
+	const FString ContextString(TEXT("Enemy data Context"));
+	FEnemyData* EnemyData = Data->FindRow<FEnemyData>(EnemyDataName, ContextString, true);
+	
+	if (Movement && EnemyData)
+	{
+		switch (NewMovement) {
+		case Walk:
+			Movement->MaxWalkSpeed = EnemyData->MoveSpeed;
+			break;
+		case Run:
+			Movement->MaxWalkSpeed = EnemyData->RunSpeed;
+			break;
+		}
+	}
+}
+
 // Called every frame
 void AEnemyCharacterBase::Tick(float DeltaTime)
 {

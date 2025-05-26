@@ -29,6 +29,7 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		GroundSpeed = UKismetMathLibrary::VSizeXY(Velocity);
 		bShouldMove = GroundSpeed > 3 && MovementComponent->GetCurrentAcceleration() != FVector::Zero();
 		bIsFalling = MovementComponent->IsFalling();
+		bIsDead = Character->GetState() == Dead;
 		if(InventoryComponent)
 		{
 			bHasSword = InventoryComponent->HasEquippedWeapon();

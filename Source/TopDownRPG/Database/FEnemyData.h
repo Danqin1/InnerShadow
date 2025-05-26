@@ -28,6 +28,9 @@ public:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	float MoveSpeed = 500;
 
+	UPROPERTY(EditAnywhere, Category="Combat")
+	float RunSpeed = 900;
+
 	UPROPERTY(EditAnywhere, Category="AI")
 	float ViewRange = 1000;
 

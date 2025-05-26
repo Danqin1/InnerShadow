@@ -38,6 +38,9 @@ public:
 	bool bIsFalling = false;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	bool bIsDead = false;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	FVector Velocity = FVector::Zero();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

@@ -34,4 +34,5 @@ public:
 	virtual void OnSkillReaction(UAnimMontage* ReactionMontage) PURE_VIRTUAL()
 	UFUNCTION()
 	virtual FKillPrize GetPrize() {return FKillPrize();}
+	virtual void ChangeMovementMode(EMovementType NewMovement) {}
 };

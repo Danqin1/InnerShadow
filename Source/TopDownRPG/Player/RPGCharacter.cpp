@@ -195,8 +195,6 @@ void ARPGCharacter::Die()
 {
 	SetState(Dead);
 	GetController()->DisableInput(UGameplayStatics::GetPlayerController(this, 0));
-
-	PlayAnimMontage(Settings->DieAnim);
 	
 	FTimerHandle TimerHandle;
 	FTimerDelegate Delegate;

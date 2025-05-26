@@ -37,3 +37,10 @@ enum ECharacterState
 	Darkness,
 	Skill
 };
+
+UENUM()
+enum EMovementType
+{
+	Walk,
+	Run,
+};

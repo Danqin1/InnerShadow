@@ -57,10 +57,7 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	UAnimMontage* DodgeAnim;
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UAnimMontage* DieAnim;
-
+	
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	TSubclassOf<UCameraShake> SwordHitCameraShake;
 

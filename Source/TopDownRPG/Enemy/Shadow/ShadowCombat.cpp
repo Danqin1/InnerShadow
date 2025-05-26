@@ -42,7 +42,7 @@ void UShadowCombat::TraceAttack()
 											   ObjectTypes,
 											   false,
 											   ToIgnore,
-											   EDrawDebugTrace::ForDuration, OutResults, true, FLinearColor::Red,
+											   EDrawDebugTrace::None, OutResults, true, FLinearColor::Red,
 											   FLinearColor::Green, 1);
 
 		TArray<FHitResult> SecondResults;
@@ -50,7 +50,7 @@ void UShadowCombat::TraceAttack()
 											   ObjectTypes,
 											   false,
 											   ToIgnore,
-											   EDrawDebugTrace::ForDuration, SecondResults, true, FLinearColor::Red,
+											   EDrawDebugTrace::None, SecondResults, true, FLinearColor::Red,
 											   FLinearColor::Green, 1);
 
 		OutResults.Append(SecondResults);

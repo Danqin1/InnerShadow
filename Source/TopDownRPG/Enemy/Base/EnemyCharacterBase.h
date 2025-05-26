@@ -59,4 +59,5 @@ public:
 	virtual bool CanAttack() override;
 	virtual void StartTraceAttack() override;
 	virtual void EndTraceAttack() override;
+	virtual void ChangeMovementMode(EMovementType NewMovement) override;
 };
