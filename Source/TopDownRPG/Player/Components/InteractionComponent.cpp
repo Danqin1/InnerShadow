@@ -42,7 +42,7 @@ void UInteractionComponent::BeginPlay()
 	Super::BeginPlay();
 }
 
-void UInteractionComponent::SetInteractionTarget(IInteractable* Interactable)
+void UInteractionComponent::SetInteractionTarget(IInteractableInterface* Interactable)
 {
 	if(Interactable)
 	{
@@ -120,7 +120,7 @@ void UInteractionComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			for (FHitResult OutResult : OutResults)
 			{
-				if(auto* Interactable = Cast<IInteractable>(OutResult.GetActor()))
+				if(auto* Interactable = Cast<IInteractableInterface>(OutResult.GetActor()))
 				{
 					if(FVector::Distance(GetOwner()->GetActorLocation(),OutResult.GetActor()->GetActorLocation()) < Interactable->GetInteractionDistance())
 					{

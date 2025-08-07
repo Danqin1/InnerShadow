@@ -4,8 +4,6 @@
 #include "EnemyCombatBase.h"
 
 #include "GameFramework/Character.h"
-#include "Kismet/KismetSystemLibrary.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
 
 UEnemyCombatBase::UEnemyCombatBase()
 {

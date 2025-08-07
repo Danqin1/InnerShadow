@@ -19,7 +19,7 @@
 #include "Perception/AISense_Hearing.h"
 #include "Perception/AISense_Sight.h"
 #include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Interfaces/IDamageable.h"
+#include "TopDownRPG/Interfaces/DamageableInterface.h"
 
 ARPGCharacter::ARPGCharacter()
 {

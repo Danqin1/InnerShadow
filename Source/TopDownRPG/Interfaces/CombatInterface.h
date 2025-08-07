@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "EnemyCombat.generated.h"
+#include "CombatInterface.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE()
-class UEnemyCombat : public UInterface
+class UCombatInterface : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -16,12 +16,16 @@ class UEnemyCombat : public UInterface
 /**
  * 
  */
-class TOPDOWNRPG_API IEnemyCombat
+class TOPDOWNRPG_API ICombatInterface
 {
 	GENERATED_BODY()
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	void OnHit();
+	void Missed();
+	void Killed(float GainedXP);
+
 	virtual float Attack() {return 0;}
 	virtual bool CanAttack() {return true;}
 	virtual void StartTraceAttack(){}

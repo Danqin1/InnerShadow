@@ -11,7 +11,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "NiagaraComponent.h"
-#include "TopDownRPG/Interfaces/Enemy.h"
+#include "TopDownRPG/Interfaces/EnemyInterface.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 
 UCombatComponent::UCombatComponent()
@@ -33,7 +33,7 @@ void UCombatComponent::SetupComponent(UPlayerSettings* Settings)
 		CharacterMovement = Character->GetCharacterMovement();
 		InventoryComponent = Character->InventoryComponent;
 		ClearDamageModifier();
-		CharacterState = Cast<IICharacterState>(Character);
+		CharacterState = Cast<IPlayerInterface>(Character);
 		check(CharacterState.Get());
 		SwordTraceVFXComponent->AttachToComponent(CharacterMesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, "SwordVFX");
 
@@ -125,7 +125,7 @@ void UCombatComponent::SoftLockOn()
 
 		for (FHitResult OutResult : OutResults)
 		{
-			if (IEnemy* Enemy = Cast<IEnemy>(OutResult.GetActor()))
+			if (IEnemyInterface* Enemy = Cast<IEnemyInterface>(OutResult.GetActor()))
 			{
 				SoftLockTarget = OutResult.GetActor();
 				Enemy->OnDie.AddDynamic(this, &UCombatComponent::OnEnemyDied);
@@ -158,7 +158,7 @@ void UCombatComponent::SoftLockOff()
 {
 	if(SoftLockTarget)
 	{
-		if (IEnemy* Enemy = Cast<IEnemy>(SoftLockTarget))
+		if (IEnemyInterface* Enemy = Cast<IEnemyInterface>(SoftLockTarget))
 		{
 			Enemy->OnDie.RemoveDynamic(this, &UCombatComponent::OnEnemyDied);
 		}
@@ -381,7 +381,7 @@ void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, 
 
 	for (FHitResult OutResult : OutResults)
 	{
-		if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
+		if (auto* Damageable = Cast<IDamageableInterface>(OutResult.GetActor()))
 		{
 			if (!DamagedActors.Contains(Damageable))
 			{
@@ -411,12 +411,12 @@ void UCombatComponent::DealSwordDamage(TArray<FHitResult> Hitted, FVector Weapon
 	{
 		for (FHitResult OutResult : Hitted)
 		{
-			if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
+			if (auto* Damageable = Cast<IDamageableInterface>(OutResult.GetActor()))
 			{
 				if (!DamagedActors.Contains(Damageable))
 				{
 					Damageable->Damage(currentDamage);
-					if (auto* Enemy = Cast<IEnemy>(Damageable))
+					if (auto* Enemy = Cast<IEnemyInterface>(Damageable))
 					{
 						FVector Location = OutResult.GetActor()->GetActorLocation();
 						FVector LaunchDir = Location - GetOwner()->GetActorLocation();

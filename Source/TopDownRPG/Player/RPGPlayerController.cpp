@@ -45,7 +45,7 @@ void ARPGPlayerController::SetupInputComponent()
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Move);
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Look);
+		EnhancedInputComponent->BindAction(DarknessAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::TryFireDarkness);
 	}
 	else
 	{
@@ -62,7 +62,7 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 	
-	if(IICharacterState* RPGCharacter = Cast<IICharacterState>(GetCharacter()))
+	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
 	{
 		if(RPGCharacter->GetState() == Interaction)
 		{
@@ -70,15 +70,15 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 		}
 	}
 	
-	GetCharacter()->AddMovementInput(ForwardDirection, MovementVector.Y);
-	GetCharacter()->AddMovementInput(RightDirection, MovementVector.X);
+	GetCharacter()->AddMovementInput(FVector::ForwardVector, MovementVector.Y);
+	GetCharacter()->AddMovementInput(FVector::RightVector, MovementVector.X);
 }
 
 void ARPGPlayerController::Look(const FInputActionValue& Value)
 {
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 	
-	if(ARPGCharacter* RPGCharacter = Cast<ARPGCharacter>(GetCharacter()))
+	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
 	{
 		if(RPGCharacter->GetState() == Interaction)
 		{
@@ -94,5 +94,16 @@ void ARPGPlayerController::Look(const FInputActionValue& Value)
 	{
 		PitchInput = PitchInput + pitchMove;
 		AddPitchInput(pitchMove);
+	}
+}
+
+void ARPGPlayerController::TryFireDarkness(const FInputActionValue& Value)
+{
+	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
+	{
+		if(RPGCharacter->GetDarknessPercent() >= 1)
+		{
+			RPGCharacter->SetState(Darkness);
+		}
 	}
 }

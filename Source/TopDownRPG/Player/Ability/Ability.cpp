@@ -5,7 +5,7 @@
 
 #include "GameFramework/Character.h"
 #include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
+#include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 
 
@@ -24,13 +24,14 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
+	if (bRequiresDarkness)
 	{
-		if (Stats->GetDarkness() < DarknessCost)
+		if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 		{
-			return false;
+			return PlayerInterface->GetState() == ECharacterState::Darkness && RechargeTime <= 0;
 		}
 	}
+	
 	return RechargeTime <= 0;
 }
 
@@ -38,10 +39,6 @@ void AAbility::Activate(ACharacter* Caster)
 {
 	CasterCharacter = Caster;
 	RechargeTime = Cooldown;
-	if (UPlayerStatsComponent* Stats = CasterCharacter->FindComponentByClass<UPlayerStatsComponent>())
-	{
-		Stats->RemoveDarkness(DarknessCost);
-	}
 
 	for (auto Effect : Effects)
 	{
@@ -73,7 +70,6 @@ void AAbility::SetUISlot(UW_ActionSlot* Slot)
 		}
 		UISlot->Name->SetText(FText::FromString(Name));
 		UISlot->UpdateRecharge(RechargeTime / Cooldown);
-		UISlot->Cost->SetText(FText::FromString(FString::SanitizeFloat(DarknessCost)));
 	}
 	else
 	{

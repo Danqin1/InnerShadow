@@ -8,7 +8,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/ActorComponent.h"
 #include "TopDownRPG/TopDownRPG.h"
-#include "TopDownRPG/Interfaces/Interactable.h"
+#include "TopDownRPG/Interfaces/InteractableInterface.h"
 #include "TopDownRPG/UI/HUD/PlayerHUD.h"
 #include "InteractionComponent.generated.h"
 
@@ -30,13 +30,13 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UInputAction* InteractAction;
 	
-	TWeakInterfacePtr<IInteractable> InteractionTarget;
+	TWeakInterfacePtr<IInteractableInterface> InteractionTarget;
 
 	ECharacterState CurrentState = Dead;
 	
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	void SetInteractionTarget(IInteractable* Interactable);
+	void SetInteractionTarget(IInteractableInterface* Interactable);
 	UFUNCTION()
 	void OnInteract();
 

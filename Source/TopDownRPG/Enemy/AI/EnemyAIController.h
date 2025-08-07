@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Perception/AIPerceptionTypes.h"
 #include "TopDownRPG/Database/FEnemyData.h"
 #include "TopDownRPG/Enemy/Base/EnemyCharacterBase.h"
 #include "EnemyAIController.generated.h"

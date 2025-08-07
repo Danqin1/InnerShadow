@@ -9,8 +9,9 @@
 #include "GameFramework/PawnMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "TopDownRPG/Interfaces/Enemy.h"
-#include "TopDownRPG/Interfaces/IDamageable.h"
+#include "TopDownRPG/Interfaces/EnemyInterface.h"
+#include "TopDownRPG/Interfaces/DamageableInterface.h"
+#include "TopDownRPG/TopDownRPG.h"
 
 
 // Sets default values
@@ -76,9 +77,9 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 			{
 				if (Caster)
 				{
-					if (auto* damageable = Cast<IIDamageable>(OutResult.GetActor()))
+					if (auto* damageable = Cast<IDamageableInterface>(OutResult.GetActor()))
 					{
-						if (auto* enemy = Cast<IEnemy>(OutResult.GetActor()))
+						if (auto* enemy = Cast<IEnemyInterface>(OutResult.GetActor()))
 						{
 							if (!Hitted.Contains(OutResult.GetActor()))
 							{

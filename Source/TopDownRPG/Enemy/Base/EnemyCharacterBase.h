@@ -6,14 +6,13 @@
 #include "EnemyCombatBase.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
-#include "TopDownRPG/Interfaces/Enemy.h"
-#include "TopDownRPG/Interfaces/EnemyCombat.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
-#include "TopDownRPG/Interfaces/IDamageable.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
+#include "TopDownRPG/Interfaces/EnemyInterface.h"
+#include "TopDownRPG/Interfaces/DamageableInterface.h"
 #include "EnemyCharacterBase.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IIDamageable, public IEnemy, public IICharacterState, public IEnemyCombat
+class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IDamageableInterface, public IEnemyInterface, public ICombatInterface
 {
 private:
 	GENERATED_BODY()

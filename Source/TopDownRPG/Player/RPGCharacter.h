@@ -12,12 +12,11 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Perception/AIPerceptionStimuliSourceComponent.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
 #include "TopDownRPG/UI/HUD/PlayerHUD.h"
 #include "RPGCharacter.generated.h"
 
 UCLASS(Blueprintable)
-class ARPGCharacter : public ACharacter, public  IICharacterState, public IIDamageable
+class ARPGCharacter : public ACharacter, public  IPlayerInterface, public IDamageableInterface
 {
 	GENERATED_BODY()
 

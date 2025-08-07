@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "IDamageable.generated.h"
+#include "DamageableInterface.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(meta=(CannotImplementInterfaceInBlueprint))
-class UIDamageable : public UInterface
+class UDamageableInterface : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -16,7 +16,7 @@ class UIDamageable : public UInterface
 /**
  * 
  */
-class TOPDOWNRPG_API IIDamageable
+class TOPDOWNRPG_API IDamageableInterface
 {
 	GENERATED_BODY()
 

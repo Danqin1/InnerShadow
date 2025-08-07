@@ -31,7 +31,7 @@ void UAbilityComponent::SetupComponent(UPlayerSettings* Settings)
 	if(ARPGCharacter* Player = Cast<ARPGCharacter>(GetOwner()))
 	{
 		PlayerHUD = Player->PlayerHUD;
-		CharacterState = Cast<IICharacterState>(Player);
+		CharacterState = Cast<IPlayerInterface>(Player);
 		check(CharacterState.Get());
 		check(PlayerHUD);
 	}

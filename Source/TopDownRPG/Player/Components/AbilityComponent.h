@@ -6,7 +6,7 @@
 #include "InputAction.h"
 #include "RPGActorComponentBase.h"
 #include "Components/ActorComponent.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
+#include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "TopDownRPG/Player/RPGPlayerController.h"
 #include "TopDownRPG/Player/Ability/Ability.h"
 #include "TopDownRPG/UI/HUD/PlayerHUD.h"
@@ -26,7 +26,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 		FActorComponentTickFunction* ThisTickFunction) override;
 protected:
-	TWeakInterfacePtr<IICharacterState> CharacterState;
+	TWeakInterfacePtr<IPlayerInterface> CharacterState;
 	
 	UPROPERTY()
 	ARPGPlayerController* PlayerController;

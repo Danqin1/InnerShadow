@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/Interface.h"
 #include "TopDownRPG/TopDownRPG.h"
 #include "TopDownRPG/Enemy/FKillPrize.h"
-#include "UObject/Interface.h"
-#include "Enemy.generated.h"
+#include "EnemyInterface.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE()
-class UEnemy : public UInterface
+class UEnemyInterface : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -18,15 +18,19 @@ class UEnemy : public UInterface
 /**
  * 
  */
-
-class TOPDOWNRPG_API IEnemy
+class TOPDOWNRPG_API IEnemyInterface
 {
 	GENERATED_BODY()
-	
+
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
-protected:
 public:
 	FDynamicEvent OnDie;
+
+	FStateChanged OnStateChanged;
+	
+	virtual ECharacterState GetState();
+	virtual void SetState(ECharacterState NewState);
+	virtual void ClearState(ECharacterState State);
 	
 	UFUNCTION()
 	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity) PURE_VIRTUAL()

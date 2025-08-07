@@ -19,17 +19,15 @@ UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectIni
 void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                           FActorComponentTickFunction* ThisTickFunction)
 {
-	if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+	if (IPlayerInterface* CharacterState = Cast<IPlayerInterface>(GetOwner()))
 	{
 		if (CharacterState->GetState() == Dead)
 		{
 			return;
 		}
-		/*if (Darkness > 0)
+		if (Darkness > 0 && CharacterState->GetState() == ECharacterState::Darkness)
 		{
-			Darkness -= (CharacterState->GetState() == ECharacterState::Darkness
-				             ? PlayerSettings->DarknessRegen
-				             : PlayerSettings->DarknessDefaultRegen) * DeltaTime;
+			Darkness -= PlayerSettings->DarknessUseRate * DeltaTime;
 			if (Darkness <= 0)
 			{
 				Darkness = 0;
@@ -41,7 +39,7 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 			}
 
 			UpdateHUD();
-		}*/
+		}
 		if (HP < MaxHP && CharacterState->GetState() == ECharacterState::Nothing)
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
@@ -75,7 +73,7 @@ void UPlayerStatsComponent::AddHP(float Value)
 
 void UPlayerStatsComponent::RemoveHP(float Value)
 {
-	if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
+	if (IPlayerInterface* CharacterState = Cast<IPlayerInterface>(GetOwner()))
 	{
 		if (CharacterState->GetState() != ECharacterState::Dead)
 		{

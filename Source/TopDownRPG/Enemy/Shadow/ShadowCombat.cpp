@@ -5,9 +5,9 @@
 
 #include "GameFramework/Character.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "TopDownRPG/Interfaces/EnemyCombat.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
-#include "TopDownRPG/Interfaces/IDamageable.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
+#include "TopDownRPG/Interfaces/EnemyInterface.h"
+#include "TopDownRPG/Interfaces/DamageableInterface.h"
 
 UShadowCombat::UShadowCombat()
 {
@@ -57,9 +57,9 @@ void UShadowCombat::TraceAttack()
 
 		for (FHitResult OutResult : OutResults)
 		{
-			if (auto* Damageable = Cast<IIDamageable>(OutResult.GetActor()))
+			if (auto* Damageable = Cast<IDamageableInterface>(OutResult.GetActor()))
 			{
-				if (!Cast<IEnemyCombat>(OutResult.GetActor()))
+				if (!Cast<ICombatInterface>(OutResult.GetActor()))
 				{
 					Damageable->Damage(CurrentDamage);
 					bIsTracingAttack = false;
@@ -87,7 +87,7 @@ void UShadowCombat::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVeloci
 		Character->StopAnimMontage();
 		Character->LaunchCharacter(HitVelocity, false, false);
 
-		if (IICharacterState* state = Cast<IICharacterState>(GetOwner()))
+		if (IEnemyInterface* state = Cast<IEnemyInterface>(GetOwner()))
 		{
 			if(state->GetState() == Dead)
 			{

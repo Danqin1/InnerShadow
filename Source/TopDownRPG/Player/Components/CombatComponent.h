@@ -8,10 +8,8 @@
 #include "NiagaraSystem.h"
 #include "RPGActorComponentBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
-#include "TopDownRPG/Interfaces/IDamageable.h"
-#include "TopDownRPG/Player/CameraShake.h"
-#include "TopDownRPG/UI/DamageIndicatorActor.h"
+#include "TopDownRPG/Interfaces/DamageableInterface.h"
+#include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "CombatComponent.generated.h"
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
@@ -28,7 +26,7 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	float currentDamage = 0;
 	float lastHitAudioPlayedTime = 0;
 	
-	TArray<IIDamageable*> DamagedActors;
+	TArray<IDamageableInterface*> DamagedActors;
 	
 	UPROPERTY()
 	USkeletalMeshComponent* CharacterMesh;
@@ -37,7 +35,7 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	UPROPERTY()
 	UInventoryComponent* InventoryComponent;
 
-	TWeakInterfacePtr<IICharacterState> CharacterState;
+	TWeakInterfacePtr<IPlayerInterface> CharacterState;
 	
 
 public:

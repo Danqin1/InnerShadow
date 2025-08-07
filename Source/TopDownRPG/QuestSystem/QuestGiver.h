@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
-#include "TopDownRPG/Interfaces/Interactable.h"
+#include "TopDownRPG/Interfaces/InteractableInterface.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 #include "TopDownRPG/UI/Quests/UW_QuestGIver.h"
 #include "QuestGiver.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AQuestGiver : public ACharacter, public IInteractable
+class TOPDOWNRPG_API AQuestGiver : public ACharacter, public IInteractableInterface
 {
 	GENERATED_BODY()
 

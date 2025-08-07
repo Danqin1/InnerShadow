@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "TopDownRPG/Items/ItemBase.h"
-#include "TopDownRPG/Interfaces/Interactable.h"
+#include "TopDownRPG/Interfaces/InteractableInterface.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 #include "TopDownRPG/Player/RPGPlayerController.h"
 #include "InteractableBase.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AInteractableBase : public AItemBase, public IInteractable
+class TOPDOWNRPG_API AInteractableBase : public AItemBase, public IInteractableInterface
 {
 	GENERATED_BODY()
 

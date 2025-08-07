@@ -4,7 +4,7 @@
 #include "BTT_CanAttack.h"
 
 #include "AIController.h"
-#include "TopDownRPG/Interfaces/EnemyCombat.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
 
 UBTT_CanAttack::UBTT_CanAttack()
 {
@@ -13,7 +13,7 @@ UBTT_CanAttack::UBTT_CanAttack()
 
 EBTNodeResult::Type UBTT_CanAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if(IEnemyCombat* Combat = Cast<IEnemyCombat>(OwnerComp.GetAIOwner()->GetPawn()))
+	if(ICombatInterface* Combat = Cast<ICombatInterface>(OwnerComp.GetAIOwner()->GetPawn()))
 	{
 		return Combat->CanAttack() ? EBTNodeResult::Succeeded : EBTNodeResult::Failed;
 	}

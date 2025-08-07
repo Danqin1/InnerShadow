@@ -10,6 +10,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTopDownRPG, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicEvent);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBoolEvent, bool, isTrue);
 
+
 template<typename T>
 static FString EnumToString(const FString& enumName, const T value)
 {
@@ -37,6 +38,8 @@ enum ECharacterState
 	Darkness,
 	Skill
 };
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStateChanged, ECharacterState, State);
 
 UENUM()
 enum EMovementType

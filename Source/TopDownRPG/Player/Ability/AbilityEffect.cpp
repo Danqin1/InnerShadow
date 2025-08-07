@@ -4,7 +4,6 @@
 #include "AbilityEffect.h"
 
 #include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Interfaces/ICharacterState.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 
 

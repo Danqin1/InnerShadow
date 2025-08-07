@@ -4,7 +4,7 @@
 #include "BTT_ChangeMovement.h"
 
 #include "AIController.h"
-#include "TopDownRPG/Interfaces/Enemy.h"
+#include "TopDownRPG/Interfaces/EnemyInterface.h"
 
 UBTT_ChangeMovement::UBTT_ChangeMovement()
 {
@@ -13,7 +13,7 @@ UBTT_ChangeMovement::UBTT_ChangeMovement()
 
 EBTNodeResult::Type UBTT_ChangeMovement::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if (IEnemy* Enemy = Cast<IEnemy>(OwnerComp.GetAIOwner()->GetPawn()))
+	if (IEnemyInterface* Enemy = Cast<IEnemyInterface>(OwnerComp.GetAIOwner()->GetPawn()))
 	{
 		Enemy->ChangeMovementMode(NewMovement);
 	}

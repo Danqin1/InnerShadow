@@ -23,8 +23,6 @@ public:
 	UProgressBar* CooldownOverlay;
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UTextBlock* Name;
-	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
-	UTextBlock* Cost;
 
 	void UpdateRecharge(float progress);
 };

@@ -6,7 +6,7 @@
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "TopDownRPG/Interfaces/EnemyCombat.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
 
 UBTT_PerformAttack::UBTT_PerformAttack()
 {
@@ -53,7 +53,7 @@ uint16 UBTT_PerformAttack::GetInstanceMemorySize() const
 
 EBTNodeResult::Type UBTT_PerformAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if(IEnemyCombat* Combat = Cast<IEnemyCombat>(OwnerComp.GetAIOwner()->GetPawn()))
+	if(ICombatInterface* Combat = Cast<ICombatInterface>(OwnerComp.GetAIOwner()->GetPawn()))
 	{
 		FUBTT_PerformAttackMemory* MyMemory = reinterpret_cast<FUBTT_PerformAttackMemory*>(NodeMemory);
 		

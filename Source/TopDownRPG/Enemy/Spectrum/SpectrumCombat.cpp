@@ -48,7 +48,7 @@ void USpectrumCombat::Attack()
 
 bool USpectrumCombat::CanAttack()
 {
-	if (IICharacterState* state = Cast<IICharacterState>(GetOwner()))
+	if (IEnemyInterface* state = Cast<IEnemyInterface>(GetOwner()))
 	{
 		if(state->GetState() == Dead)
 		{
