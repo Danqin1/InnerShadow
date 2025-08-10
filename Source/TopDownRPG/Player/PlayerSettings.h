@@ -34,6 +34,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputAction* DodgeAction;
+
+	UPROPERTY(EditAnywhere, Category="Input")
+	const UInputAction* DarknessAction;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Indication")
 	TSubclassOf<ADamageIndicatorActor> DamageIndicator;

@@ -28,7 +28,7 @@ bool AAbility::CanUseAbility()
 	{
 		if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 		{
-			return PlayerInterface->GetState() == ECharacterState::Darkness && RechargeTime <= 0;
+			return PlayerInterface->IsDark() && RechargeTime <= 0;
 		}
 	}
 	

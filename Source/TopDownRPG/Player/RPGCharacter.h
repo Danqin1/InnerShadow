@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/AbilityComponent.h"
 #include "Components/CombatComponent.h"
+#include "Components/DarknessComponent.h"
 #include "Components/InteractionComponent.h"
 #include "Components/InventoryComponent.h"
 #include "Components/PlayerStatsComponent.h"
@@ -36,15 +37,14 @@ class ARPGCharacter : public ACharacter, public  IPlayerInterface, public IDamag
 	
 	UPROPERTY(EditDefaultsOnly, Category="HUD")
 	TSubclassOf<class UPlayerHUD> PlayerHUDClass;
-
-	UPROPERTY(EditDefaultsOnly)
-	UNiagaraComponent* DarknessVFXComponent;
+	
 	FVector StartLocation;
 	FRotator StartRotation;
 
 protected:
 	bool bIsFlying = false;
 	ECharacterState PlayerState = Dead;
+	ECharacterState PreviousState = Dead;
 	
 	// To add mapping context
 	virtual void BeginPlay();
@@ -54,23 +54,25 @@ protected:
 public:
 	ARPGCharacter();
 	
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UPlayerStatsComponent* PlayerStatsComponent;
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UAbilityComponent* AbilityComponent;
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UInventoryComponent* InventoryComponent;
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCombatComponent* CombatComponent;
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UDarknessComponent* DarknessComponent;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UInteractionComponent* InteractionComponent;
 
-	UPROPERTY(EditDefaultsOnly, Category="Character")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Character")
 	USkeletalMesh* CharacterMesh;
-	UPROPERTY(EditDefaultsOnly, Category="Character")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Character")
 	TSubclassOf<UAnimInstance> CharacterAnimBP;
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	UPlayerHUD* PlayerHUD;
 	
 	/** Returns CameraBoom subobject **/
@@ -79,12 +81,22 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	virtual void AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce) override;
 
+	UFUNCTION(BlueprintCallable)
 	virtual ECharacterState GetState() override;
+
+	UFUNCTION(BlueprintCallable)
 	virtual void SetState(ECharacterState NewState) override;
+
+	UFUNCTION(BlueprintCallable)
 	virtual void ClearState(ECharacterState State) override;
 
 	virtual void Damage(float Damage) override;
 	virtual bool CanDamage() override;
+	virtual float GetDarknessPercent() const override;
+	virtual void AddPrize(FKillPrize& Prize) override;
+
+	UFUNCTION(BlueprintCallable)
+	virtual bool IsDark() override;
 
 	UFUNCTION()
 	void Die();

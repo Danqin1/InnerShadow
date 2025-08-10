@@ -20,6 +20,7 @@ UCLASS()
 class ARPGPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+	ARPGPlayerController();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
@@ -29,9 +30,6 @@ class ARPGPlayerController : public APlayerController
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
 	const UInputAction* LookAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Input, meta=(AllowPrivateAccess = "true"))
-	const UInputAction* DarknessAction;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Settings", meta=(AllowPrivateAccess = "true"))
 	UPlayerSettings* Settings = nullptr;
@@ -54,15 +52,11 @@ protected:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 
-	void TryFireDarkness(const FInputActionValue& Value);
 	virtual void SetupInputComponent() override;
 	
 	// To add mapping context
 	virtual void BeginPlay();
 	virtual void Tick(float DeltaSeconds) override;
-
-public:
-	ARPGPlayerController();
 };
 
 

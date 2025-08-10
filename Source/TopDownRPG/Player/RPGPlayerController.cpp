@@ -45,7 +45,6 @@ void ARPGPlayerController::SetupInputComponent()
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Move);
-		EnhancedInputComponent->BindAction(DarknessAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::TryFireDarkness);
 	}
 	else
 	{
@@ -94,16 +93,5 @@ void ARPGPlayerController::Look(const FInputActionValue& Value)
 	{
 		PitchInput = PitchInput + pitchMove;
 		AddPitchInput(pitchMove);
-	}
-}
-
-void ARPGPlayerController::TryFireDarkness(const FInputActionValue& Value)
-{
-	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
-	{
-		if(RPGCharacter->GetDarknessPercent() >= 1)
-		{
-			RPGCharacter->SetState(Darkness);
-		}
 	}
 }

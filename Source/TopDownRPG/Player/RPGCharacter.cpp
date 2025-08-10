@@ -7,6 +7,7 @@
 #include "RPGPlayerController.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/DarknessComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -63,9 +64,7 @@ ARPGCharacter::ARPGCharacter()
 	CombatComponent = CreateDefaultSubobject<UCombatComponent>(TEXT("Combat Component"));
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	StimulusSourceComponent = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("Stimulus Source"));
-	DarknessVFXComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("DarknessVFX"));
-
-	DarknessVFXComponent->SetupAttachment(RootComponent);
+	DarknessComponent = CreateDefaultSubobject<UDarknessComponent>(TEXT("Darkness Component"));
 }
 
 void ARPGCharacter::AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
@@ -82,21 +81,13 @@ void ARPGCharacter::SetState(ECharacterState NewState)
 {
 	if(NewState != PlayerState)
 	{
+		PreviousState = PlayerState;
 		PlayerState = NewState;
 		if(OnStateChanged.IsBound())
 		{
 			OnStateChanged.Broadcast(PlayerState);
 		}
 		PlayerHUD->StateChanged(PlayerState);
-
-		if (PlayerState == Darkness)
-		{
-			DarknessVFXComponent->Activate(true);
-		}
-		else
-		{
-			DarknessVFXComponent->Deactivate();
-		}
 	}
 }
 
@@ -123,6 +114,22 @@ void ARPGCharacter::Damage(float Damage)
 bool ARPGCharacter::CanDamage()
 {
 	return CombatComponent->CanDamage();
+}
+
+float ARPGCharacter::GetDarknessPercent() const
+{
+	return DarknessComponent->GetDarknessPercent();
+}
+
+void ARPGCharacter::AddPrize(FKillPrize& Prize)
+{
+	DarknessComponent->AddDarkness(Prize.Darkness);
+	PlayerStatsComponent->AddXP(Prize.XP);
+}
+
+bool ARPGCharacter::IsDark()
+{
+	return DarknessComponent->IsDark();
 }
 
 void ARPGCharacter::BeginPlay()

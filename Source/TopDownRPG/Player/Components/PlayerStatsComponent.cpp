@@ -5,15 +5,10 @@
 
 #include "TopDownRPG/Player/RPGCharacter.h"
 
-
-// Sets default values for this component's properties
 UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectInitializer)
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 	PrimaryComponentTick.bStartWithTickEnabled = true;
-	// ...
 }
 
 void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
@@ -25,21 +20,7 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			return;
 		}
-		if (Darkness > 0 && CharacterState->GetState() == ECharacterState::Darkness)
-		{
-			Darkness -= PlayerSettings->DarknessUseRate * DeltaTime;
-			if (Darkness <= 0)
-			{
-				Darkness = 0;
-
-				if (CharacterState->GetState() == ECharacterState::Darkness)
-				{
-					CharacterState->SetState(ECharacterState::Nothing);
-				}
-			}
-
-			UpdateHUD();
-		}
+		
 		if (HP < MaxHP && CharacterState->GetState() == ECharacterState::Nothing)
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
@@ -101,31 +82,9 @@ void UPlayerStatsComponent::SetMaxHP(float Value)
 	UpdateHUD();
 }
 
-void UPlayerStatsComponent::AddDarkness(float Value)
+void UPlayerStatsComponent::AddXP(int xp)
 {
-	/*if (Darkness + Value > MaxDarkness)
-	{
-		if (IICharacterState* CharacterState = Cast<IICharacterState>(GetOwner()))
-		{
-			if (CharacterState->GetState() != ECharacterState::Darkness)
-			{
-				CharacterState->SetState(ECharacterState::Darkness);
-			}
-		}
-	}*/
-	Darkness = FMath::Clamp(Darkness + Value, 0, MaxDarkness);
-	UpdateHUD();
-}
-
-void UPlayerStatsComponent::RemoveDarkness(float Value)
-{
-	Darkness -= Value;
-	UpdateHUD();
-}
-
-void UPlayerStatsComponent::AddPrize(FKillPrize KillPrize)
-{
-	AddDarkness(KillPrize.Darkness);
+	XP += xp;
 }
 
 void UPlayerStatsComponent::UpdateHUD()
@@ -136,5 +95,4 @@ void UPlayerStatsComponent::UpdateHUD()
 	}
 
 	PlayerHUD->SetHP(HP / MaxHP);
-	PlayerHUD->SetDarkness(Darkness / MaxDarkness);
 }

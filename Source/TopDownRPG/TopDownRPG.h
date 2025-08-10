@@ -35,7 +35,6 @@ enum ECharacterState
 	Interaction,
 	Cutscene,
 	Dead,
-	Darkness,
 	Skill
 };
 

@@ -14,6 +14,16 @@ UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TOPDOWNRPG_API UPlayerStatsComponent : public URPGActorComponentBase
 {
 	GENERATED_BODY()
+protected:
+	UPROPERTY(Transient)
+	UPlayerHUD* PlayerHUD = nullptr;
+
+	float HP = 100;
+	float MaxHP = 100;
+	float XP = 0;
+
+	void UpdateHUD();
+	
 public:
 	FDynamicEvent OnDied;
 	
@@ -24,24 +34,13 @@ public:
 	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 
+	UFUNCTION(BlueprintCallable)
 	void AddHP(float Value);
+
+	UFUNCTION(BlueprintCallable)
 	void RemoveHP(float Value);
+	
 	void AddMaxHP(float Value);
 	void SetMaxHP(float Value);
-	
-	void AddDarkness(float Value);
-	void RemoveDarkness(float Value);
-	float GetDarkness() const {return Darkness;}
-	void AddPrize(FKillPrize KillPrize);
-
-protected:
-	UPROPERTY(Transient)
-	UPlayerHUD* PlayerHUD = nullptr;
-
-	float HP = 100;
-	float MaxHP = 100;
-	float Darkness = 0;
-	float MaxDarkness = 100;
-
-	void UpdateHUD();
+	void AddXP(int xp);
 };

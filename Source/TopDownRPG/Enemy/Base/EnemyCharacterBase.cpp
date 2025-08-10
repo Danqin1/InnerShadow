@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "TopDownRPG/Database/FEnemyData.h"
 #include "TopDownRPG/Enemy/AI/EnemyAIController.h"
+#include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 #include "TopDownRPG/UI/Enemy/EnemyLifebar.h"
 
@@ -215,9 +216,9 @@ void AEnemyCharacterBase::Die()
 	{
 		if (AActor* player =  UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))
 		{
-			if (UPlayerStatsComponent* StatsComponent = player->FindComponentByClass<UPlayerStatsComponent>())
+			if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(player))
 			{
-				StatsComponent->AddPrize(EnemyData->KillPrize);
+				PlayerInterface->AddPrize(EnemyData->KillPrize);
 			}
 		}
 	}

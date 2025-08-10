@@ -85,7 +85,7 @@ void UAbilityComponent::OnAbility4()
 
 void UAbilityComponent::TryUseAbility(AAbility* Ability)
 {
-	if(Ability && Ability->CanUseAbility() && ( CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking))
+	if(Ability && Ability->CanUseAbility())
 	{
 		CastAbility(Ability);
 		CharacterState->SetState(ECharacterState::Skill);

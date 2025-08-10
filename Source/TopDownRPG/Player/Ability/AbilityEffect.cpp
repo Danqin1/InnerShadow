@@ -29,7 +29,7 @@ void AAbilityEffect::OnEffectFinished()
 {
 	if (ARPGCharacter* CharacterState = Cast<ARPGCharacter>(Player))
 	{
-		CharacterState->SetState(Nothing);
+		CharacterState->ClearState(Skill);
 	}
 	else
 	{
