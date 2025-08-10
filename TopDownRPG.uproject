@@ -21,6 +21,10 @@
 		{
 			"Name": "AnimatorKit",
 			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
 		}
 	]
 }

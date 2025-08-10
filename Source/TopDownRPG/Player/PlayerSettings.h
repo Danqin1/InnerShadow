@@ -86,7 +86,7 @@ public:
 	float DarknessUseRate = 40;
 
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
-	float DarknessDefaultRegen = 10;
+	float EssenceRegen = 10;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Regen")
 	float HPRegen = .01;

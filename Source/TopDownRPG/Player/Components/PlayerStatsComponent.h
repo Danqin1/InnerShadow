@@ -22,6 +22,9 @@ protected:
 	float MaxHP = 100;
 	float XP = 0;
 
+	float Essence = 100;
+	float MaxEssence = 100;
+
 	void UpdateHUD();
 	
 public:
@@ -43,4 +46,8 @@ public:
 	void AddMaxHP(float Value);
 	void SetMaxHP(float Value);
 	void AddXP(int xp);
+
+	void AddEssence(float Value);
+	void RemoveEssence(float Value);
+	float GetEssence() {return Essence;}
 };

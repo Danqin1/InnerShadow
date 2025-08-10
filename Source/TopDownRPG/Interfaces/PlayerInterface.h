@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "TopDownRPG/TopDownRPG.h"
 #include "TopDownRPG/Enemy/FKillPrize.h"
+#include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 #include "UObject/Interface.h"
 #include "PlayerInterface.generated.h"
 
@@ -25,7 +26,9 @@ class TOPDOWNRPG_API IPlayerInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual float GetDarknessPercent() const { return 0; }
-	virtual bool IsDark() {return false;};
+	virtual bool IsInRage() {return false;}
+	virtual UPlayerStatsComponent* GetPlayerStatsComponent() {return nullptr;}
+	
 	FStateChanged OnStateChanged;
 	
 	virtual ECharacterState GetState();
@@ -33,4 +36,5 @@ public:
 	virtual void ClearState(ECharacterState State);
 
 	virtual void AddPrize(FKillPrize& Prize){};
+	virtual void ResetAttack(){}
 };

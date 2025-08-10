@@ -24,8 +24,11 @@ public:
 	AAbility();
 
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	bool bRequiresDarkness = true;
-
+	bool bRequiresEssence = true;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Ability")
+	float Cost = 5;
+	
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	float Cooldown = 5;
 	

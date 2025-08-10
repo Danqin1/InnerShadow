@@ -11,19 +11,6 @@ void UPlayerHUD::SetHP(float Percent)
 	}
 }
 
-void UPlayerHUD::SetDarkness(float Percent)
-{
-	if(DarknessBar)
-	{
-		DarknessBar->SetPercent(Percent);
-	}
-
-	/*if (DarknesIndicator)
-	{
-		DarknesIndicator->SetBrushTintColor(FLinearColor(1,1,1, Percent));
-	}*/
-}
-
 void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
 {
 	switch (slot)
@@ -65,6 +52,22 @@ UW_ActionSlot* UPlayerHUD::GetUISlot(int index)
 	case 2: return Action_2;
 	case 3: return Action_3;
 		default: return nullptr;
+	}
+}
+
+void UPlayerHUD::SetEssence(float X)
+{
+	if (EssenceBar)
+	{
+		EssenceBar->SetPercent(X);
+	}
+}
+
+void UPlayerHUD::SetRage(float X)
+{
+	if (RageBar)
+	{
+		RageBar->SetPercent(X);
 	}
 }
 

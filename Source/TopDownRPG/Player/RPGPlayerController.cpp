@@ -46,6 +46,7 @@ void ARPGPlayerController::SetupInputComponent()
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Look);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Jump);
 	}
 	else
 	{
@@ -95,4 +96,14 @@ void ARPGPlayerController::Look(const FInputActionValue& Value)
 		PitchInput = PitchInput + pitchMove;
 		AddPitchInput(pitchMove);
 	}
+}
+
+void ARPGPlayerController::Jump(const FInputActionValue& Value)
+{
+	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
+	{
+		RPGCharacter->ResetAttack();
+	}
+	
+	GetCharacter()->Jump();
 }

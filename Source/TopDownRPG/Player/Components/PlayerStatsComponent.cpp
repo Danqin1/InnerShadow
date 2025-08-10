@@ -25,6 +25,11 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
 		}
+
+		if (Essence < MaxEssence && CharacterState->GetState() == ECharacterState::Nothing)
+		{
+			AddEssence(PlayerSettings->EssenceRegen * DeltaTime);
+		}
 	}
 }
 
@@ -87,6 +92,18 @@ void UPlayerStatsComponent::AddXP(int xp)
 	XP += xp;
 }
 
+void UPlayerStatsComponent::AddEssence(float Value)
+{
+	Essence = FMath::Clamp(Essence + Value, 0, MaxEssence);
+	UpdateHUD();
+}
+
+void UPlayerStatsComponent::RemoveEssence(float Value)
+{
+	Essence = FMath::Clamp(Essence - Value, 0, MaxEssence);
+	UpdateHUD();
+}
+
 void UPlayerStatsComponent::UpdateHUD()
 {
 	if (!PlayerHUD)
@@ -95,4 +112,5 @@ void UPlayerStatsComponent::UpdateHUD()
 	}
 
 	PlayerHUD->SetHP(HP / MaxHP);
+	PlayerHUD->SetEssence(Essence / MaxEssence);
 }

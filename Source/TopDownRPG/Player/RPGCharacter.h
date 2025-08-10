@@ -6,7 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/AbilityComponent.h"
 #include "Components/CombatComponent.h"
-#include "Components/DarknessComponent.h"
+#include "Components/RageComponent.h"
 #include "Components/InteractionComponent.h"
 #include "Components/InventoryComponent.h"
 #include "Components/PlayerStatsComponent.h"
@@ -63,7 +63,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UCombatComponent* CombatComponent;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	UDarknessComponent* DarknessComponent;
+	URageComponent* RageComponent;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	UInteractionComponent* InteractionComponent;
 
@@ -94,9 +94,11 @@ public:
 	virtual bool CanDamage() override;
 	virtual float GetDarknessPercent() const override;
 	virtual void AddPrize(FKillPrize& Prize) override;
+	virtual void ResetAttack() override;
+	virtual UPlayerStatsComponent* GetPlayerStatsComponent() override { return PlayerStatsComponent; }
 
 	UFUNCTION(BlueprintCallable)
-	virtual bool IsDark() override;
+	virtual bool IsInRage() override;
 
 	UFUNCTION()
 	void Die();

@@ -7,7 +7,7 @@
 #include "RPGPlayerController.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/DarknessComponent.h"
+#include "Components/RageComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -64,7 +64,7 @@ ARPGCharacter::ARPGCharacter()
 	CombatComponent = CreateDefaultSubobject<UCombatComponent>(TEXT("Combat Component"));
 	InteractionComponent = CreateDefaultSubobject<UInteractionComponent>(TEXT("Interaction Component"));
 	StimulusSourceComponent = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("Stimulus Source"));
-	DarknessComponent = CreateDefaultSubobject<UDarknessComponent>(TEXT("Darkness Component"));
+	RageComponent = CreateDefaultSubobject<URageComponent>(TEXT("Rage Component"));
 }
 
 void ARPGCharacter::AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce)
@@ -118,18 +118,24 @@ bool ARPGCharacter::CanDamage()
 
 float ARPGCharacter::GetDarknessPercent() const
 {
-	return DarknessComponent->GetDarknessPercent();
+	return RageComponent->GetRagePercent();
 }
 
 void ARPGCharacter::AddPrize(FKillPrize& Prize)
 {
-	DarknessComponent->AddDarkness(Prize.Darkness);
+	RageComponent->AddRage(Prize.Darkness);
 	PlayerStatsComponent->AddXP(Prize.XP);
 }
 
-bool ARPGCharacter::IsDark()
+void ARPGCharacter::ResetAttack()
 {
-	return DarknessComponent->IsDark();
+	StopAnimMontage();
+	CombatComponent->ResetAttack();
+}
+
+bool ARPGCharacter::IsInRage()
+{
+	return RageComponent->IsInRage();
 }
 
 void ARPGCharacter::BeginPlay()

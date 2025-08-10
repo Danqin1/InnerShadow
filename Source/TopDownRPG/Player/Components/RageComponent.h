@@ -6,18 +6,18 @@
 #include "PlayerStatsComponent.h"
 #include "RPGActorComponentBase.h"
 #include "Components/ActorComponent.h"
-#include "DarknessComponent.generated.h"
+#include "RageComponent.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class TOPDOWNRPG_API UDarknessComponent : public URPGActorComponentBase
+class TOPDOWNRPG_API URageComponent : public URPGActorComponentBase
 {
 	GENERATED_BODY()
 protected:
-	bool bIsDark = false;
+	bool bIsInRage = false;
 
-	float Darkness = 0;
-	float MaxDarkness = 100;
+	float Rage = 0;
+	float MaxRage = 100;
 	
 	UPROPERTY()
 	UPlayerStatsComponent* StatsComponent;
@@ -26,12 +26,12 @@ protected:
 	UPlayerHUD* PlayerHUD;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UNiagaraComponent* DarknessVFXComponent;
+	UNiagaraComponent* RageVFXComponent;
 
 	virtual void BeginPlay() override;
-	void SetDark(bool bDark);
+	void SetInRage(bool bDark);
 public:
-	UDarknessComponent();
+	URageComponent();
 	
 	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
@@ -40,20 +40,14 @@ public:
 
 	void UpdateHUD();
 	
-	void OnDarkness(const FInputActionValue& InputActionValue);
+	void OnRage(const FInputActionValue& InputActionValue);
 	
 	UFUNCTION(BlueprintCallable)
-	float GetDarknessPercent() const {return Darkness / MaxDarkness;}
+	float GetRagePercent() const {return Rage / MaxRage;}
 
 	UFUNCTION(BlueprintCallable)
-	bool IsDark() const {return bIsDark;};
+	bool IsInRage() const {return bIsInRage;};
 	
 	UFUNCTION(BlueprintCallable)
-	void AddDarkness(float Value);
-
-	UFUNCTION(BlueprintCallable)
-	void RemoveDarkness(float Value);
-
-	UFUNCTION(BlueprintCallable)
-	float GetDarkness() const {return Darkness;}
+	void AddRage(float Value);
 };

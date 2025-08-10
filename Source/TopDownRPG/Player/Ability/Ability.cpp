@@ -24,11 +24,16 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Caster is NULL");
 		return false;
 	}
-	if (bRequiresDarkness)
+	if (bRequiresEssence)
 	{
 		if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 		{
-			return PlayerInterface->IsDark() && RechargeTime <= 0;
+			if (PlayerInterface->GetState() == Skill)
+			{
+				return false;
+			}
+			return PlayerInterface->IsInRage() ||
+			       (PlayerInterface->GetPlayerStatsComponent()->GetEssence() >= Cost && RechargeTime <= 0);
 		}
 	}
 	
@@ -39,6 +44,11 @@ void AAbility::Activate(ACharacter* Caster)
 {
 	CasterCharacter = Caster;
 	RechargeTime = Cooldown;
+
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
+	{
+		PlayerInterface->GetPlayerStatsComponent()->RemoveEssence(Cost);
+	}
 
 	for (auto Effect : Effects)
 	{
