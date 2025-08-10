@@ -45,6 +45,7 @@ void ARPGPlayerController::SetupInputComponent()
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Move);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARPGPlayerController::Look);
 	}
 	else
 	{
@@ -69,8 +70,8 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 		}
 	}
 	
-	GetCharacter()->AddMovementInput(FVector::ForwardVector, MovementVector.Y);
-	GetCharacter()->AddMovementInput(FVector::RightVector, MovementVector.X);
+	GetCharacter()->AddMovementInput(ForwardDirection, MovementVector.Y);
+	GetCharacter()->AddMovementInput(RightDirection, MovementVector.X);
 }
 
 void ARPGPlayerController::Look(const FInputActionValue& Value)
