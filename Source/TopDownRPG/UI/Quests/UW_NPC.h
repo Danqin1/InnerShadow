@@ -10,13 +10,15 @@
 #include "Components/VerticalBox.h"
 #include "TopDownRPG/TopDownRPG.h"
 #include "TopDownRPG/QuestSystem/FQuest.h"
-#include "UW_QuestGIver.generated.h"
+#include "CommonUI/Public/CommonUserWidget.h"
+#include "CommonUI/Public/CommonButtonBase.h"
+#include "UW_NPC.generated.h"
 
 /**
  * 
  */
-UCLASS(HideDropdown)
-class TOPDOWNRPG_API UUW_QuestGIver : public UUserWidget
+UCLASS()
+class TOPDOWNRPG_API UUW_NPC : public UCommonUserWidget
 {
 	GENERATED_BODY()
 
@@ -29,12 +31,6 @@ class TOPDOWNRPG_API UUW_QuestGIver : public UUserWidget
 	FQuest CurrentShowing;
 protected:
 	UPROPERTY(EditAnywhere, meta=(BindWidget))
-	UButton* SelectButton;
-	
-	UPROPERTY(EditAnywhere, meta=(BindWidget))
-	UButton* CloseButton;
-
-	UPROPERTY(EditAnywhere, meta=(BindWidget))
 	UVerticalBox* QuestsList;
 
 	UPROPERTY(EditAnywhere, meta=(BindWidget))
@@ -43,11 +39,11 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Slots")
 	TSubclassOf<UUW_QuestSlot> SlotClass;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnCloseButton();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnSelectButton();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void OnQuestClicked(FQuest Quest);
 public:
 	FDynamicEvent OnClose;

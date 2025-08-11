@@ -11,13 +11,13 @@ struct FEnemyData : public FTableRowBase
 	GENERATED_BODY()
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USkeletalMesh* SkeletalMesh;
+	USkeletalMesh* SkeletalMesh = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UAnimInstance> AnimBP;
+	TSubclassOf<UAnimInstance> AnimBP = nullptr;
 
 	UPROPERTY(EditAnywhere, Category="Combat")
-	UStaticMesh* Weapoon;
+	UStaticMesh* Weapoon = nullptr;
 	
 	UPROPERTY(EditAnywhere, Category="Combat")
 	float MaxHP = 100;

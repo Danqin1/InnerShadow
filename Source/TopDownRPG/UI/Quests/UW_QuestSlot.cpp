@@ -5,18 +5,13 @@
 
 void UUW_QuestSlot::NativeConstruct()
 {
-	if(Button)
-	{
-		Button->OnClicked.AddDynamic(this, &UUW_QuestSlot::OnClick);
-		
-	}
 	Super::NativeConstruct();
 }
 
 void UUW_QuestSlot::Populate(FQuest Quest)
 {
 	TargetQuest = Quest;
-	Name->SetText(FText::FromString(Quest.Name));
+	Button->SetText(Quest.Name);
 }
 
 void UUW_QuestSlot::OnClick()

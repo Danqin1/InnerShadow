@@ -9,6 +9,6 @@ public class TopDownRPG : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", 
-	        "NavigationSystem", "AIModule", "Niagara", "EnhancedInput", "UMG" });
+	        "NavigationSystem", "AIModule", "Niagara", "EnhancedInput", "UMG", "CommonInput", "CommonUI" });
     }
 }

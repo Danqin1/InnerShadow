@@ -1,14 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "QuestGiver.h"
+#include "NPC.h"
 
+#include "TopDownRPG/DevDebug.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 #include "TopDownRPG/UI/Interaction/UW_Interact.h"
 
 
 // Sets default values
-AQuestGiver::AQuestGiver()
+ANPC::ANPC()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -18,7 +19,7 @@ AQuestGiver::AQuestGiver()
 }
 
 // Called when the game starts or when spawned
-void AQuestGiver::BeginPlay()
+void ANPC::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -32,20 +33,27 @@ void AQuestGiver::BeginPlay()
 	}
 }
 
-void AQuestGiver::Interact(ACharacter* Character)
+void ANPC::Interact(ACharacter* Character)
 {
 	if(auto* RPGCharacter = Cast<ARPGCharacter>(Character))
 	{
 		InteractCharacter = RPGCharacter;
 		InteractCharacter->SetState(Interaction);
-		UIWidget = CreateWidget<UUW_QuestGIver>(GetWorld(), UIClass);
-		UIWidget->OnClose.AddDynamic(this, &AQuestGiver::InteractionFinished);
-		UIWidget->AddToViewport();
-		UIWidget->Populate(Quests);
+		if (UIClass)
+		{
+			UIWidget = CreateWidget<UUW_NPC>(GetWorld(), UIClass);
+			UIWidget->OnClose.AddDynamic(this, &ANPC::InteractionFinished);
+			UIWidget->AddToViewport();
+			UIWidget->Populate(Quests);
+		}
+		else
+		{
+			DevDebug::OnScreenLog("UIClass is not set for NPC: " + GetName(), FColor::Red, 5.f);
+		}
 	}
 }
 
-void AQuestGiver::InteractionFinished()
+void ANPC::InteractionFinished()
 {
 	if(InteractCharacter)
 	{
@@ -53,14 +61,14 @@ void AQuestGiver::InteractionFinished()
 	}
 	if(UIWidget)
 	{
-		UIWidget->OnClose.RemoveDynamic(this, &AQuestGiver::InteractionFinished);
+		UIWidget->OnClose.RemoveDynamic(this, &ANPC::InteractionFinished);
 		UIWidget->RemoveFromParent();
 		UIWidget->Destruct();
 		UIWidget = nullptr;
 	}
 }
 
-void AQuestGiver::SetAsTarget(bool isTargeted)
+void ANPC::SetAsTarget(bool isTargeted)
 {
 	if(InteractionWidget)
 	{

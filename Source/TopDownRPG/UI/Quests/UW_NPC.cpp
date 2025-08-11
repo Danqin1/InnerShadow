@@ -1,11 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UW_QuestGIver.h"
+#include "UW_NPC.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "TopDownRPG/DevDebug.h"
 
-void UUW_QuestGIver::NativeConstruct()
+void UUW_NPC::NativeConstruct()
 {
 	auto* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	
@@ -14,15 +15,11 @@ void UUW_QuestGIver::NativeConstruct()
 		PlayerController->SetShowMouseCursor(true);
 		PlayerController->SetInputMode(FInputModeGameAndUI());
 	}
-
-	if(CloseButton)
-	{
-		CloseButton->OnClicked.AddDynamic(this, &UUW_QuestGIver::OnCloseButton);
-	}
+	
 	Super::NativeConstruct();
 }
 
-void UUW_QuestGIver::NativeDestruct()
+void UUW_NPC::NativeDestruct()
 {
 	auto* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	
@@ -31,37 +28,41 @@ void UUW_QuestGIver::NativeDestruct()
 		PlayerController->SetShowMouseCursor(false);
 		PlayerController->SetInputMode(FInputModeGameOnly());
 	}
-	if(CloseButton)
-	{
-		CloseButton->OnClicked.RemoveDynamic(this, &UUW_QuestGIver::OnCloseButton);
-	}
+
 	Super::NativeDestruct();
 }
 
-void UUW_QuestGIver::Populate(TArray<FQuest> Quests)
+void UUW_NPC::Populate(TArray<FQuest> Quests)
 {
 	TargetQuests = Quests;
 	for (FQuest Quest : Quests)
 	{
-		auto* QuestSlot = CreateWidget<UUW_QuestSlot>(GetWorld(), SlotClass);
-		QuestsList->AddChild(QuestSlot);
-		QuestSlot->Populate(Quest);
-		TargetSlots.Add(QuestSlot);
-		QuestSlot->OnClicked.AddDynamic(this, &UUW_QuestGIver::OnQuestClicked);
+		if (SlotClass)
+		{
+			auto* QuestSlot = CreateWidget<UUW_QuestSlot>(GetWorld(), SlotClass);
+			QuestsList->AddChild(QuestSlot);
+			QuestSlot->Populate(Quest);
+			TargetSlots.Add(QuestSlot);
+			QuestSlot->OnClicked.AddDynamic(this, &UUW_NPC::OnQuestClicked);
+		}
+		else
+		{
+			DevDebug::OnScreenLog("SlotClass is not set for UUW_NPC", FColor::Red, 5.f);
+		}
 	}
 }
 
-void UUW_QuestGIver::OnQuestClicked(FQuest Quest)
+void UUW_NPC::OnQuestClicked(FQuest Quest)
 {
 	CurrentShowing = Quest;
 	QuestDescription->SetText(FText::FromString(Quest.Description));
 }
 
-void UUW_QuestGIver::OnCloseButton()
+void UUW_NPC::OnCloseButton()
 {
 	for (UUW_QuestSlot* QuestSlot : TargetSlots)
 	{
-		QuestSlot->OnClicked.RemoveDynamic(this, &UUW_QuestGIver::OnQuestClicked);;
+		QuestSlot->OnClicked.RemoveDynamic(this, &UUW_NPC::OnQuestClicked);;
 	}
 	
 	if(OnClose.IsBound())
@@ -70,6 +71,6 @@ void UUW_QuestGIver::OnCloseButton()
 	}
 }
 
-void UUW_QuestGIver::OnSelectButton()
+void UUW_NPC::OnSelectButton()
 {
 }
