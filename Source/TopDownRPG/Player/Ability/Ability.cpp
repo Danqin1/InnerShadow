@@ -92,6 +92,14 @@ void AAbility::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if(RechargeTime > 0)
 	{
+		if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
+		{
+			if (PlayerInterface->IsInRage())
+			{
+				RechargeTime = 0;
+			}
+		}
+		
 		RechargeTime = FMath::Max(0, RechargeTime - DeltaSeconds);
 		if(UISlot)
 		{

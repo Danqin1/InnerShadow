@@ -60,6 +60,8 @@ public:
 	void SoftLockOn();
 	bool CanDamage();
 	void TryDodgeSpecialAttack();
+
+	UFUNCTION(BlueprintCallable)
 	void ResetAttack();
 
 protected:

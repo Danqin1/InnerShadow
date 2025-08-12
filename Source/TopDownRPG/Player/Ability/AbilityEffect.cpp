@@ -17,6 +17,7 @@ AAbilityEffect::AAbilityEffect()
 void AAbilityEffect::Activate(ACharacter* Caster)
 {
 	Player = Caster;
+	BP_Activate(Player);
 }
 
 // Called when the game starts or when spawned
@@ -35,5 +36,7 @@ void AAbilityEffect::OnEffectFinished()
 	{
 		DevDebug::OnScreenLog("Cant cast to character");
 	}
+
+	Destroy();
 }
 

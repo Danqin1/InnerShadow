@@ -40,7 +40,7 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 
 	if (Caster)
 	{
-		FTimerHandle AttachHandle;
+		/*FTimerHandle AttachHandle;
 
 
 		Caster->GetMovementComponent()->StopMovementImmediately();
@@ -104,6 +104,6 @@ void AAbilityEffect_ShadowExplosion::Activate(ACharacter* Caster)
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
 		{
 			Destroy();
-		}, Duration, false, Duration);
+		}, Duration, false, Duration);*/
 	}
 }

@@ -14,28 +14,24 @@ class TOPDOWNRPG_API AAbilityEffect : public AActor
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
 	AAbilityEffect();
 
 	virtual void Activate(ACharacter* Caster);
 protected:
-	UPROPERTY(EditDefaultsOnly, Category="Damage")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Damage")
 	float Damage = 1;
-	// Called when the game starts or when spawned
+	
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float EffectDuration = 1;
 
-	UPROPERTY(EditDefaultsOnly)
-	float PushEnemiesStrength = 50;
-
-	UPROPERTY(EditDefaultsOnly)
-	UNiagaraSystem* VFXSystem;
-
-	UPROPERTY(EditDefaultsOnly)
-	float Duration = 1;
-
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	ACharacter* Player = nullptr;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintImplementableEvent)
+	void BP_Activate(ACharacter* Caster);
+	
+	UFUNCTION(BlueprintCallable)
 	void OnEffectFinished();
 };

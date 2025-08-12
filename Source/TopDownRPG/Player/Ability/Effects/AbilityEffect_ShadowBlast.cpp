@@ -30,7 +30,7 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 	Super::Activate(Caster);
 	if (Caster)
 	{
-		if (ARPGCharacter* CasterCharacter = Cast<ARPGCharacter>(Caster))
+		/*if (ARPGCharacter* CasterCharacter = Cast<ARPGCharacter>(Caster))
 		{
 			FTimerHandle AttachHandle;
 
@@ -43,12 +43,12 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 			ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
 			UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, TraceRadius,
-			                                                 ObjectTypes,
-			                                                 false,
-			                                                 ToIgnore,
-			                                                 EDrawDebugTrace::None, OutResults, true,
-			                                                 FLinearColor::Red,
-			                                                 FLinearColor::Green, 3);
+															 ObjectTypes,
+															 false,
+															 ToIgnore,
+															 EDrawDebugTrace::None, OutResults, true,
+															 FLinearColor::Red,
+															 FLinearColor::Green, 3);
 
 
 			Caster->GetMovementComponent()->StopMovementImmediately();
@@ -108,7 +108,7 @@ void AAbilityEffect_ShadowBlast::Activate(ACharacter* Caster)
 				}
 
 				Destroy();
-			}, Duration, false, Duration);
-		}
+			}, Duration, false, Duration);*/
 	}
+//}
 }

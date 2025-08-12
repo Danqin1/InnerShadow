@@ -41,7 +41,7 @@ public:
 	float FieldOfView = 90;
 
 	UPROPERTY(EditAnywhere, Category="AI")
-	UBehaviorTree* MainBehaviourTree;
+	UBehaviorTree* MainBehaviourTree = nullptr;
 
 	UPROPERTY(EditAnywhere, Category= "General")
 	FKillPrize KillPrize;
