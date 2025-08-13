@@ -9,7 +9,8 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTopDownRPG, Log, All);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicEvent);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBoolEvent, bool, isTrue);
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStringEvent, FString, string);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FFloatEvent, float, value);
 
 template<typename T>
 static FString EnumToString(const FString& enumName, const T value)
@@ -46,3 +47,15 @@ enum EMovementType
 	Walk,
 	Run,
 };
+
+USTRUCT(BlueprintType)
+struct FAbilityData
+{
+	GENERATED_BODY()
+public:
+	int ID = 0;
+	bool bIsUnlocked = false;
+	int Level = 0;
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAbityEvent, FAbilityData, value);

@@ -7,6 +7,7 @@
 #include "Components/Image.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
+#include "TopDownRPG/TopDownRPG.h"
 #include "W_ActionSlot.generated.h"
 
 /**
@@ -25,4 +26,5 @@ public:
 	UTextBlock* Name;
 
 	void UpdateRecharge(float progress);
+	void UpdateData(FAbilityData Value);
 };

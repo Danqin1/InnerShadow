@@ -3,19 +3,19 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TopDownRPG/Core/BaseSubsystem.h"
+#include "TopDownRPG/Save/SaveData.h"
 #include "QuestSystem.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TOPDOWNRPG_API UQuestSystem : public UBaseSubsystem
+class TOPDOWNRPG_API UQuestSystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 protected:
 	UPROPERTY()
-	USaveData* saveData;
+	USaveData* SaveData;
 public:
-	virtual void RestoreFromSave(USaveData* data) override;
+	void RestoreFromSave(USaveData* save);
 };

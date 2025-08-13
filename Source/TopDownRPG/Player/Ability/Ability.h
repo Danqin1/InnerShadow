@@ -23,6 +23,15 @@ public:
 	// Sets default values for this actor's properties
 	AAbility();
 
+	UPROPERTY(EditAnywhere, Category = "Ability")
+	int ID = 0;
+
+	UPROPERTY(VisibleAnywhere, Category = "Ability")
+	bool bIsUnlocked = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Ability", BlueprintReadOnly)
+	int Level = 0;
+
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	bool bRequiresEssence = true;
 	
@@ -56,8 +65,14 @@ public:
 	UPROPERTY()
 	FVector CastLocation;
 	
+	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	
 	virtual bool CanUseAbility();
 	virtual void Activate(ACharacter* Caster);
 	virtual void SetUISlot(UW_ActionSlot* Slot);
 	virtual void Tick(float DeltaSeconds) override;
+
+	UFUNCTION()
+	void OnDataUpdated(FAbilityData Value);
 };

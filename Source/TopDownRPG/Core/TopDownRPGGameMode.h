@@ -13,6 +13,8 @@ class ATopDownRPGGameMode : public AGameModeBase
 
 public:
 	ATopDownRPGGameMode();
+
+	virtual void BeginPlay() override;
 };
 
 

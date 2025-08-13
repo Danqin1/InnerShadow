@@ -4,10 +4,20 @@
 #include "SaveSystem.h"
 
 #include "Kismet/GameplayStatics.h"
-#include "TopDownRPG/Core/BaseSubsystem.h"
+#include "TopDownRPG/Ability/AbilitySystem.h"
+#include "TopDownRPG/QuestSystem/QuestSystem.h"
+
+void USaveSystem::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+}
 
 void USaveSystem::LoadSaveData()
 {
+	if (SaveData)
+	{
+		return;
+	}
 	if (UGameplayStatics::DoesSaveGameExist("SaveData", 0))
 	{
 		if (auto* save = Cast<USaveData>(UGameplayStatics::LoadGameFromSlot("SaveData", 0)))
@@ -45,28 +55,39 @@ void USaveSystem::CreateDefaultSaveData()
 	SaveData = NewObject<USaveData>();
 	if (SaveData)
 	{
+		if (UAbilitySystem* AbilitySystem = GetGameInstance()->GetSubsystem<UAbilitySystem>())
+		{
+			SaveData->AbilitiesData = AbilitySystem->GetDefaultData();
+			UE_LOG(LogTemp, Log, TEXT("Default save data created with abilities"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Ability system not found, default save data created without abilities"));
+		}
+		
 		PopulateSystems();
 	}
 }
 
 void USaveSystem::PopulateSystems()
 {
-	TFunctionRef<void(UGameInstanceSubsystem*)> restoreFunc = [this](UGameInstanceSubsystem* Subsystem)
+	if (UQuestSystem* QuestSystem = Cast<UQuestSystem>(GetGameInstance()->GetSubsystem<UQuestSystem>()))
 	{
-		if (UBaseSubsystem* system = Cast<UBaseSubsystem>(Subsystem))
-		{
-			system->RestoreFromSave(SaveData);
-			UE_LOG(LogTemp, Log, TEXT("Restored subsystem: %s"), *Subsystem->GetName());
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Subsystem is null"));
-		}
-	};
-	GetGameInstance()->ForEachSubsystem(restoreFunc);
+		QuestSystem->RestoreFromSave(SaveData);
+		UE_LOG(LogTemp, Log, TEXT("Quest system populated from save data"));
+	}
+	if (UAbilitySystem* AbilitySystem = Cast<UAbilitySystem>(GetGameInstance()->GetSubsystem<UAbilitySystem>()))
+	{
+		AbilitySystem->RestoreFromSave(SaveData);
+		UE_LOG(LogTemp, Log, TEXT("Ability system populated from save data"));
+	}
 }
 
-USaveData* USaveSystem::GetSaveData() const
+USaveData* USaveSystem::GetSaveData()
 {
+	if (!SaveData)
+	{
+		CreateDefaultSaveData();
+	}
 	return SaveData;
 }

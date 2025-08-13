@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "TopDownRPG/TopDownRPG.h"
 #include "SaveData.generated.h"
-
 /**
  * 
  */
@@ -16,4 +16,7 @@ class TOPDOWNRPG_API USaveData : public USaveGame
 public:
 	UPROPERTY(SaveGame, BlueprintReadWrite)
 	FVector PlayerLocation;
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<FAbilityData> AbilitiesData = {};
 };

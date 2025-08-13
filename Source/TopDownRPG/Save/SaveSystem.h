@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "SaveData.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "TopDownRPG/Core/BaseSubsystem.h"
 #include "SaveSystem.generated.h"
 
 /**
@@ -20,6 +19,8 @@ protected:
 	USaveData* SaveData;
 
 public:
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	
 	UFUNCTION(BlueprintCallable)
 	void LoadSaveData();
 
@@ -30,5 +31,5 @@ public:
 	void PopulateSystems();
 
 	UFUNCTION(BlueprintCallable)
-	USaveData* GetSaveData() const;
+	USaveData* GetSaveData();
 };

@@ -8,6 +8,7 @@ public:
 		if(GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, Time, Color, Message);
+			UE_LOG(LogTemp, Warning, TEXT("%s"), *Message);
 		}
 	}
 };

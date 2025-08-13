@@ -3,6 +3,7 @@
 #include "TopDownRPGGameMode.h"
 #include "TopDownRPG//Player/RPGPlayerController.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
+#include "TopDownRPG/Save/SaveSystem.h"
 #include "UObject/ConstructorHelpers.h"
 
 ATopDownRPGGameMode::ATopDownRPGGameMode()
@@ -23,4 +24,15 @@ ATopDownRPGGameMode::ATopDownRPGGameMode()
 	{
 		PlayerControllerClass = PlayerControllerBPClass.Class;
 	}
+
+	
+}
+
+void ATopDownRPGGameMode::BeginPlay()
+{
+	if (USaveSystem* SaveSystem = GetGameInstance()->GetSubsystem<USaveSystem>())
+	{
+		SaveSystem->LoadSaveData();
+	}
+	Super::BeginPlay();
 }

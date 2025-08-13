@@ -3,7 +3,7 @@
 
 #include "QuestSystem.h"
 
-void UQuestSystem::RestoreFromSave(USaveData* data)
+void UQuestSystem::RestoreFromSave(USaveData* save)
 {
-	saveData = data;
+	SaveData = save;
 }

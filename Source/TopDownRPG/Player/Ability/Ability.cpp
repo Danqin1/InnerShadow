@@ -5,6 +5,7 @@
 
 #include "GameFramework/Character.h"
 #include "TopDownRPG/DevDebug.h"
+#include "TopDownRPG/Ability/AbilitySystem.h"
 #include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 
@@ -17,11 +18,39 @@ AAbility::AAbility()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 }
 
+void AAbility::BeginPlay()
+{
+	if (UAbilitySystem* AbilitySystem = GetGameInstance()->GetSubsystem<UAbilitySystem>())
+	{
+		FAbilityData AbilityData = AbilitySystem->GetAbilityData(ID);
+		bIsUnlocked = AbilityData.bIsUnlocked;
+		Level = AbilityData.Level;
+
+		AbilitySystem->OnDataUpdated.AddDynamic(this, &AAbility::OnDataUpdated);
+	}
+	
+	Super::BeginPlay();
+}
+
+void AAbility::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	if (UAbilitySystem* AbilitySystem = GetGameInstance()->GetSubsystem<UAbilitySystem>())
+	{
+		AbilitySystem->OnDataUpdated.RemoveDynamic(this, &AAbility::OnDataUpdated);
+	}
+	Super::EndPlay(EndPlayReason);
+}
+
 bool AAbility::CanUseAbility()
 {
 	if(!CasterCharacter)
 	{
 		DevDebug::OnScreenLog("Caster is NULL");
+		return false;
+	}
+	if (!bIsUnlocked)
+	{
+		DevDebug::OnScreenLog("Ability is not unlocked", FColor::Red);
 		return false;
 	}
 	if (bRequiresEssence)
@@ -109,5 +138,23 @@ void AAbility::Tick(float DeltaSeconds)
 	else
 	{
 		PrimaryActorTick.SetTickFunctionEnable(false);
+	}
+}
+
+void AAbility::OnDataUpdated(FAbilityData Value)
+{
+	if (Value.ID == ID)	
+	{
+		bIsUnlocked = Value.bIsUnlocked;
+		Level = Value.Level;
+
+		if (UISlot)
+		{
+			UISlot->UpdateData(Value);
+		}
+	}
+	else
+	{
+		DevDebug::OnScreenLog("Ability data updated for another ability", FColor::Red);
 	}
 }
