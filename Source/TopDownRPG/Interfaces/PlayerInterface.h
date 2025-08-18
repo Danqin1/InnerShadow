@@ -10,7 +10,7 @@
 #include "PlayerInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(BlueprintType, MinimalAPI)
 class UPlayerInterface : public UInterface
 {
 	GENERATED_BODY()

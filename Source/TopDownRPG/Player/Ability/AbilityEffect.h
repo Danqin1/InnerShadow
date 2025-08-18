@@ -33,5 +33,5 @@ protected:
 	void BP_Activate(ACharacter* Caster);
 	
 	UFUNCTION(BlueprintCallable)
-	void OnEffectFinished();
+	void OnEffectFinished(bool destroy = true);
 };

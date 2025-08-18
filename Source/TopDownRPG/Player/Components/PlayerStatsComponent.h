@@ -19,6 +19,8 @@ protected:
 	UPlayerHUD* PlayerHUD = nullptr;
 
 	float HP = 100;
+
+	UPROPERTY(EditAnywhere)
 	float MaxHP = 100;
 	float XP = 0;
 

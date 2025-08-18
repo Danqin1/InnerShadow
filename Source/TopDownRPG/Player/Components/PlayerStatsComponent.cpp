@@ -40,7 +40,8 @@ void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 	{
 		PlayerHUD = Player->PlayerHUD;
 		check(PlayerHUD);
-		PlayerHUD->SetHP(MaxHP);
+		HP = MaxHP;
+		PlayerHUD->SetHP(HP/MaxHP * 100);
 	}
 
 	UpdateHUD();

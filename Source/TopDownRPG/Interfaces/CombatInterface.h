@@ -7,7 +7,7 @@
 #include "CombatInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(BlueprintType, MinimalAPI)
 class UCombatInterface : public UInterface
 {
 	GENERATED_BODY()

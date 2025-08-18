@@ -22,7 +22,7 @@ void URageComponent::SetupComponent(UPlayerSettings* Settings)
 
 	if (UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
 	{
-		Input->BindAction(PlayerSettings->DarknessAction, ETriggerEvent::Started, this, &URageComponent::OnRage);
+		Input->BindAction(PlayerSettings->RageAction, ETriggerEvent::Started, this, &URageComponent::OnRage);
 	}
 
 	StatsComponent = GetOwner()->GetComponentByClass<UPlayerStatsComponent>();

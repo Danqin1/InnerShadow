@@ -44,8 +44,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual ECharacterState GetState() override;
+	
 	UFUNCTION(BlueprintCallable)
 	virtual void SetState(ECharacterState NewState) override;
+
+	bool CanChangeToState(ECharacterState NewState);
+	
 	UFUNCTION(BlueprintCallable)
 	virtual void ClearState(ECharacterState State) override;
 
@@ -82,4 +86,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void ChangeMovementMode(EMovementType NewMovement) override;
+
+	UFUNCTION(BlueprintCallable)
+	virtual void Freeze(bool isFrozen) override;
 };

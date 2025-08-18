@@ -36,7 +36,8 @@ enum ECharacterState
 	Interaction,
 	Cutscene,
 	Dead,
-	Skill
+	Skill,
+	Frozen,
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStateChanged, ECharacterState, State);

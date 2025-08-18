@@ -90,6 +90,17 @@ void AEnemyAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus St
 		if(Stimulus.WasSuccessfullySensed())
 		{
 			GetBlackboardComponent()->SetValueAsObject(Param_TargetPlayer, Actor);
+			if (IEnemyInterface* EnemyInterface = Cast<IEnemyInterface>(ControllerCharacter))
+			{
+				EnemyInterface->SetState(ECharacterState::Chasing);
+			}
+		}
+		else
+		{
+			if (IEnemyInterface* EnemyInterface = Cast<IEnemyInterface>(ControllerCharacter))
+			{
+				EnemyInterface->ClearState(ECharacterState::Chasing);
+			}
 		}
 	}
 }

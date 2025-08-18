@@ -37,7 +37,7 @@ void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
 void UPlayerHUD::StateChanged(ECharacterState State)
 {
 	FString enumName = "ECharacterState";
-	if(StateDebug)
+	if(StateDebug->IsValidLowLevel())
 	{
 		StateDebug->SetText(FText::FromString(EnumToString(enumName, State)));
 	}

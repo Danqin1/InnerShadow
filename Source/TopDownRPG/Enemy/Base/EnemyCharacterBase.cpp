@@ -37,13 +37,50 @@ ECharacterState AEnemyCharacterBase::GetState()
 
 void AEnemyCharacterBase::SetState(ECharacterState NewState)
 {
-	if(NewState != CurrentState)
+	if(NewState != CurrentState && CanChangeToState(NewState))
 	{
 		CurrentState = NewState;
 		if(OnStateChanged.IsBound())
 		{
 			OnStateChanged.Broadcast(CurrentState);
 		}
+	}
+}
+
+bool AEnemyCharacterBase::CanChangeToState(ECharacterState NewState)
+{
+	switch (NewState)
+	{
+	case Nothing:
+		{
+			switch (CurrentState) {
+			case Attacking:
+			case Interaction:
+			case Cutscene:
+			case Dead:
+			case Skill:
+			case Frozen:
+				return false;
+			default: return true;
+			}
+		}
+	case Chasing:
+		{
+			switch (CurrentState) {
+			case Attacking:
+			case Dead:
+			case Skill:
+			case Frozen:
+				return false;
+			default: return true;
+			}
+		}
+	case Dead:
+		return true;
+	case Frozen:
+		return CurrentState != Dead;
+		break;
+		default: return true;
 	}
 }
 
@@ -177,6 +214,22 @@ void AEnemyCharacterBase::ChangeMovementMode(EMovementType NewMovement)
 			Movement->MaxWalkSpeed = EnemyData->RunSpeed;
 			break;
 		}
+	}
+}
+
+void AEnemyCharacterBase::Freeze(bool isFrozen)
+{
+	if (isFrozen)
+	{
+		GetMesh()->bPauseAnims = true;
+		GetMovementComponent()->StopActiveMovement();
+		SetState(Frozen);
+		
+	}
+	else
+	{
+		GetMesh()->bPauseAnims = false;
+		SetState(Nothing);
 	}
 }
 

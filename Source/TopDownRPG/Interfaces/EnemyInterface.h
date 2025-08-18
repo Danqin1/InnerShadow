@@ -9,7 +9,7 @@
 #include "EnemyInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(BlueprintType, MinimalAPI,meta=(CannotImplementInterfaceInBlueprint))
 class UEnemyInterface : public UInterface
 {
 	GENERATED_BODY()
@@ -32,11 +32,14 @@ public:
 	virtual void SetState(ECharacterState NewState);
 	virtual void ClearState(ECharacterState State);
 	
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity) PURE_VIRTUAL()
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void OnSkillReaction(UAnimMontage* ReactionMontage) PURE_VIRTUAL()
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual FKillPrize GetPrize() {return FKillPrize();}
 	virtual void ChangeMovementMode(EMovementType NewMovement) {}
+
+	UFUNCTION(BlueprintCallable)
+	virtual void Freeze(bool isFrozen) PURE_VIRTUAL();
 };

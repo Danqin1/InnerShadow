@@ -7,7 +7,7 @@
 #include "DamageableInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(meta=(CannotImplementInterfaceInBlueprint))
+UINTERFACE(BlueprintType, MinimalAPI, meta=(CannotImplementInterfaceInBlueprint))
 class UDamageableInterface : public UInterface
 {
 	GENERATED_BODY()

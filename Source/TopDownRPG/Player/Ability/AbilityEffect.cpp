@@ -26,7 +26,7 @@ void AAbilityEffect::BeginPlay()
 	Super::BeginPlay();
 }
 
-void AAbilityEffect::OnEffectFinished()
+void AAbilityEffect::OnEffectFinished(bool destroy)
 {
 	if (ARPGCharacter* CharacterState = Cast<ARPGCharacter>(Player))
 	{
@@ -37,6 +37,9 @@ void AAbilityEffect::OnEffectFinished()
 		DevDebug::OnScreenLog("Cant cast to character");
 	}
 
-	Destroy();
+	if (destroy)
+	{
+		Destroy();
+	}
 }
 

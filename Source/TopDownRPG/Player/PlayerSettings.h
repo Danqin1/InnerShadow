@@ -19,79 +19,79 @@ class TOPDOWNRPG_API UPlayerSettings : public UDataAsset
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float MeleeAttackRange = 300;
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float MeleeBaseDamage = 10;
 	
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float AutoTargetRange = 500;
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float AutoPickUpWeaponRange = 800;
 
-	UPROPERTY(EditDefaultsOnly, Category="Input")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Input")
 	UInputAction* AttackAction;
 
-	UPROPERTY(EditDefaultsOnly, Category="Input")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Input")
 	UInputAction* DodgeAction;
 
-	UPROPERTY(EditAnywhere, Category="Input")
-	const UInputAction* DarknessAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input")
+	const UInputAction* RageAction;
 	
-	UPROPERTY(EditDefaultsOnly, Category = "Indication")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Indication")
 	TSubclassOf<ADamageIndicatorActor> DamageIndicator;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Indication")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Indication")
 	UNiagaraSystem* BloodVFX;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Sword Trace")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sword Trace")
 	float SwordTraceRadius = 20;
-	UPROPERTY(EditDefaultsOnly, Category = "Sword Trace")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sword Trace")
 	float SwordTraceDelay = 0.05;
 	
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	TArray<UAnimMontage*> NormalAttackComboAnimations;
 
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	TArray<UAnimMontage*> DragonAttackComboAnimations;
 
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	UAnimMontage* AfterDodgeAttack;
 	
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	UAnimMontage* DodgeAnim;
 	
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	TSubclassOf<UCameraShake> SwordHitCameraShake;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float SoftLockDetectionRadius = 300;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float PushEnemiesStrength = 10;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float DashDarknessCost = 5;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	float SoftLockRotationSpeed =5;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	bool UseSoftLock = false;
 
-	UPROPERTY(EditAnywhere, Category = "VFX")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "VFX")
 	UNiagaraSystem* Blood_FX;
 
-	UPROPERTY(EditDefaultsOnly, Category="Regen")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
 	float DarknessUseRate = 40;
 
-	UPROPERTY(EditDefaultsOnly, Category="Regen")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
 	float EssenceRegen = 10;
 	
-	UPROPERTY(EditDefaultsOnly, Category="Regen")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
 	float HPRegen = .01;
 
-	UPROPERTY(EditDefaultsOnly, Category="Interaction")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Interaction")
 	float InteractionMaxDistance = 1000;
 
 	UPROPERTY(EditDefaultsOnly, Category="Input")
@@ -112,8 +112,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	TSubclassOf<AAbility> Ability4;
 
-	UPROPERTY(EditDefaultsOnly, Category="Audio")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Audio")
 	USoundBase* OnHitSound;
-	UPROPERTY(EditDefaultsOnly, Category="Audio")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Audio")
 	float HitAudioMinDelay = 0.1f;
 };

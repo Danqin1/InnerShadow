@@ -87,7 +87,11 @@ void ARPGCharacter::SetState(ECharacterState NewState)
 		{
 			OnStateChanged.Broadcast(PlayerState);
 		}
-		PlayerHUD->StateChanged(PlayerState);
+		if (PlayerHUD->IsValidLowLevel())
+		{
+			PlayerHUD->StateChanged(PlayerState);
+		}
+		
 	}
 }
 
@@ -207,6 +211,8 @@ void ARPGCharacter::Tick(float DeltaSeconds)
 void ARPGCharacter::Die()
 {
 	SetState(Dead);
+	if (!GetController()) return;
+	
 	GetController()->DisableInput(UGameplayStatics::GetPlayerController(this, 0));
 	
 	FTimerHandle TimerHandle;
