@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
 #include "TopDownRPG/TopDownRPG.h"
+#include "TopDownRPG/QuestSystem/FQuest.h"
 #include "SaveData.generated.h"
 /**
  * 
@@ -19,4 +20,10 @@ public:
 
 	UPROPERTY(SaveGame, BlueprintReadWrite)
 	TArray<FAbilityData> AbilitiesData = {};
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<FQuest> ActiveQuests = {};
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<int> CompletedQuests = {};
 };

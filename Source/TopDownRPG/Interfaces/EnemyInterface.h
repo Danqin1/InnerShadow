@@ -29,7 +29,7 @@ public:
 	FStateChanged OnStateChanged;
 	
 	virtual ECharacterState GetState();
-	virtual void SetState(ECharacterState NewState);
+	virtual void SetState(ECharacterState NewState, bool force = false);
 	virtual void ClearState(ECharacterState State);
 	
 	UFUNCTION(BlueprintCallable)

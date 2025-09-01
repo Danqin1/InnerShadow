@@ -20,6 +20,9 @@ public:
 	ANPC();
 
 protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NPC")
+	int NPCID = -1;
+	
 	UPROPERTY(Transient)
 	ARPGCharacter* InteractCharacter;
 
@@ -32,7 +35,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="UI")
 	TSubclassOf<UUW_NPC> UIClass;
 
-	UPROPERTY(EditAnywhere, Category="Quests") // TODO: Change to use database
+	UPROPERTY(VisibleAnywhere, Category="Quests")
 	TArray<FQuest> Quests;
 	
 	// Called when the game starts or when spawned

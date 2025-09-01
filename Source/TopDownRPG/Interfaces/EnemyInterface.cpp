@@ -11,7 +11,7 @@ ECharacterState IEnemyInterface::GetState()
 	return ECharacterState::Nothing;
 }
 
-void IEnemyInterface::SetState(ECharacterState NewState)
+void IEnemyInterface::SetState(ECharacterState NewState, bool force)
 {
 }
 

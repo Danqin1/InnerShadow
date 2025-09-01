@@ -5,6 +5,7 @@
 
 #include "TopDownRPG/DevDebug.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
+#include "TopDownRPG/QuestSystem/QuestSystem.h"
 #include "TopDownRPG/UI/Interaction/UW_Interact.h"
 
 
@@ -30,6 +31,15 @@ void ANPC::BeginPlay()
 	if(InteractionWidget)
 	{
 		InteractionWidget->SetVisibility(false);
+	}
+
+	if (UQuestSystem* QuestSystem = GetGameInstance()->GetSubsystem<UQuestSystem>())
+	{
+		Quests = QuestSystem->GetQuestsForNPC(NPCID);
+	}
+	else
+	{
+		DevDebug::OnScreenLog("QuestSystem is not found in NPC: " + GetName(), FColor::Red, 5.f);
 	}
 }
 

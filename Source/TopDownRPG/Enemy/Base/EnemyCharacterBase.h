@@ -46,7 +46,7 @@ public:
 	virtual ECharacterState GetState() override;
 	
 	UFUNCTION(BlueprintCallable)
-	virtual void SetState(ECharacterState NewState) override;
+	virtual void SetState(ECharacterState NewState, bool force = false) override;
 
 	bool CanChangeToState(ECharacterState NewState);
 	

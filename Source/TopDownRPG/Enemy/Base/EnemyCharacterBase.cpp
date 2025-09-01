@@ -35,9 +35,9 @@ ECharacterState AEnemyCharacterBase::GetState()
 	return CurrentState;
 }
 
-void AEnemyCharacterBase::SetState(ECharacterState NewState)
+void AEnemyCharacterBase::SetState(ECharacterState NewState, bool force)
 {
-	if(NewState != CurrentState && CanChangeToState(NewState))
+	if(NewState != CurrentState && (CanChangeToState(NewState) || force))
 	{
 		CurrentState = NewState;
 		if(OnStateChanged.IsBound())
@@ -88,7 +88,7 @@ void AEnemyCharacterBase::ClearState(ECharacterState State)
 {
 	if(CurrentState == State)
 	{
-		SetState(Nothing);
+		SetState(Nothing, true);
 	}
 }
 
@@ -229,7 +229,7 @@ void AEnemyCharacterBase::Freeze(bool isFrozen)
 	else
 	{
 		GetMesh()->bPauseAnims = false;
-		SetState(Nothing);
+		ClearState(Frozen);
 	}
 }
 
