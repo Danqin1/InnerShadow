@@ -41,3 +41,24 @@ struct FQuest
 		ID = static_cast<int>(GetTypeHash(FGuid::NewGuid()));
 	}
 };
+
+USTRUCT(BlueprintType)
+struct FLocationObjective : public FQuestObjective
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere)
+	FVector Location;
+
+	UPROPERTY(EditAnywhere)
+	float Radius = 300;
+};
+
+USTRUCT(BlueprintType)
+struct FFindObjective : public FQuestObjective
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ObjectToFind;
+};

@@ -16,7 +16,7 @@ EBTNodeResult::Type UBTT_SetRandomTargetLocation::ExecuteTask(UBehaviorTreeCompo
 {
 	if(AEnemyAIController* const aiController = Cast<AEnemyAIController>(OwnerComp.GetAIOwner()))
 	{
-		auto* pawn = aiController->GetPawn();
+		TObjectPtr<APawn> pawn = aiController->GetPawn();
 		if(pawn)
 		{
 			FVector const origin = aiController->StartLocation;

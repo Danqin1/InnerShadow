@@ -77,6 +77,7 @@ void AAbility::Activate(ACharacter* Caster)
 	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 	{
 		PlayerInterface->GetPlayerStatsComponent()->RemoveEssence(Cost);
+		PlayerInterface->StopCurrentAnimation();
 	}
 
 	for (auto Effect : Effects)

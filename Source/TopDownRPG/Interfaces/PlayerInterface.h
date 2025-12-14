@@ -28,7 +28,8 @@ public:
 	virtual float GetDarknessPercent() const { return 0; }
 	virtual bool IsInRage() {return false;}
 	virtual UPlayerStatsComponent* GetPlayerStatsComponent() {return nullptr;}
-	
+	virtual void StopCurrentAnimation() {};
+
 	FStateChanged OnStateChanged;
 	
 	virtual ECharacterState GetState();

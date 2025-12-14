@@ -137,6 +137,11 @@ void ARPGCharacter::ResetAttack()
 	CombatComponent->ResetAttack();
 }
 
+void ARPGCharacter::StopCurrentAnimation()
+{
+	StopAnimMontage();
+}
+
 bool ARPGCharacter::IsInRage()
 {
 	return RageComponent->IsInRage();

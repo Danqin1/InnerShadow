@@ -50,7 +50,7 @@ TArray<FAbilityData> UAbilitySystem::GetDefaultData()
 	{
 		FAbilityData newData;
 		newData.ID = i;
-		newData.bIsUnlocked = true; // unlocked for testing purposes
+		newData.bIsUnlocked = false;
 		newData.Level = 0;
 		data.Add(newData);
 	}

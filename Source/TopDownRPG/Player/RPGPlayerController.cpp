@@ -65,7 +65,7 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 	
 	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
 	{
-		if(RPGCharacter->GetState() == Interaction)
+		if(RPGCharacter->GetState() == Interaction || RPGCharacter->GetState() == Skill)
 		{
 			return;
 		}

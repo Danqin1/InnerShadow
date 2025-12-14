@@ -15,4 +15,5 @@ void UW_ActionSlot::UpdateRecharge(float progress)
 
 void UW_ActionSlot::UpdateData(FAbilityData Value)
 {
+	SetVisibility(Value.bIsUnlocked ? ESlateVisibility::SelfHitTestInvisible : ESlateVisibility::Collapsed);
 }

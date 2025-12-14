@@ -96,6 +96,7 @@ public:
 	virtual void AddPrize(FKillPrize& Prize) override;
 	virtual void ResetAttack() override;
 	virtual UPlayerStatsComponent* GetPlayerStatsComponent() override { return PlayerStatsComponent; }
+	virtual void StopCurrentAnimation() override;
 
 	UFUNCTION(BlueprintCallable)
 	virtual bool IsInRage() override;

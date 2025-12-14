@@ -26,7 +26,7 @@ void UInventoryComponent::BeginPlay()
 		Character->OnStateChanged.AddDynamic(this, &UInventoryComponent::OnStateChanged);
 	}
 
-	ToggleMelee();
+	HideWeapon();
 }
 
 void UInventoryComponent::OnStateChanged(ECharacterState State)
