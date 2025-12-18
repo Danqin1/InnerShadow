@@ -25,8 +25,27 @@ void UInventoryComponent::BeginPlay()
 		WeaponMeleeHandle->AttachToComponent(Character->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, "weapon_r");
 		Character->OnStateChanged.AddDynamic(this, &UInventoryComponent::OnStateChanged);
 	}
+}
 
-	HideWeapon();
+void UInventoryComponent::SetupComponent(UPlayerSettings* Settings)
+{
+	Super::SetupComponent(Settings);
+			
+	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
+	{
+		if (Character->GetState() == Kid)
+		{
+			HideWeapon();
+		}
+		else
+		{
+			EquipWeapon();
+		}
+	}
+}
+
+void UInventoryComponent::Dispose()
+{
 }
 
 void UInventoryComponent::OnStateChanged(ECharacterState State)

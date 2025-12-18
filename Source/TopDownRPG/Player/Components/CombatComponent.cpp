@@ -102,21 +102,20 @@ void UCombatComponent::SoftLockOn()
 {
 	bAttackChangeRotation = true;
 	attackRotAlpha = 0;
-	if (SoftLockTarget) return;
-
+	
 	if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 	{
 		FVector Direction = RPGPlayer->GetLastMovementInputVector();
 
 		TArray<FHitResult> OutResults;
 		FVector Start = RPGPlayer->GetActorLocation();
-		FVector End = Start + Direction * 1000;
+		FVector End = Start + Direction * PlayerSettings->SoftLockDetectionDistance;
 
 		TArray<AActor*> ToIgnore;
 		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
-		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, Start, PlayerSettings->SoftLockDetectionRadius,
+		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Start, End, PlayerSettings->SoftLockDetectionRadius,
 		                                                 ObjectTypes,
 		                                                 false,
 		                                                 ToIgnore,
@@ -151,6 +150,10 @@ void UCombatComponent::OnCharacterStateChanged(ECharacterState State)
 	if (State != Attacking)
 	{
 		bShouldContinueCombo = false;
+	}
+	if (State == Dead)
+	{
+		ResetAttack();
 	}
 }
 
@@ -211,14 +214,6 @@ void UCombatComponent::ClearDamageModifier()
 void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                      FActorComponentTickFunction* ThisTickFunction)
 {
-	/*timeSLowDuration += DeltaTime;
-
-	if (bTimeSlowed && timeSLowDuration > .02)
-	{
-		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1);
-		bTimeSlowed = false;
-	}*/
-
 	if (bIsTracingSword)
 	{
 		TArray<FHitResult> OutResults;
@@ -267,6 +262,7 @@ void UCombatComponent::OnAttack()
 {
 	if (CharacterState->GetState() == Nothing)
 	{
+		TrySoftLockDash();
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 		{
 			if ((CharacterMovement->IsFalling()))
@@ -292,7 +288,46 @@ void UCombatComponent::OnAttack()
 	else if (CharacterState->GetState() == Attacking)
 	{
 		bShouldContinueCombo = true;
+		TrySoftLockDash();
 	}
+}
+
+void UCombatComponent::TrySoftLockDash()
+{
+	/*if (SoftLockTarget && PlayerSettings->UseSoftLock)
+	{
+		if (FVector::Dist(GetOwner()->GetActorLocation(), SoftLockTarget->GetActorLocation()) > 450)
+		{
+			if (PlayerSettings->SoftLockTargetDashVFX)
+			{
+				auto vfx = UNiagaraFunctionLibrary::SpawnSystemAttached(PlayerSettings->SoftLockTargetDashVFX, GetOwner()->GetRootComponent(), "", 
+					FVector::ZeroVector, FRotator::ZeroRotator, EAttachLocation::Type::SnapToTarget, true);
+				vfx->Activate();
+			}
+			UGameplayStatics::SetGlobalTimeDilation(GetWorld(), .1f);
+			
+			FTimerHandle TimerHandle;
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this, &TimerHandle]
+			{
+				if (!SoftLockTarget)
+				{
+					GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+					UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1.0f);
+				}
+				else
+				{
+					if (FVector::Dist(GetOwner()->GetActorLocation(), SoftLockTarget->GetActorLocation()) < 150)
+					{
+						GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+						UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1.0f);
+						return;
+					}
+					UGameplayStatics::SetGlobalTimeDilation(GetWorld(), FMath::Max(1, UGameplayStatics::GetGlobalTimeDilation(GetWorld()) + -.05f));
+					GetOwner()->SetActorLocation(FMath::Lerp(GetOwner()->GetActorLocation(),SoftLockTarget->GetActorLocation(), 0.05f ));
+				}
+			},0.01, true);
+		}
+	}*/
 }
 
 void UCombatComponent::TryContinueCombo()
@@ -354,6 +389,9 @@ void UCombatComponent::ResetAttack()
 {
 	currentComboIndex = 0;
 	bShouldContinueCombo = false;
+	bIsTracingSword = false;
+	bAttackChangeRotation = false;
+	SoftLockOff();
 	CharacterState->ClearState(Attacking);
 }
 

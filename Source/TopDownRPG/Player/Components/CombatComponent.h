@@ -78,6 +78,7 @@ protected:
 	bool bShouldContinueCombo = false;
 	bool bShouldPerformAfterDodgeAttack = false;
 
+	void TrySoftLockDash();
 	UFUNCTION()
 	void OnAttack();
 

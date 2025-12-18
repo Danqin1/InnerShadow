@@ -25,8 +25,11 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Ability")
 	int ID = 0;
+	
+	UPROPERTY(EditAnywhere, Category = "Ability")
+    bool bIsDefault = false;
 
-	UPROPERTY(VisibleAnywhere, Category = "Ability")
+	UPROPERTY(EditAnywhere, Category = "Ability")
 	bool bIsUnlocked = false;
 
 	UPROPERTY(VisibleAnywhere, Category = "Ability", BlueprintReadOnly)

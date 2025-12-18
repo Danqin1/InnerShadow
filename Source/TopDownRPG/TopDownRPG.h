@@ -38,6 +38,7 @@ enum ECharacterState
 	Dead,
 	Skill,
 	Frozen,
+	Kid
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStateChanged, ECharacterState, State);

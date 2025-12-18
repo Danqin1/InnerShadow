@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "InputAction.h"
+#include "RPGActorComponentBase.h"
 #include "Components/ActorComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/SphereComponent.h"
@@ -12,7 +13,7 @@
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class TOPDOWNRPG_API UInventoryComponent : public UActorComponent
+class TOPDOWNRPG_API UInventoryComponent : public URPGActorComponentBase
 {
 	GENERATED_BODY()
 
@@ -44,6 +45,8 @@ protected:
 	virtual void BeginPlay() override;
 	
 public:
+	virtual void SetupComponent(UPlayerSettings* Settings) override;
+	virtual void Dispose() override;
 
 	float GetCurrentWeaponDamage();
 	

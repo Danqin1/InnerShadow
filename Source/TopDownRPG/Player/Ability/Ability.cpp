@@ -23,7 +23,7 @@ void AAbility::BeginPlay()
 	if (UAbilitySystem* AbilitySystem = GetGameInstance()->GetSubsystem<UAbilitySystem>())
 	{
 		FAbilityData AbilityData = AbilitySystem->GetAbilityData(ID);
-		bIsUnlocked = AbilityData.bIsUnlocked;
+		bIsUnlocked = AbilityData.bIsUnlocked || bIsDefault;
 		Level = AbilityData.Level;
 
 		AbilitySystem->OnDataUpdated.AddDynamic(this, &AAbility::OnDataUpdated);
@@ -146,7 +146,7 @@ void AAbility::OnDataUpdated(FAbilityData Value)
 {
 	if (Value.ID == ID)	
 	{
-		bIsUnlocked = Value.bIsUnlocked;
+		bIsUnlocked = Value.bIsUnlocked || bIsDefault;
 		Level = Value.Level;
 
 		if (UISlot)

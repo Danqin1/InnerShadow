@@ -159,6 +159,15 @@ void ARPGCharacter::BeginPlay()
 		check(PlayerHUD);
 		PlayerHUD->AddToPlayerScreen();
 	}
+	
+	if (UGameplayStatics::GetCurrentLevelName(GetWorld()) == "Village")
+	{
+		SetState(Kid);
+	}
+	else
+	{
+		SetState(Nothing);
+	}
 
 	TSet<UActorComponent*> Components = GetComponents();
 	for (UActorComponent* Component : Components)
@@ -177,8 +186,6 @@ void ARPGCharacter::BeginPlay()
 	}
 
 	PlayerStatsComponent->OnDied.AddDynamic(this, &ARPGCharacter::Die);
-
-	SetState(Nothing);
 
 	StartLocation = GetActorLocation();
 	StartRotation = GetActorRotation();

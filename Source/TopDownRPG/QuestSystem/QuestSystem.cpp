@@ -8,7 +8,7 @@
 void UQuestSystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
-	if (UQuestsDatabase* DB = LoadObject<UQuestsDatabase>(nullptr, TEXT("/Game/Database/QuestsDatabase")))
+	if (UQuestsDatabase* DB = LoadObject<UQuestsDatabase>(nullptr, TEXT("/Game/Database/DA_QuestsDatabase")))
 	{
 		QuestsDatabase = DB;
 	}
