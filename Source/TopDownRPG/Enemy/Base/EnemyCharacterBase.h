@@ -8,11 +8,10 @@
 #include "GameFramework/Character.h"
 #include "TopDownRPG/Interfaces/CombatInterface.h"
 #include "TopDownRPG/Interfaces/EnemyInterface.h"
-#include "TopDownRPG/Interfaces/DamageableInterface.h"
 #include "EnemyCharacterBase.generated.h"
 
 UCLASS()
-class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IDamageableInterface, public IEnemyInterface, public ICombatInterface
+class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IEnemyInterface, public ICombatInterface
 {
 private:
 	GENERATED_BODY()
@@ -52,15 +51,12 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	virtual void ClearState(ECharacterState State) override;
-
-	UFUNCTION(BlueprintCallable)
-	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity) override;
 	
 	UFUNCTION(BlueprintCallable)
 	virtual void OnSkillReaction(UAnimMontage* ReactionMontage) override;
 	
 	UFUNCTION(BlueprintCallable)
-	virtual void Damage(float Damage) override;
+	virtual bool Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, float Damage, bool canCrushBlock, bool withReaction = true, UAnimMontage* reaction = nullptr) override;
 	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -73,7 +69,7 @@ public:
 	void SetAirborne(bool isAirborne);
 
 	UFUNCTION(BlueprintCallable)
-	virtual float Attack() override;
+	virtual float PerformAttack() override;
 	
 	UFUNCTION(BlueprintCallable)
 	virtual bool CanAttack() override;

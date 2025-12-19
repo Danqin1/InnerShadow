@@ -30,6 +30,7 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bShouldMove = GroundSpeed > 3 && MovementComponent->GetCurrentAcceleration() != FVector::Zero();
 		bIsFalling = MovementComponent->IsFalling();
 		bIsDead = Character->GetState() == Dead;
+		bIsBlocking = Character->GetState() == Block;
 		if(InventoryComponent)
 		{
 			bHasSword = InventoryComponent->HasEquippedWeapon();

@@ -57,7 +57,7 @@ EBTNodeResult::Type UBTT_PerformAttack::ExecuteTask(UBehaviorTreeComponent& Owne
 	{
 		FUBTT_PerformAttackMemory* MyMemory = reinterpret_cast<FUBTT_PerformAttackMemory*>(NodeMemory);
 		
-		MyMemory->WaitDuration = Combat->Attack();
+		MyMemory->WaitDuration = Combat->PerformAttack();
 		MyMemory->ElapsedTime = 0;
 		
 		FinishLatentTask(OwnerComp, EBTNodeResult::InProgress);

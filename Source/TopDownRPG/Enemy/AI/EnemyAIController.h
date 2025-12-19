@@ -50,6 +50,7 @@ protected:
 
 	UFUNCTION()
 	void OnStateChanged(ECharacterState State);
+	
 public:
 	FVector StartLocation;
 	// Called every frame

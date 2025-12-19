@@ -8,7 +8,7 @@
 #include "NiagaraSystem.h"
 #include "RPGActorComponentBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "TopDownRPG/Interfaces/DamageableInterface.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
 #include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "CombatComponent.generated.h"
 
@@ -26,7 +26,7 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 	float currentDamage = 0;
 	float lastHitAudioPlayedTime = 0;
 	
-	TArray<IDamageableInterface*> DamagedActors;
+	TArray<ICombatInterface*> DamagedActors;
 	
 	UPROPERTY()
 	USkeletalMeshComponent* CharacterMesh;
@@ -41,7 +41,7 @@ class TOPDOWNRPG_API UCombatComponent : public URPGActorComponentBase
 public:
 	// Sets default values for this component's properties
 	UCombatComponent();
-
+	
 	virtual void SetupComponent(UPlayerSettings* Settings) override;
 	virtual void Dispose() override;
 
@@ -81,6 +81,10 @@ protected:
 	void TrySoftLockDash();
 	UFUNCTION()
 	void OnAttack();
+	UFUNCTION()
+	void OnBlockStart();
+	UFUNCTION()
+	void OnBlockEnd();
 
 	/*
 	UFUNCTION()

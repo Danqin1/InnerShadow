@@ -62,6 +62,9 @@ public:
 	UAnimMontage* DodgeAnim;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
+	UAnimMontage* HitReaction;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	TSubclassOf<UCameraShake> SwordHitCameraShake;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
@@ -108,6 +111,8 @@ public:
 	UInputAction* Ability3Action;
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputAction* Ability4Action;
+	UPROPERTY(EditDefaultsOnly, Category="Input")
+	UInputAction* BlockAction;
 
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	TSubclassOf<AAbility> Ability1;

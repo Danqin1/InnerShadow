@@ -38,5 +38,5 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
-	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity) override;
+	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, bool withReaction, UAnimMontage* reaction) override;
 };

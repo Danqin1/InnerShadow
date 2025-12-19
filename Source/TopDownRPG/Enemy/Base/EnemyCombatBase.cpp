@@ -24,8 +24,13 @@ void UEnemyCombatBase::Setup(FEnemyData* Data)
 	CurrentDamage = Data->Damage;
 }
 
-void UEnemyCombatBase::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity)
+void UEnemyCombatBase::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, bool withReaction, UAnimMontage* reaction)
 {
+	if (!withReaction) return;
+	if (ACharacter* Character = Cast<ACharacter>(GetOwner()))
+	{
+		Character->PlayAnimMontage(reaction ? reaction : HitReactionFront);
+	}
 }
 
 void UEnemyCombatBase::OnDamaged(float CurrentHealth)

@@ -33,10 +33,6 @@ public:
 	virtual void ClearState(ECharacterState State);
 	
 	UFUNCTION(BlueprintCallable)
-	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity) PURE_VIRTUAL()
-	UFUNCTION(BlueprintCallable)
-	virtual void OnSkillReaction(UAnimMontage* ReactionMontage) PURE_VIRTUAL()
-	UFUNCTION(BlueprintCallable)
 	virtual FKillPrize GetPrize() {return FKillPrize();}
 	virtual void ChangeMovementMode(EMovementType NewMovement) {}
 

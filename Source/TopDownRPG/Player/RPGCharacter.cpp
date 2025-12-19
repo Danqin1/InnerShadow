@@ -2,8 +2,6 @@
 
 #include "RPGCharacter.h"
 
-#include "NiagaraComponent.h"
-#include "NiagaraFunctionLibrary.h"
 #include "RPGPlayerController.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -14,13 +12,10 @@
 #include "Materials/Material.h"
 #include "Engine/World.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
-#include "Kismet/KismetSystemLibrary.h"
 #include "Perception/AISense_Hearing.h"
 #include "Perception/AISense_Sight.h"
 #include "TopDownRPG/DevDebug.h"
-#include "TopDownRPG/Interfaces/DamageableInterface.h"
 
 ARPGCharacter::ARPGCharacter()
 {
@@ -103,8 +98,13 @@ void ARPGCharacter::ClearState(ECharacterState State)
 	}
 }
 
-void ARPGCharacter::Damage(float Damage)
+bool ARPGCharacter::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity,float Damage, bool canCrushBlock, bool withReaction, UAnimMontage* reaction)
 {
+	if (GetState() == Block)
+	{
+		if (!canCrushBlock) return false;
+		SetState(Nothing);
+	}
 	if(PlayerStatsComponent)
 	{
 		PlayerStatsComponent->RemoveHP(Damage);
@@ -113,6 +113,13 @@ void ARPGCharacter::Damage(float Damage)
 	{
 		DevDebug::OnScreenLog("Stats component not exits");
 	}
+	if (withReaction)
+	{
+		PlayAnimMontage(reaction ? reaction : Settings->HitReaction);
+	}
+	
+	CombatComponent->ResetAttack();
+	return true;
 }
 
 bool ARPGCharacter::CanDamage()

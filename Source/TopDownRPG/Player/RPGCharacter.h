@@ -13,11 +13,12 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "TopDownRPG/Interfaces/CombatInterface.h"
 #include "TopDownRPG/UI/HUD/PlayerHUD.h"
 #include "RPGCharacter.generated.h"
 
 UCLASS(Blueprintable)
-class ARPGCharacter : public ACharacter, public  IPlayerInterface, public IDamageableInterface
+class ARPGCharacter : public ACharacter, public  IPlayerInterface, public ICombatInterface
 {
 	GENERATED_BODY()
 
@@ -90,7 +91,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void ClearState(ECharacterState State) override;
 
-	virtual void Damage(float Damage) override;
+	UFUNCTION(BlueprintCallable)
+	virtual bool Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, float Damage, bool canCrushBlock, bool withReaction = true, UAnimMontage* reaction = nullptr) override;
+	
+	UFUNCTION(BlueprintCallable)
 	virtual bool CanDamage() override;
 	virtual float GetDarknessPercent() const override;
 	virtual void AddPrize(FKillPrize& Prize) override;

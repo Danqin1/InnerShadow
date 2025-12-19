@@ -92,18 +92,19 @@ void AEnemyCharacterBase::ClearState(ECharacterState State)
 	}
 }
 
-void AEnemyCharacterBase::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity)
-{
-	Combat->OnHit(Hitter, HitPosition, HitVelocity);
-}
-
 void AEnemyCharacterBase::OnSkillReaction(UAnimMontage* ReactionMontage)
 {
 	Combat->OnSkillReaction(ReactionMontage);
 }
 
-void AEnemyCharacterBase::Damage(float Damage)
+bool AEnemyCharacterBase::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity,float Damage, bool canCrushBlock, bool withReaction, UAnimMontage* reaction)
 {
+	if (GetState() == Block)
+	{
+		if (!canCrushBlock) return false;
+		ClearState(Block);
+	}
+	
 	CurrentHP = FMath::Max(0, CurrentHP - Damage);
 
 	if(UEnemyLifebar* HPBar = Cast<UEnemyLifebar>(LifeBar->GetWidget()))
@@ -117,6 +118,11 @@ void AEnemyCharacterBase::Damage(float Damage)
 	{
 		Die();
 	}
+	else
+	{
+		Combat->OnHit(Hitter, HitPosition, HitVelocity, withReaction, reaction);
+	}
+	return true;
 }
 
 // Called when the game starts or when spawned
@@ -177,7 +183,7 @@ void AEnemyCharacterBase::SetAirborne(bool isAirborne)
 	}
 }
 
-float AEnemyCharacterBase::Attack()
+float AEnemyCharacterBase::PerformAttack()
 {
 	Combat->Attack();
 	return 1;

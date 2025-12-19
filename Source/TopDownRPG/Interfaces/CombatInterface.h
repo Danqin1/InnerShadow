@@ -7,7 +7,7 @@
 #include "CombatInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(BlueprintType, MinimalAPI)
+UINTERFACE(BlueprintType, MinimalAPI, meta=(CannotImplementInterfaceInBlueprint))
 class UCombatInterface : public UInterface
 {
 	GENERATED_BODY()
@@ -22,12 +22,28 @@ class TOPDOWNRPG_API ICombatInterface
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	void OnHit();
-	void Missed();
-	void Killed(float GainedXP);
+	UFUNCTION(BlueprintCallable)
+	virtual bool Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, float damage, bool canCrushBlock,
+		bool withReaction = true, UAnimMontage* reaction = nullptr) {return true;};
 
-	virtual float Attack() {return 0;}
+	UFUNCTION(BlueprintCallable)
+	virtual float PerformAttack() {return 0;}
+	
+	UFUNCTION(BlueprintCallable)
 	virtual bool CanAttack() {return true;}
+	
+	UFUNCTION(BlueprintCallable)
 	virtual void StartTraceAttack(){}
+	
+	UFUNCTION(BlueprintCallable)
 	virtual void EndTraceAttack(){}
+	
+	UFUNCTION(BlueprintCallable)
+	virtual bool CanDamage() {return true;}
+	
+	UFUNCTION(BlueprintCallable)
+	virtual bool WasBlocked(){return false;}
+	
+	UFUNCTION(BlueprintCallable)
+	virtual void OnSkillReaction(UAnimMontage* ReactionMontage) {}
 };

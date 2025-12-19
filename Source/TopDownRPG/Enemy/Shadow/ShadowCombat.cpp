@@ -7,7 +7,6 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "TopDownRPG/Interfaces/CombatInterface.h"
 #include "TopDownRPG/Interfaces/EnemyInterface.h"
-#include "TopDownRPG/Interfaces/DamageableInterface.h"
 
 UShadowCombat::UShadowCombat()
 {
@@ -57,11 +56,11 @@ void UShadowCombat::TraceAttack()
 
 		for (FHitResult OutResult : OutResults)
 		{
-			if (auto* Damageable = Cast<IDamageableInterface>(OutResult.GetActor()))
+			if (OutResult.GetActor() != GetOwner())
 			{
-				if (!Cast<ICombatInterface>(OutResult.GetActor()))
+				if (auto* Combat = Cast<ICombatInterface>(OutResult.GetActor()))
 				{
-					Damageable->Damage(CurrentDamage);
+					Combat->Hit(GetOwner(), OutResult.ImpactPoint, FVector::One(), CurrentDamage, false);
 					bIsTracingAttack = false;
 				}
 			}
@@ -74,7 +73,7 @@ void UShadowCombat::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
-void UShadowCombat::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity)
+void UShadowCombat::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, bool withReaction, UAnimMontage* reaction)
 {
 	FVector Dir = HitVelocity;
 	Dir.Normalize();
@@ -94,18 +93,18 @@ void UShadowCombat::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVeloci
 				Character->GetMesh()->AddForceToAllBodiesBelow(HitVelocity, "pelvis", true);
 			}
 		}
-		else
+		else if (withReaction)
 		{
 			if(Dir.Dot(Right) > 0)
 			{
 				if(HitReactionRight && !Character->GetCurrentMontage())
 				{
-					Character->PlayAnimMontage(HitReactionRight);
+					Character->PlayAnimMontage(reaction ? reaction : HitReactionRight);
 				}
 			}
 			else if(HitReactionLeft && !Character->GetCurrentMontage())
 			{
-				Character->PlayAnimMontage(HitReactionLeft);
+				Character->PlayAnimMontage(reaction ? reaction : HitReactionLeft);
 			}
 		}
 	}

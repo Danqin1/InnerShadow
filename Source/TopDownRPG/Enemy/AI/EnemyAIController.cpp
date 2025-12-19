@@ -23,7 +23,7 @@ AEnemyAIController::AEnemyAIController()
 	AISenseConfigSight->DetectionByAffiliation.bDetectFriendlies = true;
 	AISenseConfigSight->DetectionByAffiliation.bDetectNeutrals = true;
 	AISenseConfigSight->PeripheralVisionAngleDegrees = 90.f;
-	AISenseConfigSight->AutoSuccessRangeFromLastSeenLocation = 10;
+	AISenseConfigSight->AutoSuccessRangeFromLastSeenLocation = -1;
 	AISenseConfigSight->SetMaxAge((1.f));
 
 	AISenseConfigHearing = CreateDefaultSubobject<UAISenseConfig_Hearing>("SenseHearing");

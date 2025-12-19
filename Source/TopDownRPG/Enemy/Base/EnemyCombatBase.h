@@ -28,6 +28,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	UAnimMontage* HitReactionRight;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	UAnimMontage* HitReactionFront;
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	UAnimMontage* AttackAnimation;
@@ -43,7 +46,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
-	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity);
+	virtual void OnHit(AActor* Hitter, FVector HitPosition, FVector HitVelocity, bool withReaction, UAnimMontage* reaction);
 
 	virtual void OnDamaged(float CurrentHealth);
 
