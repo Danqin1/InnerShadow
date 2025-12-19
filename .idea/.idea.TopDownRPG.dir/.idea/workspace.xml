@@ -17,6 +17,7 @@
       <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.cpp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_09.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_09.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_BreathOfIce.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_BreathOfIce.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_StormWings.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_StormWings.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_BreathOfIce.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_BreathOfIce.uasset" afterDir="false" />
@@ -35,6 +36,10 @@
       <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Locomotion/BS_Warrior_Locomotion.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Locomotion/BS_Warrior_Locomotion.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Locomotion/Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Locomotion/Idle.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Database/QuestsDatabase.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Stones/Cliffs/M_CliffStone_08.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Stones/Cliffs/M_CliffStone_08.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Structures/MI_BridgePillar_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Structures/MI_BridgePillar_01.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Terrain/MI_TerrainTower_Demo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Terrain/MI_TerrainTower_Demo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Tower/MI_BricksTiling_POM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Tower/MI_BricksTiling_POM.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/LittleDragons/ABP_DragonTiger.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/LittleDragons/Animations/Common/LD_C_Angry.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/LittleDragons/Animations/Common/LD_C_AttackPaw_Left.uasset" beforeDir="false" />
@@ -671,7 +676,7 @@
       <workItem from="1765750161128" duration="2477000" />
       <workItem from="1766004808034" duration="861000" />
       <workItem from="1766005820306" duration="6555000" />
-      <workItem from="1766082721763" duration="4251000" />
+      <workItem from="1766082721763" duration="4881000" />
     </task>
     <servers />
   </component>
