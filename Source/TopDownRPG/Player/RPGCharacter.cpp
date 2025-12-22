@@ -122,6 +122,15 @@ bool ARPGCharacter::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity
 	return true;
 }
 
+bool ARPGCharacter::CanInterruptCurrentAnimation()
+{
+	if (GetState() == Dead)
+	{
+		return false;
+	}
+	return GetCurrentMontage() == nullptr || CombatComponent->IsPlayingAttackMontage(GetCurrentMontage());
+}
+
 bool ARPGCharacter::CanDamage()
 {
 	return CombatComponent->CanDamage();

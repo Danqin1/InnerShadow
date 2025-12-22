@@ -85,14 +85,13 @@ void UAbilityComponent::OnAbility4()
 
 void UAbilityComponent::TryUseAbility(AAbility* Ability)
 {
-	if(Ability && Ability->CanUseAbility())
+	if (CharacterState->GetState() == Nothing || CharacterState->GetState() == Attacking)
 	{
-		CastAbility(Ability);
-		CharacterState->SetState(ECharacterState::Skill);
-	}
-	else
-	{
-		DevDebug::OnScreenLog("Cant use this ability", FColor::Red);
+		if(Ability && Ability->CanUseAbility())
+		{
+			CastAbility(Ability);
+			CharacterState->SetState(ECharacterState::Skill);
+		}
 	}
 }
 

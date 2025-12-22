@@ -63,6 +63,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ResetAttack();
+	
+	UFUNCTION(BlueprintCallable)
+	bool IsPlayingAttackMontage(UAnimMontage* currentMontage);
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Indication")

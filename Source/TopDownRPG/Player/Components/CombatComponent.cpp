@@ -415,6 +415,18 @@ void UCombatComponent::ResetAttack()
 	CharacterState->ClearState(Attacking);
 }
 
+bool UCombatComponent::IsPlayingAttackMontage(UAnimMontage* currentMontage)
+{
+	for (UAnimMontage* NormalAttackComboAnimation : PlayerSettings->NormalAttackComboAnimations)
+	{
+		if (currentMontage == NormalAttackComboAnimation)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 AActor* UCombatComponent::GetSoftLockTarget()
 {
 	return SoftLockTarget;

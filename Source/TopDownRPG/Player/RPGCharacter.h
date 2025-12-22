@@ -51,6 +51,7 @@ protected:
 	virtual void BeginPlay();
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	bool CanInterruptCurrentAnimation();
 	
 public:
 	ARPGCharacter();
