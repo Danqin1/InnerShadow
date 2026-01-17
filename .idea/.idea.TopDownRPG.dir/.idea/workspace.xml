@@ -7,11 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-    </list>
+    <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,6 +180,7 @@
       <workItem from="1766178892369" duration="4493000" />
       <workItem from="1766183789559" duration="3608000" />
       <workItem from="1766350226702" duration="1486000" />
+      <workItem from="1766434449478" duration="2415000" />
     </task>
     <servers />
   </component>
