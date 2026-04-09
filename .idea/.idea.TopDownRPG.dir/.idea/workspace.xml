@@ -9,29 +9,141 @@
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_BreathOfIce.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_BreathOfIce.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_RoarOfFlames.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_RoarOfFlames.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownPlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownPlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Water/MI_River_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/DreamscapeTower/Materials/Water/MI_River_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/DreamscapeSeries/SharedResources/Materials/Water/M_RiverMaster.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/DreamscapeSeries/SharedResources/Materials/Water/M_RiverMaster.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Game.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_CampFire.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_CampFire_OnDayOnNight.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_House_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_House_Var01_OnDayOnNight.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_House_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_House_Var02_OnDayOnNight.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_Street_Lamp.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/BP_Well.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Blueprints/Misc/BP_Interface_OnDayOnNight.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_FireCamp.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_FireTorch.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_LightInsects.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_LightInsectsCampFire.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_SmokeChimney.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Effects/Pfx_SmokeFireCamp.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Landscape_Foliage_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Landscape_Foliage_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_06_Cutout.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_08.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pack_09.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pfx_Flames.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pfx_SmokeChimney.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Inst_Pfx_Sparks.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Pfx_Additive.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Pfx_TranslucentLit.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Simple_Cutout_Wind.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Uber.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Uber_Cutout.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Materials/M_Uber_Cutout_Wind.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Barrel.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Bucket.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Cart_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Crate_Closed.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Crate_Open.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Fence_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Fence_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Fence_Var03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Fence_Var04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Fish.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Flower_Var06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_GrassPatch_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_GrassPatch_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra07.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var01_Extra08.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_House_Var02_Extra.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Log_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Log_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Log_Var03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Logs_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Logs_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Mushroom_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_SackWithApples.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_SackWithPotatoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_SackWithTomatoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Spike.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Stone_Small_Var01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Stone_Small_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Stone_Small_Var03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Stone_Small_Var04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Stone_Small_Var05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_StreetLight.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Torch_Var02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Well.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Well_Extra01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Well_Extra02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Well_Extra03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Meshes/SM_Well_Extra04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Effects/T_Pfx_FlamesAtlas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Effects/T_Pfx_Smoke.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Effects/T_Pfx_Spark.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Landscape/T_Foliage_Var01_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Landscape/T_Foliage_Var01_O.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Landscape/T_Foliage_Var02_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/Landscape/T_Foliage_Var02_O.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Detail_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_01_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_01_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_01_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_02_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_02_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_02_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_03_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_03_E.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_03_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_03_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_04_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_04_E.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_04_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_04_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_05_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_05_E.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_05_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_05_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_06_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_06_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_06_O.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_06_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_08_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_08_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_08_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_09_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_09_E.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_09_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_09_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_11_Leafs_DO.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_TreeLeafs_D.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_TreeLeafs_Mask.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_TreeLeafs_N.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_TreeLeafs_O.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AdvancedVillagePack/Textures/T_Pack_TreeLeafs_RM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/AdventureGameMusicPack/Wavs/Evil_is_Near__looped_.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Cues/Evil_is_Near__looped__Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Cues/Evil_is_Near__looped__Cue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/MegaGameMusicCollection/MysticalGameMusicPack/Cues/Evil_is_Near__Looped__Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/MegaGameMusicCollection/MysticalGameMusicPack/Wavs/Evil_is_Near__Looped_.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Settings/DA_PlayerSettings.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/RageComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/RageComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/RageComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/RageComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGPlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/TopDownRPG.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/TopDownRPG.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +344,7 @@
       <workItem from="1775753627292" duration="170000" />
       <workItem from="1775753854447" duration="163000" />
       <workItem from="1775754093519" duration="3560000" />
-      <workItem from="1775758629214" duration="3589000" />
+      <workItem from="1775758629214" duration="4494000" />
     </task>
     <servers />
   </component>
