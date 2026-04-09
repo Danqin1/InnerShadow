@@ -15,9 +15,7 @@ class TOPDOWNRPG_API URageComponent : public URPGActorComponentBase
 	GENERATED_BODY()
 protected:
 	bool bIsInRage = false;
-
-	float Rage = 0;
-	float MaxRage = 100;
+	float DefaultMaxWalkSpeed = 0;
 	
 	UPROPERTY()
 	UPlayerStatsComponent* StatsComponent;
@@ -25,11 +23,19 @@ protected:
 	UPROPERTY()
 	UPlayerHUD* PlayerHUD;
 
+	UPROPERTY()
+	class UCharacterMovementComponent* CharacterMovement;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UNiagaraComponent* RageVFXComponent;
 
+	FTimerHandle FrenzyRecoveryTimer;
+
 	virtual void BeginPlay() override;
+	void StartFrenzy();
 	void SetInRage(bool bDark);
+	void FinishFrenzy();
+	void RecoverFromFrenzy();
 public:
 	URageComponent();
 	
@@ -40,10 +46,8 @@ public:
 
 	void UpdateHUD();
 	
-	void OnRage(const FInputActionValue& InputActionValue);
-	
 	UFUNCTION(BlueprintCallable)
-	float GetRagePercent() const {return Rage / MaxRage;}
+	float GetRagePercent() const;
 
 	UFUNCTION(BlueprintCallable)
 	bool IsInRage() const {return bIsInRage;};

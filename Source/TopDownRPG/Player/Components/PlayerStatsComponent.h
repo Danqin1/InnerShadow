@@ -24,7 +24,7 @@ protected:
 	float MaxHP = 100;
 	float XP = 0;
 
-	float Essence = 100;
+	float Essence = 0;
 	float MaxEssence = 100;
 
 	void UpdateHUD();
@@ -51,5 +51,11 @@ public:
 
 	void AddEssence(float Value);
 	void RemoveEssence(float Value);
-	float GetEssence() {return Essence;}
+	float GetEssence() const { return Essence; }
+	float GetMaxEssence() const { return MaxEssence; }
+	float GetEssencePercent() const;
+	EDarkEssenceState GetEssenceState() const;
+	float GetOutgoingDamageMultiplier() const;
+	float GetIncomingDamageMultiplier() const;
+	float GetAttackSpeedMultiplier() const;
 };

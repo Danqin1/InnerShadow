@@ -3,9 +3,11 @@
 
 #include "RageComponent.h"
 
-#include "EnhancedInputComponent.h"
 #include "NiagaraComponent.h"
 #include "PlayerStatsComponent.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "TopDownRPG/Interfaces/PlayerInterface.h"
 #include "TopDownRPG/Player/RPGCharacter.h"
 
 
@@ -20,14 +22,11 @@ void URageComponent::SetupComponent(UPlayerSettings* Settings)
 {
 	Super::SetupComponent(Settings);
 
-	if (UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
-	{
-		Input->BindAction(PlayerSettings->RageAction, ETriggerEvent::Started, this, &URageComponent::OnRage);
-	}
-
 	StatsComponent = GetOwner()->GetComponentByClass<UPlayerStatsComponent>();
 	if (ARPGCharacter* Character = Cast<ARPGCharacter>(GetOwner()))
 	{
+		CharacterMovement = Character->GetCharacterMovement();
+		DefaultMaxWalkSpeed = CharacterMovement ? CharacterMovement->MaxWalkSpeed : 0;
 		PlayerHUD = Character->PlayerHUD;
 		UpdateHUD();
 	}
@@ -48,15 +47,24 @@ void URageComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (!StatsComponent)
+	{
+		return;
+	}
+
+	if (!IsInRage() && StatsComponent->GetEssence() >= StatsComponent->GetMaxEssence())
+	{
+		StartFrenzy();
+	}
+
 	if (IsInRage())
 	{
-		if (Rage > 0)
+		if (StatsComponent->GetEssence() > 0)
 		{
-			Rage -= PlayerSettings->DarknessUseRate * DeltaTime;
-			if (Rage <= 0)
+			StatsComponent->RemoveEssence(PlayerSettings->DuringRageEssenceRemoveRate * DeltaTime);
+			if (StatsComponent->GetEssence() <= 0)
 			{
-				Rage = 0;
-				SetInRage(false);
+				FinishFrenzy();
 			}
 
 			UpdateHUD();
@@ -65,11 +73,42 @@ void URageComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	
 }
 
+void URageComponent::StartFrenzy()
+{
+	if (bIsInRage || !StatsComponent)
+	{
+		return;
+	}
+
+	GetWorld()->GetTimerManager().ClearTimer(FrenzyRecoveryTimer);
+
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
+	{
+		if (PlayerInterface->GetState() == Dead)
+		{
+			return;
+		}
+
+		PlayerInterface->StopCurrentAnimation();
+		PlayerInterface->ResetAttack();
+		PlayerInterface->SetState(Nothing);
+	}
+
+	if (CharacterMovement)
+	{
+		CharacterMovement->StopMovementImmediately();
+		CharacterMovement->MaxWalkSpeed = DefaultMaxWalkSpeed *
+			(PlayerSettings ? PlayerSettings->FrenzyMovementControlMultiplier : 0.4f);
+	}
+
+	SetInRage(true);
+}
+
 void URageComponent::UpdateHUD()
 {
 	if (PlayerHUD)
 	{
-		PlayerHUD->SetRage(Rage / MaxRage);
+		PlayerHUD->SetRage(IsInRage() ? GetRagePercent() : 0);
 	}
 	else
 	{
@@ -77,18 +116,18 @@ void URageComponent::UpdateHUD()
 	}
 }
 
-void URageComponent::OnRage(const FInputActionValue& InputActionValue)
+float URageComponent::GetRagePercent() const
 {
-	if (Rage >= MaxRage)
-	{
-		SetInRage(true);
-	}
+	return StatsComponent ? StatsComponent->GetEssencePercent() : 0;
 }
 
 void URageComponent::AddRage(float Value)
 {
-	Rage += Value;
-	Rage = FMath::Clamp(Rage, 0.0f, MaxRage);
+	if (StatsComponent)
+	{
+		StatsComponent->AddEssence(Value);
+	}
+
 	UpdateHUD();
 }
 
@@ -106,6 +145,43 @@ void URageComponent::SetInRage(bool bDark)
 		else
 		{
 			RageVFXComponent->Deactivate();
+		}
+
+		UpdateHUD();
+	}
+}
+
+void URageComponent::FinishFrenzy()
+{
+	SetInRage(false);
+
+	if (CharacterMovement)
+	{
+		CharacterMovement->StopMovementImmediately();
+		CharacterMovement->MaxWalkSpeed = DefaultMaxWalkSpeed;
+	}
+
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
+	{
+		PlayerInterface->SetState(Frozen);
+		// TODO play frenzy recovery VFX
+		GetWorld()->GetTimerManager().SetTimer(FrenzyRecoveryTimer, this, &URageComponent::RecoverFromFrenzy,
+			PlayerSettings ? PlayerSettings->FrenzyRecoveryDuration : 0.75f, false);
+	}
+}
+
+void URageComponent::RecoverFromFrenzy()
+{
+	if (CharacterMovement)
+	{
+		CharacterMovement->MaxWalkSpeed = DefaultMaxWalkSpeed;
+	}
+
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
+	{
+		if (PlayerInterface->GetState() == Frozen)
+		{
+			PlayerInterface->ClearState(Frozen);
 		}
 	}
 }

@@ -40,6 +40,9 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	float Cost = 5;
+
+	UPROPERTY(EditDefaultsOnly, Category="Ability")
+	float EssenceGain = -1;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	float Cooldown = 5;
@@ -78,4 +81,6 @@ public:
 
 	UFUNCTION()
 	void OnDataUpdated(FAbilityData Value);
+
+	float GetEssenceGenerated() const;
 };

@@ -20,15 +20,15 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			return;
 		}
-		
+
 		if (HP < MaxHP && CharacterState->GetState() == ECharacterState::Nothing)
 		{
 			AddHP(PlayerSettings->HPRegen * DeltaTime);
 		}
 
-		if (Essence < MaxEssence && CharacterState->GetState() == ECharacterState::Nothing)
+		if (Essence > 0 && CharacterState->GetState() == ECharacterState::Nothing && !CharacterState->IsInRage())
 		{
-			AddEssence(PlayerSettings->EssenceRegen * DeltaTime);
+			RemoveEssence(PlayerSettings->RageEssenceClearRate * DeltaTime);
 		}
 	}
 }
@@ -41,7 +41,7 @@ void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 		PlayerHUD = Player->PlayerHUD;
 		check(PlayerHUD);
 		HP = MaxHP;
-		PlayerHUD->SetHP(HP/MaxHP * 100);
+		PlayerHUD->SetHP(HP / MaxHP);
 	}
 
 	UpdateHUD();
@@ -53,7 +53,6 @@ void UPlayerStatsComponent::Dispose()
 
 void UPlayerStatsComponent::AddHP(float Value)
 {
-	
 	HP = FMath::Clamp(HP + Value, 0, MaxHP);
 	UpdateHUD();
 }
@@ -105,6 +104,91 @@ void UPlayerStatsComponent::RemoveEssence(float Value)
 	UpdateHUD();
 }
 
+float UPlayerStatsComponent::GetEssencePercent() const
+{
+	return MaxEssence <= 0 ? 0 : Essence / MaxEssence;
+}
+
+EDarkEssenceState UPlayerStatsComponent::GetEssenceState() const
+{
+	if (Essence >= MaxEssence)
+	{
+		return EDarkEssenceState::Frenzy;
+	}
+
+	const float EssencePercent = GetEssencePercent();
+	if (EssencePercent >= PlayerSettings->UnstableEssenceThreshold)
+	{
+		return EDarkEssenceState::Unstable;
+	}
+
+	if (EssencePercent >= PlayerSettings->EmpoweredEssenceThreshold)
+	{
+		return EDarkEssenceState::Empowered;
+	}
+
+	return EDarkEssenceState::Normal;
+}
+
+float UPlayerStatsComponent::GetOutgoingDamageMultiplier() const
+{
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
+	{
+		if (PlayerInterface->IsInRage())
+		{
+			return PlayerSettings->FrenzyDamageMultiplier;
+		}
+	}
+
+	switch (GetEssenceState())
+	{
+		case EDarkEssenceState::Empowered:
+			return PlayerSettings->EmpoweredDamageMultiplier;
+		case EDarkEssenceState::Unstable:
+			return PlayerSettings->UnstableDamageMultiplier;
+		case EDarkEssenceState::Frenzy:
+			return PlayerSettings->FrenzyDamageMultiplier;
+		default:
+			return 1.0f;
+	}
+}
+
+float UPlayerStatsComponent::GetIncomingDamageMultiplier() const
+{
+	switch (GetEssenceState())
+	{
+	case EDarkEssenceState::Unstable:
+		return PlayerSettings->UnstableIncomingDamageMultiplier;
+	case EDarkEssenceState::Frenzy:
+		return PlayerSettings->FrenzyIncomingDamageMultiplier;
+	default:
+		return 1.0f;
+	}
+}
+
+float UPlayerStatsComponent::GetAttackSpeedMultiplier() const
+{
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
+	{
+		if (PlayerInterface->IsInRage())
+		{
+			return PlayerSettings->FrenzyAttackSpeedMultiplier;
+		}
+	}
+
+	switch (GetEssenceState())
+	{
+		case EDarkEssenceState::Empowered:
+			return PlayerSettings->EmpoweredAttackSpeedMultiplier;
+		case EDarkEssenceState::Unstable:
+			return PlayerSettings->UnstableAttackSpeedMultiplier;
+		case EDarkEssenceState::Frenzy:
+			return PlayerSettings->FrenzyAttackSpeedMultiplier;
+		default:
+			return 1.0f;
+	}
+}
+
 void UPlayerStatsComponent::UpdateHUD()
 {
 	if (!PlayerHUD)
@@ -113,5 +197,5 @@ void UPlayerStatsComponent::UpdateHUD()
 	}
 
 	PlayerHUD->SetHP(HP / MaxHP);
-	PlayerHUD->SetEssence(Essence / MaxEssence);
+	PlayerHUD->SetEssence(GetEssencePercent());
 }

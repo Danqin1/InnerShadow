@@ -53,16 +53,12 @@ bool AAbility::CanUseAbility()
 		DevDebug::OnScreenLog("Ability is not unlocked", FColor::Red);
 		return false;
 	}
-	if (bRequiresEssence)
+
+	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 	{
-		if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
+		if (PlayerInterface->GetState() == Skill)
 		{
-			if (PlayerInterface->GetState() == Skill)
-			{
-				return false;
-			}
-			return PlayerInterface->IsInRage() ||
-			       (PlayerInterface->GetPlayerStatsComponent()->GetEssence() >= Cost && RechargeTime <= 0);
+			return false;
 		}
 	}
 	
@@ -76,7 +72,7 @@ void AAbility::Activate(ACharacter* Caster)
 
 	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(CasterCharacter))
 	{
-		PlayerInterface->GetPlayerStatsComponent()->RemoveEssence(Cost);
+		PlayerInterface->GetPlayerStatsComponent()->AddEssence(GetEssenceGenerated());
 		PlayerInterface->StopCurrentAnimation();
 	}
 
@@ -158,4 +154,9 @@ void AAbility::OnDataUpdated(FAbilityData Value)
 	{
 		DevDebug::OnScreenLog("Ability data updated for another ability", FColor::Red);
 	}
+}
+
+float AAbility::GetEssenceGenerated() const
+{
+	return EssenceGain >= 0 ? EssenceGain : Cost;
 }

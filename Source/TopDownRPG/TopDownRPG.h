@@ -28,6 +28,15 @@ enum ECastType
 };
 
 UENUM(BlueprintType)
+enum class EDarkEssenceState : uint8
+{
+	Normal,
+	Empowered,
+	Unstable,
+	Frenzy
+};
+
+UENUM(BlueprintType)
 enum ECharacterState
 {
 	Nothing,

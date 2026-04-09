@@ -85,6 +85,11 @@ void UAbilityComponent::OnAbility4()
 
 void UAbilityComponent::TryUseAbility(AAbility* Ability)
 {
+	if (CharacterState->IsInRage())
+	{
+		return;
+	}
+
 	if (CharacterState->GetState() == Nothing || CharacterState->GetState() == Attacking)
 	{
 		if(Ability && Ability->CanUseAbility())

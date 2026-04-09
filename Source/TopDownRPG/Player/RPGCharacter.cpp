@@ -107,7 +107,7 @@ bool ARPGCharacter::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity
 	}
 	if(PlayerStatsComponent)
 	{
-		PlayerStatsComponent->RemoveHP(Damage);
+		PlayerStatsComponent->RemoveHP(Damage * PlayerStatsComponent->GetIncomingDamageMultiplier());
 	}
 	else
 	{
@@ -138,12 +138,15 @@ bool ARPGCharacter::CanDamage()
 
 float ARPGCharacter::GetDarknessPercent() const
 {
-	return RageComponent->GetRagePercent();
+	return PlayerStatsComponent ? PlayerStatsComponent->GetEssencePercent() : 0;
 }
 
 void ARPGCharacter::AddPrize(FKillPrize& Prize)
 {
-	RageComponent->AddRage(Prize.Darkness);
+	if (PlayerStatsComponent)
+	{
+		PlayerStatsComponent->AddEssence(Prize.Darkness);
+	}
 	PlayerStatsComponent->AddXP(Prize.XP);
 }
 

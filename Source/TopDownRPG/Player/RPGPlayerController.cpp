@@ -67,10 +67,13 @@ void ARPGPlayerController::Move(const FInputActionValue& Value)
 	{
 		if(RPGCharacter->GetState() == Interaction 
 			|| RPGCharacter->GetState() == Skill
-			|| RPGCharacter->GetState() == Block)
+			|| RPGCharacter->GetState() == Block
+			|| RPGCharacter->GetState() == Frozen
+			|| RPGCharacter->GetState() == Dead)
 		{
 			return;
 		}
+
 	}
 	
 	GetCharacter()->AddMovementInput(ForwardDirection, MovementVector.Y);
@@ -83,7 +86,9 @@ void ARPGPlayerController::Look(const FInputActionValue& Value)
 	
 	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
 	{
-		if(RPGCharacter->GetState() == Interaction)
+		if(RPGCharacter->GetState() == Interaction
+			|| RPGCharacter->GetState() == Frozen
+			|| RPGCharacter->GetState() == Dead)
 		{
 			return;
 		}
@@ -104,6 +109,13 @@ void ARPGPlayerController::Jump(const FInputActionValue& Value)
 {
 	if(IPlayerInterface* RPGCharacter = Cast<IPlayerInterface>(GetCharacter()))
 	{
+		if (RPGCharacter->IsInRage()
+			|| RPGCharacter->GetState() == Frozen
+			|| RPGCharacter->GetState() == Dead)
+		{
+			return;
+		}
+
 		RPGCharacter->ResetAttack();
 	}
 	

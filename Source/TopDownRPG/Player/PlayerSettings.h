@@ -92,10 +92,46 @@ public:
 	UNiagaraSystem* Blood_FX;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
-	float DarknessUseRate = 40;
+	float DuringRageEssenceRemoveRate = 40;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float EmpoweredEssenceThreshold = 0.4f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float UnstableEssenceThreshold = 0.8f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float EmpoweredDamageMultiplier = 1.2f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float UnstableDamageMultiplier = 1.35f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float FrenzyDamageMultiplier = 2.0f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float UnstableIncomingDamageMultiplier = 1.2f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float FrenzyIncomingDamageMultiplier = 1.35f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float EmpoweredAttackSpeedMultiplier = 1.1f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float UnstableAttackSpeedMultiplier = 1.2f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float FrenzyAttackSpeedMultiplier = 1.6f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float FrenzyMovementControlMultiplier = 0.4f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Dark Essence")
+	float FrenzyRecoveryDuration = 0.75f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
-	float EssenceRegen = 10;
+	float RageEssenceClearRate = 10;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Regen")
 	float HPRegen = .01;

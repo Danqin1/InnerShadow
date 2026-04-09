@@ -6,6 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "MovieSceneTracksComponentTypes.h"
 #include "NiagaraFunctionLibrary.h"
+#include "PlayerStatsComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -178,6 +179,15 @@ void UCombatComponent::StartSwordTrace()
 	DamagedActors.Empty();
 	if (!CharacterMovement) return;
 
+	if (InventoryComponent)
+	{
+		currentDamage = InventoryComponent->GetCurrentWeaponDamage();
+		if (UPlayerStatsComponent* Stats = GetOwner()->FindComponentByClass<UPlayerStatsComponent>())
+		{
+			currentDamage *= Stats->GetOutgoingDamageMultiplier();
+		}
+	}
+
 	CharacterMovement->MaxWalkSpeed = 100.f;
 	bIsTracingSword = true;
 	//bCanSlowTime = true;
@@ -199,7 +209,9 @@ void UCombatComponent::EndSwordTrace()
 	bIsTracingSword = false;
 	//bCanSlowTime = false;
 	CharacterMovement->bAllowPhysicsRotationDuringAnimRootMotion = true;
-	CharacterMovement->MaxWalkSpeed = 500.f;
+	CharacterMovement->MaxWalkSpeed = CharacterState->IsInRage()
+		? 500.f * (PlayerSettings ? PlayerSettings->FrenzyMovementControlMultiplier : 0.4f)
+		: 500.f;
 	CharacterMovement->bOrientRotationToMovement = true;
 	ClearDamageModifier();
 	SwordTraceVFXComponent->Deactivate();
@@ -212,12 +224,24 @@ void UCombatComponent::ModifyDamage(float NewDamage)
 
 void UCombatComponent::ClearDamageModifier()
 {
-	currentDamage = InventoryComponent->GetCurrentWeaponDamage();
+	currentDamage = InventoryComponent ? InventoryComponent->GetCurrentWeaponDamage() : 0;
 }
 
 void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                      FActorComponentTickFunction* ThisTickFunction)
 {
+	if (CharacterState.IsValid() && CharacterState->IsInRage())
+	{
+		if (CharacterState->GetState() == Nothing)
+		{
+			OnAttack();
+		}
+		else if (CharacterState->GetState() == Attacking)
+		{
+			bShouldContinueCombo = true;
+		}
+	}
+
 	if (bIsTracingSword)
 	{
 		TArray<FHitResult> OutResults;
@@ -298,6 +322,11 @@ void UCombatComponent::OnAttack()
 
 void UCombatComponent::OnBlockStart()
 {
+	if (CharacterState->IsInRage())
+	{
+		return;
+	}
+
 	if (CharacterState->GetState() == Nothing || Attacking == CharacterState->GetState())
 	{
 		CharacterState->SetState(Block);
@@ -393,7 +422,12 @@ void UCombatComponent::PlayMontage(UAnimMontage* Montage)
 	if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 	{
 		SoftLockOn();
-		RPGPlayer->PlayAnimMontage(Montage);
+		float PlayRate = 1.0f;
+		if (UPlayerStatsComponent* Stats = GetOwner()->FindComponentByClass<UPlayerStatsComponent>())
+		{
+			PlayRate = Stats->GetAttackSpeedMultiplier();
+		}
+		RPGPlayer->PlayAnimMontage(Montage, PlayRate);
 	}
 }
 
@@ -434,6 +468,11 @@ AActor* UCombatComponent::GetSoftLockTarget()
 
 void UCombatComponent::TryDamageByAbility(const FVector Position, float Damage, const float Range)
 {
+	if (UPlayerStatsComponent* Stats = GetOwner()->FindComponentByClass<UPlayerStatsComponent>())
+	{
+		Damage *= Stats->GetOutgoingDamageMultiplier();
+	}
+
 	TArray<FHitResult> OutResults;
 	TArray<AActor*> ToIgnore;
 	ToIgnore.Add(GetOwner());
