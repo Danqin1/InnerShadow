@@ -230,18 +230,6 @@ void UCombatComponent::ClearDamageModifier()
 void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
                                      FActorComponentTickFunction* ThisTickFunction)
 {
-	if (CharacterState.IsValid() && CharacterState->IsInRage())
-	{
-		if (CharacterState->GetState() == Nothing)
-		{
-			OnAttack();
-		}
-		else if (CharacterState->GetState() == Attacking)
-		{
-			bShouldContinueCombo = true;
-		}
-	}
-
 	if (bIsTracingSword)
 	{
 		TArray<FHitResult> OutResults;
@@ -288,6 +276,11 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UCombatComponent::OnAttack()
 {
+	if (CharacterState->IsInRage())
+	{
+		return;
+	}
+
 	if (CharacterState->GetState() == Nothing)
 	{
 		TrySoftLockDash();

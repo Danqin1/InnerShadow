@@ -44,6 +44,9 @@ public:
 	bool bIsBlocking = false;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	bool bIsInFrenzy = false;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	FVector Velocity = FVector::Zero();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
