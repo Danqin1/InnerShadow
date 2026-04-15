@@ -100,6 +100,15 @@ void ARPGCharacter::ClearState(ECharacterState State)
 
 bool ARPGCharacter::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity,float Damage, bool canCrushBlock, bool withReaction, UAnimMontage* reaction)
 {
+	if (GetState() == Skill)
+	{
+		if (PlayerStatsComponent)
+		{
+			PlayerStatsComponent->RemoveHP(Damage * PlayerStatsComponent->GetIncomingDamageMultiplier());
+		}
+		return true;
+	}
+	if (GetCurrentMontage() == Settings->DodgeAnim) return false;
 	if (GetState() == Block)
 	{
 		if (!canCrushBlock) return false;
@@ -143,10 +152,10 @@ float ARPGCharacter::GetDarknessPercent() const
 
 void ARPGCharacter::AddPrize(FKillPrize& Prize)
 {
-	if (PlayerStatsComponent)
+	/*if (PlayerStatsComponent)
 	{
 		PlayerStatsComponent->AddEssence(Prize.Darkness);
-	}
+	}*/
 	PlayerStatsComponent->AddXP(Prize.XP);
 }
 
@@ -179,14 +188,7 @@ void ARPGCharacter::BeginPlay()
 		PlayerHUD->AddToPlayerScreen();
 	}
 	
-	if (UGameplayStatics::GetCurrentLevelName(GetWorld()) == "Village")
-	{
-		SetState(Kid);
-	}
-	else
-	{
-		SetState(Nothing);
-	}
+	SetState(Nothing);
 
 	TSet<UActorComponent*> Components = GetComponents();
 	for (UActorComponent* Component : Components)

@@ -15,26 +15,375 @@
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_BreathOfIce.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_RoarOfDarkness.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_RoarOfFlames.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_StormWings.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_BreathOfIce.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_RoarOfDarkness.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_RoarOfFlames.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_StormWings.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowBlast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowBlast.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowCut.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowCut.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_Spectrum.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_Spectrum.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Abilities/AM_ShadowCut.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Abilities/AM_ShadowCut.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/Map/Showcase.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/animations/Anim_Idle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/animations/Anim_walk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/blueprint/BP_test2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/materials/MI_scene_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Showcase/materials/M_scene.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/map/Skeleton_Base.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/materials/MF/MF_skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/materials/MI_Skeleton_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/materials/M_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_Hands.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_ShoesTorsGloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_Thigh.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_arms.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_base.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_base_Physics.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_legs.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/mesh/SK_Skeleton_ribs.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/textures/T_curva_dirt_dirt2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/textures/T_skeleton_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/textures/T_skeleton_Emissive.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/textures/T_skeleton_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton/textures/T_skeleton_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/map/SKnight_01.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MF/MF_armor_01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MF/MF_weapon.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/M_SKnigh_01_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/M_weapon_01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_SKnigh_01_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_SKnigh_01_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_SKnigh_01_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_SKnigh_01_armor_Inst1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_SKnigh_01_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_Shield_01_Inst_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/materials/MatInst/MI_weapon_01_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnigh_01_full.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnigh_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnight_01_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_SKnight_01_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_ArmArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_PantsArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_ShoulderArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_helmet02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/armor/SK_Sknight_01_shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_shield_01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_shield_01_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_weapon_01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_weapon_01_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_weapon_01_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_Armor_1_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_Armor_1_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_Armor_1_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_belt_curvabelt_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_color2_curvabase_damage.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/armor/T_metalCurva_dirt_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/weapon/T_color3_dirt_dirt2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/weapon/T_metal_curva_color2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/weapon/T_weapon_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/weapon/T_weapon_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_01/textures/weapon/T_weapon_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/map/SKnight_02.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MF/MF_skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/M_SKnigh_02_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/M_weapon_02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_SKnigh_02_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_SKnigh_02_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_SKnigh_02_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_SKnigh_02_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_SKnigh_02_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/materials/MatInst/MI_weapon_02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/SK_SKnigh_02_full.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/SK_SKnigh_03_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/SK_Sknight_02_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Helmet02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_ShoulderArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/armor/SK_SKnight_02_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/weapon/SK_shield_02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/weapon/SK_shield_02_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/weapon/SK_weapon_02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/weapon/SK_weapon_02_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/mesh/weapon/SK_weapon_02_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_armor_2_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_armor_2_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_armor_2_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_belt_curvabelt_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_color2_curvabase_damage.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_02/textures/armor/T_metalCurva_dirt_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/map/SKnight_03.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/M_SKnigh_03_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/M_weapon_03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_armor_Inst1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_SKnigh_03_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/materials/MatInst/MI_weapon_03_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/SK_SKnigh_03_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/SK_SKnight_full_03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/SK_Sknight_03_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Helmet02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/armor/SK_SKnight_03_TorsoRag.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/weapon/SK_shield_03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/weapon/SK_shield_03_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/weapon/SK_weapon_03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/weapon/SK_weapon_03_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/mesh/weapon/SK_weapon_03_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_amor_3_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_amor_3_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_amor_3_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_belt_curvabelt_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_color2_curvabase_curvabase2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_03/textures/armor/T_metalCurva_dirt_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/map/SKnight_04.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/M_SKnigh_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/M_weapon_04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_coat_Inst1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_SKnigh_04_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/materials/MatInst/MI_weapon_04_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/SK_SKnigh_04_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/SK_SKnight_04_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/SK_SKnight_full_04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_ShoulderArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_coat.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/armor/SK_SKnight_04_pantsArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/weapon/SK_shield_04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/weapon/SK_shield_04_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/weapon/SK_weapon_04.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/weapon/SK_weapon_04_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/mesh/weapon/SK_weapon_04_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_Armor4_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_Armor4_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_Armor4_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_color2_color3_curva.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_curva2_belt_curvabelt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_metal__metalCurva_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_04/textures/armor/T_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/map/SKnight_05.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/M_SKnigh_05_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/M_weapon_05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_coat_Inst1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_SKnigh_05_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/materials/MatInst/MI_weapon_05_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/SK_SKnigh_05_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/SK_SKnight_05_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/SK_SKnight_full_05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_ArmArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_PantsArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_ShoulderArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/armor/SK_Sknight_05_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/weapon/SK_shield_05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/weapon/SK_shield_05_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/weapon/SK_weapon_05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/weapon/SK_weapon_05_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/mesh/weapon/SK_weapon_05_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_armor_5_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_armor_5_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_armor_5_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_color2_color3_curva.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_curva2_belt_curvabelt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_metal__metalCurva_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_05/textures/armor/T_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/map/SKnight_06.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/M_SKnigh_06_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/M_weapon_06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/MI_SKnigh_06_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/MI_weapon_06_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/M_SKnigh_06_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/M_SKnigh_06_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/M_SKnigh_06_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/materials/MatInst/M_SKnigh_06_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/SK_SKnigh_06_full_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/SK_SKnight_06_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/SK_SKnight_full_06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/armor/SK_SKnight_06_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/armor/SK_SKnight_06_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/armor/SK_SKnight_06_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/armor/SK_SKnight_06_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/armor/SK_SKnight_06_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/weapon/SK_shield_06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/weapon/SK_shield_06_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/weapon/SK_weapon_06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/weapon/SK_weapon_06_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/mesh/weapon/SK_weapon_06_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_armor_6_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_armor_6_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_armor_6_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_color2_color3_curva.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_curva2_belt_curvabelt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_06/textures/armor/T_metal_dirt_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/animations/SK_weapon_Anim.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/blueprint/BP_test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/blueprint/BP_test1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonIdle.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonJump_End.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonJump_Loop.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonJump_Start.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonRun.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPersonWalk.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/demo/animations/ThirdPerson_Jump.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/map/SKnight_07.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MF/MF_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MF/MF_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MF/MF_metal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MF/MF_opasity.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MF/MF_weapon.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/M_SKnigh_07_armor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/M_weapon_07.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/MI_SKnigh_07_armor_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/MI_weapon_07_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/M_SKnigh_07_Gloves_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/M_SKnigh_07_Helmet02_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/M_SKnigh_07_Shoes_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/materials/MatInst/M_SKnigh_07_pants_Inst.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/SK_SKnigh_07_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/SK_SKnight_07_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/SK_SKnight_07_full.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_ArmsArmor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Gloves.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Helmet.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Helmet02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_HelmetClose.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Pants.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Shoes.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_Torso.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/armor/SK_SKnight_07_TorsoArms.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_Arrow.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_Arrow_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_Arrows.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_weapon.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_weapon_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/mesh/weapon/SK_weapon_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_armor_7_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_armor_7_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_armor_7_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_color2_color3_curva.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_curva2_belt_curvabelt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/armor/T_metal_dirt_opas.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/weapon/T_metal_rope_dirt.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/weapon/T_weapon_arb_BaseColor.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/weapon/T_weapon_arb_Normal.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/SKnight_modular/Skeleton_Knight_07/textures/weapon/T_weapon_arb_OcclusionRoughnessMetallic.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Styles/BS_TextCommonButton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Styles/BS_TextCommonButton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/ShadowExplosion/FX_ShadowExplosion.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/ShadowExplosion/M_ShadowExplosion.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/ShadowExplosion/M_ShadowExplosionRing.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/FX_Darkness.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/FX_Darkness.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Ability/Ability.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerAnimInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerAnimInstance.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerAnimInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerAnimInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/InventoryComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/TopDownRPG.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/TopDownRPG.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +398,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/AIModule/Private/AIController.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsDatabase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.h" root0="FORCE_HIGHLIGHTING" />
@@ -243,6 +593,10 @@
       <workItem from="1775848476682" duration="1496000" />
       <workItem from="1775852140723" duration="602000" />
       <workItem from="1775853157869" duration="729000" />
+      <workItem from="1775985455141" duration="428000" />
+      <workItem from="1776086311070" duration="1287000" />
+      <workItem from="1776100317372" duration="994000" />
+      <workItem from="1776113139017" duration="1598000" />
     </task>
     <servers />
   </component>

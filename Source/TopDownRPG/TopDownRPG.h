@@ -47,7 +47,6 @@ enum ECharacterState
 	Dead,
 	Skill,
 	Frozen,
-	Kid,
 	Block
 };
 

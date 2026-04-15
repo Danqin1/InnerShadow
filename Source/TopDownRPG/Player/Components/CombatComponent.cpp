@@ -49,7 +49,7 @@ void UCombatComponent::SetupComponent(UPlayerSettings* Settings)
 		Input->BindAction(PlayerSettings->AttackAction, ETriggerEvent::Started, this, &UCombatComponent::OnAttack);
 		Input->BindAction(PlayerSettings->BlockAction, ETriggerEvent::Started, this, &UCombatComponent::OnBlockStart);
 		Input->BindAction(PlayerSettings->BlockAction, ETriggerEvent::Completed, this, &UCombatComponent::OnBlockEnd);
-		//Input->BindAction(PlayerSettings->DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
+		Input->BindAction(PlayerSettings->DodgeAction, ETriggerEvent::Started, this, &UCombatComponent::OnDodge);
 	}
 }
 
@@ -58,7 +58,7 @@ void UCombatComponent::Dispose()
 	CharacterState->OnStateChanged.RemoveDynamic(this, &UCombatComponent::OnCharacterStateChanged);
 }
 
-/*void UCombatComponent::OnDodge()
+void UCombatComponent::OnDodge()
 {
 	if (!(CharacterState->GetState() == ECharacterState::Nothing || CharacterState->GetState() == ECharacterState::Attacking))
 	{
@@ -68,15 +68,11 @@ void UCombatComponent::Dispose()
 	{
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 		{
-			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim)
+			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim || RPGPlayer->IsInRage())
 			{
 				return;
 			}
 
-			if(UPlayerStatsComponent* PlayerStats = GetOwner()->GetComponentByClass<UPlayerStatsComponent>())
-			{
-				PlayerStats->AddDarkness(PlayerSettings->DashDarknessCost);
-			}
 			FVector Direction = RPGPlayer->GetLastMovementInputVector();
 
 			FVector Start = RPGPlayer->GetActorLocation();
@@ -88,14 +84,13 @@ void UCombatComponent::Dispose()
 
 			GetOwner()->SetActorRotation(FinalRot);
 			CharacterMovement->bOrientRotationToMovement = true;
+		
+			ResetAttack();
 			RPGPlayer->StopAnimMontage();
 			RPGPlayer->PlayAnimMontage(PlayerSettings->DodgeAnim);
-			currentComboIndex = 0;
-			bShouldContinueCombo = false;
-			CharacterState->ClearState(Attacking);
 		}
 	}
-}*/
+}
 
 void UCombatComponent::OnEnemyDied()
 {

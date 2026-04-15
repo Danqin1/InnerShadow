@@ -61,14 +61,12 @@ void UPlayerHUD::SetEssence(float X)
 	{
 		EssenceBar->SetPercent(X);
 	}
+	
+	EssenceIndicator->SetOpacity(X);
 }
 
 void UPlayerHUD::SetRage(float X)
 {
-	if (RageBar)
-	{
-		RageBar->SetPercent(X);
-	}
 }
 
 

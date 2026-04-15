@@ -89,9 +89,8 @@ protected:
 	UFUNCTION()
 	void OnBlockEnd();
 
-	/*
 	UFUNCTION()
-	void OnDodge();*/
+	void OnDodge();
 
 	UFUNCTION()
 	void OnEnemyDied();

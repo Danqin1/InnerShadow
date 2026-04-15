@@ -158,5 +158,5 @@ void AAbility::OnDataUpdated(FAbilityData Value)
 
 float AAbility::GetEssenceGenerated() const
 {
-	return EssenceGain >= 0 ? EssenceGain : Cost;
+	return EssenceGain;
 }

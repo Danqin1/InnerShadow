@@ -24,9 +24,6 @@ protected:
 	UProgressBar* HealthBar;
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UProgressBar* EssenceBar;
-
-	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
-	UProgressBar* RageBar;
 	
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UImage* EssenceIndicator;

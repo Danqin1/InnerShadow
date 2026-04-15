@@ -36,13 +36,7 @@ public:
 	int Level = 0;
 
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	bool bRequiresEssence = true;
-	
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	float Cost = 5;
-
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	float EssenceGain = -1;
+	float EssenceGain = 20;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	float Cooldown = 5;

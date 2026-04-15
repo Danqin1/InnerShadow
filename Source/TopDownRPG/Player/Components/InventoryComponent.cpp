@@ -33,14 +33,7 @@ void UInventoryComponent::SetupComponent(UPlayerSettings* Settings)
 			
 	if(ARPGCharacter* Character  = Cast<ARPGCharacter>(GetOwner()))
 	{
-		if (Character->GetState() == Kid)
-		{
-			HideWeapon();
-		}
-		else
-		{
-			EquipWeapon();
-		}
+		EquipWeapon();
 	}
 }
 
