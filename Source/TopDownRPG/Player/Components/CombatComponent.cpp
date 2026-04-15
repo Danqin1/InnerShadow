@@ -68,7 +68,7 @@ void UCombatComponent::OnDodge()
 	{
 		if (ARPGCharacter* RPGPlayer = Cast<ARPGCharacter>(GetOwner()))
 		{
-			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim || RPGPlayer->IsInRage())
+			if (CharacterMovement->IsFalling() || RPGPlayer->GetCurrentMontage() == PlayerSettings->DodgeAnim)
 			{
 				return;
 			}
@@ -271,11 +271,6 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UCombatComponent::OnAttack()
 {
-	if (CharacterState->IsInRage())
-	{
-		return;
-	}
-
 	if (CharacterState->GetState() == Nothing)
 	{
 		TrySoftLockDash();
