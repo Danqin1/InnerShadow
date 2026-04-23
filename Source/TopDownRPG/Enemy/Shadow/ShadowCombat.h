@@ -29,6 +29,9 @@ protected:
 	UPROPERTY()
 	USkeletalMeshComponent* Mesh;
 	
+	UPROPERTY(EditAnywhere)
+	bool bDrawDebug = true;
+
 
 	// Called when the game starts
 	virtual void BeginPlay() override;

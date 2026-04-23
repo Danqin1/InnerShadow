@@ -15,40 +15,30 @@
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AGENTS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton/mesh/SK_Skeleton_base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton/mesh/SK_Skeleton_base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_07/mesh/SK_SKnight_07_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_07/mesh/SK_SKnight_07_Skeleton.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/EnemiesData.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Materials/MI_LandscapeBlend_Inst.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/MI_LandscapeBlend_Inst.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_bush.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_bush.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_femur.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_femur.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_flower_03.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_gnarly_tree.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_gnarly_tree.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_blade_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_blade_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_blade_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_blade_02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_bunch_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_bunch_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_bunch_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_bunch_02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_clump_lrg_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_grass_clump_lrg_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_rock_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_rock_03.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_rock_blend_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_rock_blend_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_skull_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_skull_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_tree_pine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_tree_pine.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_bunch_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_bunch_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_bunch_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_bunch_02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_lrg_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_weed_lrg_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Placeables/LightSources/BP_wood_lamppost.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Placeables/LightSources/BP_wood_lamppost.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Placeables/Rocks/SM_rock_boulder_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Placeables/Rocks/SM_rock_boulder_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/CombatComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_DamageIndicatorActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_DamageIndicatorActor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/UW_DamageIndicator.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/UW_DamageIndicator.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Instance_Materials/MI_Smoke_Sub_UV_Inst_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Instance_Materials/MI_Smoke_Sub_UV_Inst_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Main_Materials/M_Smoke_Sub_UV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Main_Materials/M_Smoke_Sub_UV.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/SwordTrace/FX_SwordTracev2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/SwordTrace/FX_SwordTracev2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/SwordTrace/SwordTrace_MAT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/SwordTrace/SwordTrace_MAT.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Core/RPGGameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Core/RPGGameInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TopDownRPG.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/TopDownRPG.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/GDD.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GDD.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +46,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="20000" />
+    <option name="cachedIndexableFilesCount" value="19933" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,7 +89,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/InnerShadowRefactor&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/villageUpdate&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -265,6 +255,10 @@
       <workItem from="1776193509065" duration="868000" />
       <workItem from="1776275586505" duration="799000" />
       <workItem from="1776287382138" duration="602000" />
+      <workItem from="1776360881362" duration="2412000" />
+      <workItem from="1776369453251" duration="3212000" />
+      <workItem from="1776373694470" duration="974000" />
+      <workItem from="1776971390101" duration="3579000" />
     </task>
     <servers />
   </component>

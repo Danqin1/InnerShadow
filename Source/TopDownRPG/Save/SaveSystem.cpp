@@ -5,6 +5,9 @@
 
 #include "Kismet/GameplayStatics.h"
 #include "TopDownRPG/Ability/AbilitySystem.h"
+#include "TopDownRPG/Player/RPGCharacter.h"
+#include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
+#include "TopDownRPG/Progression/RunUpgradeSystem.h"
 #include "TopDownRPG/QuestSystem/QuestSystem.h"
 
 void USaveSystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -80,6 +83,19 @@ void USaveSystem::PopulateSystems()
 	{
 		AbilitySystem->RestoreFromSave(SaveData);
 		UE_LOG(LogTemp, Log, TEXT("Ability system populated from save data"));
+	}
+	if (URunUpgradeSystem* RunUpgradeSystem = Cast<URunUpgradeSystem>(GetGameInstance()->GetSubsystem<URunUpgradeSystem>()))
+	{
+		RunUpgradeSystem->RestoreFromSave(SaveData);
+		UE_LOG(LogTemp, Log, TEXT("Run upgrade system populated from save data"));
+	}
+	if (ARPGCharacter* Character = Cast<ARPGCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)))
+	{
+		if (UPlayerStatsComponent* StatsComponent = Character->GetPlayerStatsComponent())
+		{
+			StatsComponent->SetPersistentStats(SaveData->PlayerStats);
+			UE_LOG(LogTemp, Log, TEXT("Player stats populated from save data"));
+		}
 	}
 }
 

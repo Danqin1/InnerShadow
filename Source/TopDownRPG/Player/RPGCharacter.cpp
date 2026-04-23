@@ -102,7 +102,7 @@ bool ARPGCharacter::Hit(AActor* Hitter, FVector HitPosition, FVector HitVelocity
 {
 	if (GetState() == Skill)
 	{
-		if (PlayerStatsComponent)
+		if (PlayerStatsComponent && Settings->CanDamageDuringSkill)
 		{
 			PlayerStatsComponent->RemoveHP(Damage * PlayerStatsComponent->GetIncomingDamageMultiplier());
 		}

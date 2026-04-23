@@ -6,6 +6,7 @@
 #include "CommonUserWidget.h"
 #include "Engine/GameInstance.h"
 #include "TopDownRPG/Levels/LevelsDatabase.h"
+#include "TopDownRPG/Progression/UpgradesDatabase.h"
 #include "RPGGameInstance.generated.h"
 
 /**
@@ -21,6 +22,9 @@ protected:
 public:
 	UPROPERTY(EditAnywhere)
 	ULevelsDatabase* LevelsDatabase;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Database")
+	UUpgradesDatabase* UpgradesDatabase;
 	
 	void BeginLoadingScreen();
 };

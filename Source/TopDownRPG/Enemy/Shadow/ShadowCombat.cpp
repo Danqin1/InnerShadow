@@ -27,6 +27,14 @@ void UShadowCombat::TraceAttack()
 {
 	if (bIsTracingAttack)
 	{
+		if (IEnemyInterface* EnemyInterface = Cast<IEnemyInterface>(GetOwner()))
+		{
+			if (EnemyInterface->GetState() == Dead)
+			{
+				return;
+			}
+		}
+		
 		TArray<FHitResult> OutResults;
 		FVector Left = Mesh->GetSocketLocation(SocketLeft);
 		FVector Right = Mesh->GetSocketLocation(SocketRight);
@@ -37,20 +45,23 @@ void UShadowCombat::TraceAttack()
 		TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 		ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Pawn));
 
+		/*
 		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Left, Left, TraceRadius,
 											   ObjectTypes,
 											   false,
 											   ToIgnore,
 											   EDrawDebugTrace::None, OutResults, true, FLinearColor::Red,
 											   FLinearColor::Green, 1);
+											   */
 
 		TArray<FHitResult> SecondResults;
+		EDrawDebugTrace::Type draw = bDrawDebug ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None;
 		UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), Right, Right, TraceRadius,
 											   ObjectTypes,
 											   false,
 											   ToIgnore,
-											   EDrawDebugTrace::None, SecondResults, true, FLinearColor::Red,
-											   FLinearColor::Green, 1);
+												draw, SecondResults, true, FLinearColor::Red,
+											   FLinearColor::Green, .5f);
 
 		OutResults.Append(SecondResults);
 

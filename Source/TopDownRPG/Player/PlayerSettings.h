@@ -87,6 +87,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	bool UseSoftLock = false;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
+	bool CanDamageDuringSkill = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "VFX")
 	UNiagaraSystem* Blood_FX;

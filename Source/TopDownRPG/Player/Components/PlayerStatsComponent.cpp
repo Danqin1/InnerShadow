@@ -4,6 +4,7 @@
 #include "PlayerStatsComponent.h"
 
 #include "TopDownRPG/Player/RPGCharacter.h"
+#include "TopDownRPG/Save/SaveSystem.h"
 
 UPlayerStatsComponent::UPlayerStatsComponent(const FObjectInitializer& ObjectInitializer)
 {
@@ -23,12 +24,17 @@ void UPlayerStatsComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 		if (HP < MaxHP && CharacterState->GetState() == ECharacterState::Nothing)
 		{
-			AddHP(PlayerSettings->HPRegen * DeltaTime);
+			AddHP(GetHealthRegenPerSecond() * DeltaTime);
 		}
 
 		if (Essence > 0 && CharacterState->GetState() == ECharacterState::Nothing && !CharacterState->IsInRage())
 		{
-			RemoveEssence(PlayerSettings->RageEssenceClearRate * DeltaTime);
+			DurFromLastEssenceInput += DeltaTime;
+			RemoveEssence(PlayerSettings->RageEssenceClearRate * DeltaTime * (FMath::Clamp(DurFromLastEssenceInput / 5, 0, 1) ));
+		}
+		else
+		{
+			DurFromLastEssenceInput = 0;
 		}
 	}
 }
@@ -40,10 +46,9 @@ void UPlayerStatsComponent::SetupComponent(UPlayerSettings* Settings)
 	{
 		PlayerHUD = Player->PlayerHUD;
 		check(PlayerHUD);
-		HP = MaxHP;
-		PlayerHUD->SetHP(HP / MaxHP);
 	}
 
+	LoadPersistentStatsFromSave();
 	UpdateHUD();
 }
 
@@ -75,14 +80,16 @@ void UPlayerStatsComponent::RemoveHP(float Value)
 
 void UPlayerStatsComponent::AddMaxHP(float Value)
 {
-	MaxHP += Value;
+	PersistentStats.BonusMaxHP += Value;
+	RecalculateDerivedStats();
 	HP = MaxHP;
 	UpdateHUD();
 }
 
 void UPlayerStatsComponent::SetMaxHP(float Value)
 {
-	MaxHP = Value;
+	BaseMaxHP = Value;
+	RecalculateDerivedStats();
 	HP = MaxHP;
 	UpdateHUD();
 }
@@ -94,7 +101,7 @@ void UPlayerStatsComponent::AddXP(int xp)
 
 void UPlayerStatsComponent::AddEssence(float Value)
 {
-	Essence = FMath::Clamp(Essence + Value, 0, MaxEssence);
+	Essence = FMath::Clamp(Essence + (Value * GetEssenceGainMultiplier()), 0, MaxEssence);
 	UpdateHUD();
 }
 
@@ -132,60 +139,124 @@ EDarkEssenceState UPlayerStatsComponent::GetEssenceState() const
 
 float UPlayerStatsComponent::GetOutgoingDamageMultiplier() const
 {
+	const float BaseMultiplier = FMath::Max(0.0f, 1.0f + PersistentStats.DamageMultiplierBonus);
 	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
 	{
 		if (PlayerInterface->IsInRage())
 		{
-			return PlayerSettings->FrenzyDamageMultiplier;
+			return BaseMultiplier * PlayerSettings->FrenzyDamageMultiplier;
 		}
 	}
 
 	switch (GetEssenceState())
 	{
 		case EDarkEssenceState::Empowered:
-			return PlayerSettings->EmpoweredDamageMultiplier;
+			return BaseMultiplier * PlayerSettings->EmpoweredDamageMultiplier;
 		case EDarkEssenceState::Unstable:
-			return PlayerSettings->UnstableDamageMultiplier;
+			return BaseMultiplier * PlayerSettings->UnstableDamageMultiplier;
 		case EDarkEssenceState::Frenzy:
-			return PlayerSettings->FrenzyDamageMultiplier;
+			return BaseMultiplier * PlayerSettings->FrenzyDamageMultiplier;
 		default:
-			return 1.0f;
+			return BaseMultiplier;
 	}
 }
 
 float UPlayerStatsComponent::GetIncomingDamageMultiplier() const
 {
+	const float BaseMultiplier = FMath::Max(0.1f, 1.0f + PersistentStats.IncomingDamageMultiplierBonus);
 	switch (GetEssenceState())
 	{
 	case EDarkEssenceState::Unstable:
-		return PlayerSettings->UnstableIncomingDamageMultiplier;
+		return BaseMultiplier * PlayerSettings->UnstableIncomingDamageMultiplier;
 	case EDarkEssenceState::Frenzy:
-		return PlayerSettings->FrenzyIncomingDamageMultiplier;
+		return BaseMultiplier * PlayerSettings->FrenzyIncomingDamageMultiplier;
 	default:
-		return 1.0f;
+		return BaseMultiplier;
 	}
 }
 
 float UPlayerStatsComponent::GetAttackSpeedMultiplier() const
 {
+	const float BaseMultiplier = FMath::Max(0.1f, 1.0f + PersistentStats.AttackSpeedMultiplierBonus);
 	if (IPlayerInterface* PlayerInterface = Cast<IPlayerInterface>(GetOwner()))
 	{
 		if (PlayerInterface->IsInRage())
 		{
-			return PlayerSettings->FrenzyAttackSpeedMultiplier;
+			return BaseMultiplier * PlayerSettings->FrenzyAttackSpeedMultiplier;
 		}
 	}
 
 	switch (GetEssenceState())
 	{
 		case EDarkEssenceState::Empowered:
-			return PlayerSettings->EmpoweredAttackSpeedMultiplier;
+			return BaseMultiplier * PlayerSettings->EmpoweredAttackSpeedMultiplier;
 		case EDarkEssenceState::Unstable:
-			return PlayerSettings->UnstableAttackSpeedMultiplier;
+			return BaseMultiplier * PlayerSettings->UnstableAttackSpeedMultiplier;
 		case EDarkEssenceState::Frenzy:
-			return PlayerSettings->FrenzyAttackSpeedMultiplier;
+			return BaseMultiplier * PlayerSettings->FrenzyAttackSpeedMultiplier;
 		default:
-			return 1.0f;
+			return BaseMultiplier;
+	}
+}
+
+float UPlayerStatsComponent::GetHealthRegenPerSecond() const
+{
+	return FMath::Max(0.0f, PlayerSettings ? PlayerSettings->HPRegen + PersistentStats.BonusHPRegen : PersistentStats.BonusHPRegen);
+}
+
+float UPlayerStatsComponent::GetEssenceGainMultiplier() const
+{
+	return FMath::Max(0.0f, 1.0f + PersistentStats.EssenceGainMultiplierBonus);
+}
+
+void UPlayerStatsComponent::SetPersistentStats(const FPlayerPersistentStats& InStats)
+{
+	PersistentStats = InStats;
+	RecalculateDerivedStats();
+	UpdateHUD();
+}
+
+void UPlayerStatsComponent::RecalculateDerivedStats()
+{
+	const float OldMaxHP = MaxHP;
+	MaxHP = FMath::Max(1.0f, BaseMaxHP + PersistentStats.BonusMaxHP);
+	MaxEssence = FMath::Max(1.0f, BaseMaxEssence);
+
+	if (OldMaxHP <= 0.0f)
+	{
+		HP = MaxHP;
+	}
+	else if (MaxHP > OldMaxHP)
+	{
+		HP += MaxHP - OldMaxHP;
+	}
+
+	HP = FMath::Clamp(HP, 0.0f, MaxHP);
+	Essence = FMath::Clamp(Essence, 0.0f, MaxEssence);
+}
+
+void UPlayerStatsComponent::LoadPersistentStatsFromSave()
+{
+	RecalculateDerivedStats();
+
+	if (UWorld* World = GetWorld())
+	{
+		if (UGameInstance* GameInstance = World->GetGameInstance())
+		{
+			if (USaveSystem* SaveSystem = GameInstance->GetSubsystem<USaveSystem>())
+			{
+				if (USaveData* SaveData = SaveSystem->GetSaveData())
+				{
+					PersistentStats = SaveData->PlayerStats;
+				}
+			}
+		}
+	}
+
+	RecalculateDerivedStats();
+	if (HP <= 0.0f)
+	{
+		HP = MaxHP;
 	}
 }
 

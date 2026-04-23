@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "TopDownRPG/Progression/RunUpgradeTypes.h"
 #include "TopDownRPG/TopDownRPG.h"
 #include "TopDownRPG/QuestSystem/FQuest.h"
 #include "SaveData.generated.h"
@@ -26,4 +27,10 @@ public:
 
 	UPROPERTY(SaveGame, BlueprintReadWrite)
 	TArray<int> CompletedQuests = {};
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	FPlayerPersistentStats PlayerStats;
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<FName> TakenUpgradeIDs = {};
 };
