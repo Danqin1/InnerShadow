@@ -17,7 +17,7 @@ class TOPDOWNRPG_API UAbilityComponent : public URPGActorComponentBase
 {
 	GENERATED_BODY()
 
-	const int MAX_ABILITIES_COUNT = 4;
+	const int MAX_ABILITIES_COUNT = 3;
 public:
 	UAbilityComponent();
 	

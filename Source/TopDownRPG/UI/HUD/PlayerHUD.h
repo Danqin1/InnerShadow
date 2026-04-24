@@ -35,9 +35,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UW_ActionSlot* Action_2;
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
-	UW_ActionSlot* Action_3;
-
-	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
 	UTextBlock* StateDebug;
 	
 public:

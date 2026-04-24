@@ -159,8 +159,6 @@ public:
 	TSubclassOf<AAbility> Ability2;
 	UPROPERTY(EditDefaultsOnly, Category="Ability")
 	TSubclassOf<AAbility> Ability3;
-	UPROPERTY(EditDefaultsOnly, Category="Ability")
-	TSubclassOf<AAbility> Ability4;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Audio")
 	USoundBase* OnHitSound;

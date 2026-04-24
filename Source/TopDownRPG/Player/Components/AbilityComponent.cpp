@@ -40,7 +40,6 @@ void UAbilityComponent::SetupComponent(UPlayerSettings* Settings)
 	ChangeAbilityOnIndex(0, PlayerSettings->Ability1);
 	ChangeAbilityOnIndex(1, PlayerSettings->Ability2);
 	ChangeAbilityOnIndex(2, PlayerSettings->Ability3);
-	ChangeAbilityOnIndex(3, PlayerSettings->Ability4);
 
 	if(UEnhancedInputComponent* Input = GetOwner()->GetComponentByClass<UEnhancedInputComponent>())
 	{
@@ -80,7 +79,10 @@ void UAbilityComponent::OnAbility3()
 
 void UAbilityComponent::OnAbility4()
 {
-	TryUseAbility(CurrentAbilities[3]);
+	if (CurrentAbilities.Num() > 3)
+	{
+		TryUseAbility(CurrentAbilities[3]);
+	}
 }
 
 void UAbilityComponent::TryUseAbility(AAbility* Ability)

@@ -11,6 +11,14 @@ AEnemySpawner::AEnemySpawner()
 
 void AEnemySpawner::Spawn()
 {
-	auto* Enemy = GetWorld()->SpawnActor<AEnemyCharacterBase>(EnemyToSpawn, GetActorLocation(), GetActorRotation());
+	if (!GetWorld() || !EnemyToSpawn)
+	{
+		return;
+	}
+
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	GetWorld()->SpawnActor<AEnemyCharacterBase>(EnemyToSpawn, GetActorLocation(), GetActorRotation(), SpawnParameters);
 }
 

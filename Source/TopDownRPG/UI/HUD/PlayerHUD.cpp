@@ -27,10 +27,6 @@ void UPlayerHUD::SetAction(int slot, FString name, UTexture2D* icon)
 		Action_2->Icon->SetBrushFromTexture(icon, false);
 		Action_2->Name->SetText(FText::FromString(name));
 		break;
-	case 3:
-		Action_3->Icon->SetBrushFromTexture(icon, false);
-		Action_3->Name->SetText(FText::FromString(name));
-		break;
 	}
 }
 
@@ -50,7 +46,6 @@ UW_ActionSlot* UPlayerHUD::GetUISlot(int index)
 	case 0: return Action_0;
 	case 1: return Action_1;
 	case 2: return Action_2;
-	case 3: return Action_3;
 		default: return nullptr;
 	}
 }

@@ -14,31 +14,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/LockGate.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/LockGate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AGENTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowEater.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowEater.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/BP_EnemySpawner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/BP_EnemySpawner.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Attacks/AM_Atk01v2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Attacks/AM_Atk01v2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Attacks/Atk_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Attacks/Atk_03.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_DamageIndicatorActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_DamageIndicatorActor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/UW_DamageIndicator.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/UW_DamageIndicator.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Instance_Materials/MI_Smoke_Sub_UV_Inst_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Instance_Materials/MI_Smoke_Sub_UV_Inst_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Main_Materials/M_Smoke_Sub_UV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/Mixed_Magic_VFX_Pack/Materials/Main_Materials/M_Smoke_Sub_UV.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/SwordTrace/FX_SwordTracev2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/SwordTrace/FX_SwordTracev2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/SwordTrace/SwordTrace_MAT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/SwordTrace/SwordTrace_MAT.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Core/RPGGameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Core/RPGGameInstance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/PlayerStatsComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Game.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/RoarOfDarkness/M_DarkBeam.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/RoarOfDarkness/M_DarkBeam.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/Components/AbilityComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/PlayerSettings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TopDownRPG.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/TopDownRPG.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/GDD.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/GDD.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/HUD/PlayerHUD.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +42,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="19933" />
+    <option name="cachedIndexableFilesCount" value="19938" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +50,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/AIModule/Private/AIController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.7/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Enemy/LockGate.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Enemy/LockGate.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsDatabase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TopDownRPG/Levels/LevelsSubsystem.h" root0="FORCE_HIGHLIGHTING" />
@@ -259,6 +259,8 @@
       <workItem from="1776369453251" duration="3212000" />
       <workItem from="1776373694470" duration="974000" />
       <workItem from="1776971390101" duration="3579000" />
+      <workItem from="1777047107310" duration="6092000" />
+      <workItem from="1777059731035" duration="3325000" />
     </task>
     <servers />
   </component>
