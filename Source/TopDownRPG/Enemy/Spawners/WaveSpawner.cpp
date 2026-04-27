@@ -5,6 +5,8 @@
 
 #include "InterchangeResult.h"
 #include "Engine/CollisionProfile.h"
+#include "Kismet/GameplayStatics.h"
+#include "TopDownRPG/UI/Wave/WaveUI.h"
 
 // Sets default values
 AWaveSpawner::AWaveSpawner()
@@ -21,6 +23,8 @@ AWaveSpawner::AWaveSpawner()
 	SpawnTrigger->SetCollisionResponseToAllChannels(ECR_Ignore);
 	SpawnTrigger->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 	SpawnTrigger->SetGenerateOverlapEvents(true);
+
+	WaveUIClass = UWaveUI::StaticClass();
 }
 
 // Called when the game starts or when spawned
@@ -54,6 +58,7 @@ void AWaveSpawner::Tick(float DeltaTime)
 		ExecuteSpawnSet(Delay);
 	}
 
+	UpdateWaveUI();
 	if (NextSpawnDelayIndex >= SortedSpawnDelays.Num())
 	{
 		FinishSpawnSequence();
@@ -104,6 +109,9 @@ void AWaveSpawner::StartSpawnSequence()
 	SpawnSetup.GetKeys(SortedSpawnDelays);
 	SortedSpawnDelays.Sort();
 
+	CreateWaveUI();
+	UpdateWaveUI();
+
 	if (SortedSpawnDelays.IsEmpty())
 	{
 		FinishSpawnSequence();
@@ -126,11 +134,11 @@ void AWaveSpawner::StartSpawnSequence()
 void AWaveSpawner::ExecuteSpawnSet(float Delay)
 {
 	const FSpawnSet* SpawnSet = SpawnSetup.Find(Delay);
-	if (!SpawnSet)
+	if (!SpawnSet || SpawnSet->EnemySpawners.IsEmpty())
 	{
 		return;
 	}
-	
+
 	for (int32 Index = 0; Index < SpawnSet->SpawnCount; ++Index)
 	{
 		if (AEnemySpawner* EnemySpawner = SpawnSet->EnemySpawners[FMath::RandRange(0, SpawnSet->EnemySpawners.Num() - 1)])
@@ -138,12 +146,16 @@ void AWaveSpawner::ExecuteSpawnSet(float Delay)
 			EnemySpawner->Spawn();
 		}
 	}
+
+	UpdateWaveUI();
 }
 
 void AWaveSpawner::FinishSpawnSequence()
 {
+	bSpawnSequenceStarted = false;
 	SortedSpawnDelays.Reset();
 	SetActorTickEnabled(false);
+	RemoveWaveUI();
 	
 	if (StartGate)
 	{
@@ -154,4 +166,73 @@ void AWaveSpawner::FinishSpawnSequence()
 	{
 		EndGate->Open();
 	}
+}
+
+void AWaveSpawner::CreateWaveUI()
+{
+	if (WaveUI || !IsValid(GetWorld()))
+	{
+		return;
+	}
+
+	TSubclassOf<UWaveUI> WidgetClass = WaveUIClass;
+	if (!WidgetClass)
+	{
+		WidgetClass = UWaveUI::StaticClass();
+	}
+	APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	WaveUI = PlayerController
+		? CreateWidget<UWaveUI>(PlayerController, WidgetClass)
+		: CreateWidget<UWaveUI>(GetWorld(), WidgetClass);
+
+	if (WaveUI)
+	{
+		WaveUI->AddToViewport(20);
+	}
+}
+
+void AWaveSpawner::RemoveWaveUI()
+{
+	if (WaveUI)
+	{
+		WaveUI->FadeOutAndDestroy();
+		WaveUI = nullptr;
+	}
+}
+
+void AWaveSpawner::UpdateWaveUI()
+{
+	if (!WaveUI)
+	{
+		return;
+	}
+
+	WaveUI->SetWavesLeft(GetRemainingWaves());
+
+	if (NextSpawnDelayIndex < SortedSpawnDelays.Num())
+	{
+		const float NextDelay = SortedSpawnDelays[NextSpawnDelayIndex];
+		const float PreviousDelay = NextSpawnDelayIndex > 0 ? SortedSpawnDelays[NextSpawnDelayIndex - 1] : 0.f;
+		const float TotalDuration = FMath::Max(NextDelay - PreviousDelay, KINDA_SMALL_NUMBER);
+		const float TimeRemaining = FMath::Max(NextDelay - SpawnSequenceElapsedTime, 0.f);
+
+		WaveUI->SetNextWaveTimerVisible(true);
+		WaveUI->SetNextWaveTimer(TimeRemaining, TotalDuration);
+	}
+	else
+	{
+		WaveUI->SetNextWaveTimerVisible(false);
+	}
+}
+
+int32 AWaveSpawner::GetRemainingWaves() const
+{
+	return FMath::Max(SortedSpawnDelays.Num() - NextSpawnDelayIndex, 0);
+}
+
+void AWaveSpawner::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	RemoveWaveUI();
+
+	Super::EndPlay(EndPlayReason);
 }

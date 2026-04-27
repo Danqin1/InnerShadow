@@ -95,6 +95,7 @@ void UShadowCombat::OnHit(AActor* Hitter, FVector HitPosition, FVector HitVeloci
 	if (ACharacter* Character = Cast<ACharacter>(GetOwner()))
 	{
 		Character->StopAnimMontage();
+		HitVelocity = HitVelocity.GetClampedToSize(0.f, 500.f);
 		Character->LaunchCharacter(HitVelocity, false, false);
 
 		if (IEnemyInterface* state = Cast<IEnemyInterface>(GetOwner()))

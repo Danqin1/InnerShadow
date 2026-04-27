@@ -9,6 +9,8 @@
 #include "TopDownRPG/Enemy/LockGate.h"
 #include "WaveSpawner.generated.h"
 
+class UWaveUI;
+
 USTRUCT(BlueprintType)
 struct FSpawnSet
 {
@@ -55,6 +57,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Default")
 	ALockGate* EndGate;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="UI")
+	TSubclassOf<UWaveUI> WaveUIClass;
+
+	UPROPERTY()
+	UWaveUI* WaveUI;
+
 	UFUNCTION()
 	void OnSpawnTriggerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -64,10 +72,20 @@ protected:
 	void ExecuteSpawnSet(float Delay);
 
 	void FinishSpawnSequence();
+
+	void CreateWaveUI();
+
+	void RemoveWaveUI();
+
+	void UpdateWaveUI();
+
+	int32 GetRemainingWaves() const;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
+
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:
 	// Called every frame
