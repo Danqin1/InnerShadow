@@ -35,6 +35,9 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Default")
 	UBoxComponent* SpawnTrigger;
+
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category="Default")
+	FName WaveSpawnerSaveID;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Default")
 	TMap<float, FSpawnSet> SpawnSetup;
@@ -80,6 +83,9 @@ protected:
 	void UpdateWaveUI();
 
 	int32 GetRemainingWaves() const;
+	FName GetResolvedWaveSpawnerSaveID() const;
+	bool IsWaveSpawnerCompleted() const;
+	void RestoreCompletedState();
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

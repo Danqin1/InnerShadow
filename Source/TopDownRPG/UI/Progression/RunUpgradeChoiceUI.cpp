@@ -9,6 +9,7 @@
 #include "Components/VerticalBox.h"
 #include "Components/VerticalBoxSlot.h"
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
 #include "TopDownRPG/Progression/RunUpgradeSystem.h"
 #include "TopDownRPG/UI/Progression/RunUpgradeChoiceCard.h"
 #include "Widgets/SWidget.h"
@@ -25,6 +26,7 @@ void URunUpgradeChoiceUI::NativeConstruct()
 
 	SetGameplayInputEnabled(false);
 	RefreshChoices();
+	UGameplayStatics::SetGamePaused(GetWorld(), true);
 }
 
 void URunUpgradeChoiceUI::NativeDestruct()
@@ -129,6 +131,7 @@ void URunUpgradeChoiceUI::HandleUpgradeSelected(FRunUpgradeData Upgrade)
 
 	if (bRemoveFromParentOnSelection)
 	{
+		UGameplayStatics::SetGamePaused(GetWorld(), false);
 		RemoveFromParent();
 	}
 }

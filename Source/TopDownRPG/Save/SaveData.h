@@ -59,4 +59,10 @@ public:
 
 	UPROPERTY(SaveGame, BlueprintReadWrite)
 	FPlayerSettingsSaveData PlayerSettings;
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<FName> TriggeredRunUpgradeTriggerIDs = {};
+
+	UPROPERTY(SaveGame, BlueprintReadWrite)
+	TArray<FName> CompletedWaveSpawnerIDs = {};
 };

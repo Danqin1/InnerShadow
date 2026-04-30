@@ -180,6 +180,88 @@ void USaveSystem::SetPlayerAudioSettings(float MasterVolume, float MusicVolume, 
 	}
 }
 
+bool USaveSystem::HasRunUpgradeTriggerBeenTriggered(FName TriggerID)
+{
+	if (!SaveData || TriggerID.IsNone())
+	{
+		return false;
+	}
+
+	return SaveData->TriggeredRunUpgradeTriggerIDs.Contains(TriggerID);
+}
+
+void USaveSystem::SetRunUpgradeTriggerTriggered(FName TriggerID, bool bTriggered, bool bSaveImmediately)
+{
+	if (!SaveData)
+	{
+		LoadSaveData();
+	}
+
+	if (!SaveData || TriggerID.IsNone())
+	{
+		return;
+	}
+
+	const int32 ExistingIndex = SaveData->TriggeredRunUpgradeTriggerIDs.IndexOfByKey(TriggerID);
+	if (bTriggered)
+	{
+		if (ExistingIndex == INDEX_NONE)
+		{
+			SaveData->TriggeredRunUpgradeTriggerIDs.Add(TriggerID);
+		}
+	}
+	else if (ExistingIndex != INDEX_NONE)
+	{
+		SaveData->TriggeredRunUpgradeTriggerIDs.RemoveAtSwap(ExistingIndex);
+	}
+
+	if (bSaveImmediately)
+	{
+		SaveSaveData();
+	}
+}
+
+bool USaveSystem::IsWaveSpawnerCompleted(FName SpawnerID)
+{
+	if (!SaveData || SpawnerID.IsNone())
+	{
+		return false;
+	}
+
+	return SaveData->CompletedWaveSpawnerIDs.Contains(SpawnerID);
+}
+
+void USaveSystem::SetWaveSpawnerCompleted(FName SpawnerID, bool bCompleted, bool bSaveImmediately)
+{
+	if (!SaveData)
+	{
+		LoadSaveData();
+	}
+
+	if (!SaveData || SpawnerID.IsNone())
+	{
+		return;
+	}
+
+	const int32 ExistingIndex = SaveData->CompletedWaveSpawnerIDs.IndexOfByKey(SpawnerID);
+	if (bCompleted)
+	{
+		if (ExistingIndex == INDEX_NONE)
+		{
+			SaveData->CompletedWaveSpawnerIDs.Add(SpawnerID);
+		}
+	}
+	else if (ExistingIndex != INDEX_NONE)
+	{
+		SaveData->CompletedWaveSpawnerIDs.RemoveAtSwap(ExistingIndex);
+	}
+
+	if (bSaveImmediately)
+	{
+		SaveSaveData();
+	}
+}
+
 USaveData* USaveSystem::GetSaveData()
 {
 	if (!SaveData)

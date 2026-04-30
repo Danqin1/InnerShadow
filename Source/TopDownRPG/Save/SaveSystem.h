@@ -56,5 +56,17 @@ public:
 	void SetPlayerAudioSettings(float MasterVolume, float MusicVolume, float SFXVolume, bool bSaveImmediately = true);
 
 	UFUNCTION(BlueprintCallable)
+	bool HasRunUpgradeTriggerBeenTriggered(FName TriggerID);
+
+	UFUNCTION(BlueprintCallable)
+	void SetRunUpgradeTriggerTriggered(FName TriggerID, bool bTriggered, bool bSaveImmediately = true);
+
+	UFUNCTION(BlueprintCallable)
+	bool IsWaveSpawnerCompleted(FName SpawnerID);
+
+	UFUNCTION(BlueprintCallable)
+	void SetWaveSpawnerCompleted(FName SpawnerID, bool bCompleted, bool bSaveImmediately = true);
+
+	UFUNCTION(BlueprintCallable)
 	USaveData* GetSaveData();
 };

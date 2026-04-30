@@ -6,6 +6,7 @@
 #include "InterchangeResult.h"
 #include "Engine/CollisionProfile.h"
 #include "Kismet/GameplayStatics.h"
+#include "TopDownRPG/Save/SaveSystem.h"
 #include "TopDownRPG/UI/Wave/WaveUI.h"
 
 // Sets default values
@@ -31,6 +32,17 @@ AWaveSpawner::AWaveSpawner()
 void AWaveSpawner::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (WaveSpawnerSaveID.IsNone())
+	{
+		WaveSpawnerSaveID = GetFName();
+	}
+
+	if (IsWaveSpawnerCompleted())
+	{
+		RestoreCompletedState();
+		return;
+	}
 
 	if (SpawnTrigger)
 	{
@@ -73,6 +85,12 @@ void AWaveSpawner::OnSpawnTriggerBeginOverlap(UPrimitiveComponent* OverlappedCom
 		return;
 	}
 
+	if (IsWaveSpawnerCompleted())
+	{
+		RestoreCompletedState();
+		return;
+	}
+
 	StartSpawnSequence();
 }
 
@@ -82,6 +100,12 @@ void AWaveSpawner::NotifyActorBeginOverlap(AActor* OtherActor)
 
 	if (!IsValid(OtherActor) || OtherActor == this)
 	{
+		return;
+	}
+
+	if (IsWaveSpawnerCompleted())
+	{
+		RestoreCompletedState();
 		return;
 	}
 
@@ -166,6 +190,11 @@ void AWaveSpawner::FinishSpawnSequence()
 	{
 		EndGate->Open();
 	}
+
+	if (USaveSystem* SaveSystem = GetGameInstance() ? GetGameInstance()->GetSubsystem<USaveSystem>() : nullptr)
+	{
+		SaveSystem->SetWaveSpawnerCompleted(GetResolvedWaveSpawnerSaveID(), true);
+	}
 }
 
 void AWaveSpawner::CreateWaveUI()
@@ -228,6 +257,49 @@ void AWaveSpawner::UpdateWaveUI()
 int32 AWaveSpawner::GetRemainingWaves() const
 {
 	return FMath::Max(SortedSpawnDelays.Num() - NextSpawnDelayIndex, 0);
+}
+
+FName AWaveSpawner::GetResolvedWaveSpawnerSaveID() const
+{
+	return WaveSpawnerSaveID.IsNone() ? GetFName() : WaveSpawnerSaveID;
+}
+
+bool AWaveSpawner::IsWaveSpawnerCompleted() const
+{
+	if (USaveSystem* SaveSystem = GetGameInstance() ? GetGameInstance()->GetSubsystem<USaveSystem>() : nullptr)
+	{
+		return SaveSystem->IsWaveSpawnerCompleted(GetResolvedWaveSpawnerSaveID());
+	}
+
+	return false;
+}
+
+void AWaveSpawner::RestoreCompletedState()
+{
+	bSpawnSequenceStarted = false;
+	SpawnSequenceElapsedTime = 0.f;
+	NextSpawnDelayIndex = 0;
+	SortedSpawnDelays.Reset();
+	SetActorTickEnabled(false);
+	RemoveWaveUI();
+
+	if (SpawnTrigger)
+	{
+		SpawnTrigger->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		SpawnTrigger->SetGenerateOverlapEvents(false);
+	}
+
+	SetActorEnableCollision(false);
+
+	if (StartGate)
+	{
+		StartGate->Open();
+	}
+
+	if (EndGate)
+	{
+		EndGate->Open();
+	}
 }
 
 void AWaveSpawner::EndPlay(const EEndPlayReason::Type EndPlayReason)
