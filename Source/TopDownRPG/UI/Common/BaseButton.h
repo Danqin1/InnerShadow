@@ -18,10 +18,18 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta=(BindWidget))
 	UCommonTextBlock* ButtonText;
 
+	virtual void NativePreConstruct() override;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Text;
 
+	virtual bool Initialize() override;
+
 	UFUNCTION(BlueprintCallable)
 	void SetText(FString newText);
+
+private:
+	void BuildDefaultLayout();
+	void ApplyText() const;
 };

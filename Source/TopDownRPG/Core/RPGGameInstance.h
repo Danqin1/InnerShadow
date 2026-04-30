@@ -26,5 +26,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Database")
 	UUpgradesDatabase* UpgradesDatabase;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio Settings")
+	USoundClass* MasterSoundClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio Settings")
+	USoundClass* MusicSoundClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Audio Settings")
+	TArray<USoundClass*> SFXSoundClasses;
+
+	USoundClass* GetMasterSoundClass() const { return MasterSoundClass; }
+	USoundClass* GetMusicSoundClass() const { return MusicSoundClass; }
+	const TArray<USoundClass*>& GetSFXSoundClasses() const { return SFXSoundClasses; }
+	
 	void BeginLoadingScreen();
 };

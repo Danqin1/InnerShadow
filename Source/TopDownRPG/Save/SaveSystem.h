@@ -7,6 +7,9 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "SaveSystem.generated.h"
 
+class USoundClass;
+class USoundMix;
+
 /**
  * 
  */
@@ -17,6 +20,22 @@ class TOPDOWNRPG_API USaveSystem : public UGameInstanceSubsystem
 protected:
 	UPROPERTY()
 	USaveData* SaveData;
+
+	UPROPERTY(Transient)
+	USoundMix* PlayerSettingsSoundMix = nullptr;
+
+	UPROPERTY(Transient)
+	USoundClass* MasterSoundClass = nullptr;
+
+	UPROPERTY(Transient)
+	USoundClass* MusicSoundClass = nullptr;
+
+	UPROPERTY(Transient)
+	TArray<USoundClass*> SFXSoundClasses;
+
+private:
+	void EnsureAudioSettingsAssetsLoaded();
+	void ApplySoundClassVolume(USoundClass* SoundClass, float Volume, bool bApplyToChildren);
 
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
@@ -29,6 +48,12 @@ public:
 	
 	void CreateDefaultSaveData();
 	void PopulateSystems();
+
+	UFUNCTION(BlueprintCallable)
+	void ApplyPlayerSettings();
+
+	UFUNCTION(BlueprintCallable)
+	void SetPlayerAudioSettings(float MasterVolume, float MusicVolume, float SFXVolume, bool bSaveImmediately = true);
 
 	UFUNCTION(BlueprintCallable)
 	USaveData* GetSaveData();

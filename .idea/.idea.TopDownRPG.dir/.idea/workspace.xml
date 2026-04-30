@@ -15,25 +15,17 @@
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_ShadowChain.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/BP_ShadowEater.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowChain.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowEater.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Materials/Instances/MI_DKM_Armor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Materials/Instances/MI_DKM_Armor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Materials/Instances/MI_DKM_Helmet.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Materials/Instances/MI_DKM_Helmet.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Meshes/SM_DKM_Sword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Meshes/SM_DKM_Sword.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Database/DA_PlayerSettings.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/L_Lighting.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/M_LandscapeBlend.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Player/UW_ActionSlot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Player/UW_ActionSlot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Player/UW_HUD.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/VFX/RoarOfDarkness/NS_RoarOfDarkness.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/VFX/RoarOfDarkness/NS_RoarOfDarkness.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Shadow/ShadowCombat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/EnemySpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Placeables/LightSources/BP_wood_lamppost.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Placeables/LightSources/BP_wood_lamppost.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/PauseMenu/WBP_PauseMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/PauseMenu/WBP_PauseMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Player/RPGPlayerController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/Common/BaseButton.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/Common/BaseButton.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/Common/BaseButton.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/Common/BaseButton.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +33,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="19940" />
+    <option name="cachedIndexableFilesCount" value="19945" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +87,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.LLMAiRulesSettingsProvider",
+    "settings.editor.selected.configurable": "terminal",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -261,6 +253,8 @@
       <workItem from="1777047107310" duration="6092000" />
       <workItem from="1777059731035" duration="3325000" />
       <workItem from="1777315597281" duration="5121000" />
+      <workItem from="1777349033001" duration="1770000" />
+      <workItem from="1777540760650" duration="6727000" />
     </task>
     <servers />
   </component>

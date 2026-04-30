@@ -9,6 +9,9 @@
 #include "TopDownRPG/Player/Components/PlayerStatsComponent.h"
 #include "TopDownRPG/Progression/RunUpgradeSystem.h"
 #include "TopDownRPG/QuestSystem/QuestSystem.h"
+#include "Sound/SoundClass.h"
+#include "Sound/SoundMix.h"
+#include "TopDownRPG/Core/RPGGameInstance.h"
 
 void USaveSystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -26,12 +29,14 @@ void USaveSystem::LoadSaveData()
 		if (auto* save = Cast<USaveData>(UGameplayStatics::LoadGameFromSlot("SaveData", 0)))
 		{
 			SaveData = save;
+			SaveData->PlayerSettings.Clamp();
 			UE_LOG(LogTemp, Log, TEXT("Save data loaded successfully"));
 			PopulateSystems();
 		}
 		else
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Failed to load save data from slot"));
+			CreateDefaultSaveData();
 		}
 	}
 	else
@@ -43,6 +48,17 @@ void USaveSystem::LoadSaveData()
 
 void USaveSystem::SaveSaveData()
 {
+	if (!SaveData)
+	{
+		LoadSaveData();
+	}
+
+	if (!SaveData)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to save data because save data is missing"));
+		return;
+	}
+
 	if (UGameplayStatics::SaveGameToSlot(SaveData, "SaveData", 0))
 	{
 		UE_LOG(LogTemp, Log, TEXT("Save data saved successfully"));
@@ -58,6 +74,8 @@ void USaveSystem::CreateDefaultSaveData()
 	SaveData = NewObject<USaveData>();
 	if (SaveData)
 	{
+		SaveData->PlayerSettings.Clamp();
+
 		if (UAbilitySystem* AbilitySystem = GetGameInstance()->GetSubsystem<UAbilitySystem>())
 		{
 			SaveData->AbilitiesData = AbilitySystem->GetDefaultData();
@@ -74,6 +92,13 @@ void USaveSystem::CreateDefaultSaveData()
 
 void USaveSystem::PopulateSystems()
 {
+	if (!SaveData)
+	{
+		return;
+	}
+
+	ApplyPlayerSettings();
+
 	if (UQuestSystem* QuestSystem = Cast<UQuestSystem>(GetGameInstance()->GetSubsystem<UQuestSystem>()))
 	{
 		QuestSystem->RestoreFromSave(SaveData);
@@ -99,11 +124,109 @@ void USaveSystem::PopulateSystems()
 	}
 }
 
+void USaveSystem::ApplyPlayerSettings()
+{
+	if (!SaveData)
+	{
+		return;
+	}
+
+	SaveData->PlayerSettings.Clamp();
+	EnsureAudioSettingsAssetsLoaded();
+
+	if (!PlayerSettingsSoundMix)
+	{
+		return;
+	}
+
+	UObject* WorldContext = GetGameInstance();
+	if (!WorldContext)
+	{
+		return;
+	}
+
+	UGameplayStatics::PushSoundMixModifier(WorldContext, PlayerSettingsSoundMix);
+
+	ApplySoundClassVolume(MasterSoundClass, SaveData->PlayerSettings.MasterVolume, true);
+	ApplySoundClassVolume(MusicSoundClass, SaveData->PlayerSettings.MusicVolume, true);
+
+	for (USoundClass* SFXSoundClass : SFXSoundClasses)
+	{
+		ApplySoundClassVolume(SFXSoundClass, SaveData->PlayerSettings.SFXVolume, true);
+	}
+}
+
+void USaveSystem::SetPlayerAudioSettings(float MasterVolume, float MusicVolume, float SFXVolume, bool bSaveImmediately)
+{
+	if (!SaveData)
+	{
+		LoadSaveData();
+	}
+
+	if (!SaveData)
+	{
+		return;
+	}
+
+	SaveData->PlayerSettings.MasterVolume = FMath::Clamp(MasterVolume, 0.f, 1.f);
+	SaveData->PlayerSettings.MusicVolume = FMath::Clamp(MusicVolume, 0.f, 1.f);
+	SaveData->PlayerSettings.SFXVolume = FMath::Clamp(SFXVolume, 0.f, 1.f);
+
+	ApplyPlayerSettings();
+
+	if (bSaveImmediately)
+	{
+		SaveSaveData();
+	}
+}
+
 USaveData* USaveSystem::GetSaveData()
 {
 	if (!SaveData)
 	{
-		CreateDefaultSaveData();
+		LoadSaveData();
 	}
 	return SaveData;
+}
+
+void USaveSystem::EnsureAudioSettingsAssetsLoaded()
+{
+	if (!PlayerSettingsSoundMix)
+	{
+		PlayerSettingsSoundMix = NewObject<USoundMix>(this, TEXT("PlayerSettingsSoundMix"));
+	}
+
+	URPGGameInstance* RPGGameInstance = Cast<URPGGameInstance>(GetGameInstance());
+	if (!RPGGameInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("SaveSystem: RPGGameInstance not found"));
+		return;
+	}
+
+	MasterSoundClass = RPGGameInstance->GetMasterSoundClass();
+	MusicSoundClass = RPGGameInstance->GetMusicSoundClass();
+	SFXSoundClasses = RPGGameInstance->GetSFXSoundClasses();
+}
+
+void USaveSystem::ApplySoundClassVolume(USoundClass* SoundClass, float Volume, bool bApplyToChildren)
+{
+	if (!SoundClass || !PlayerSettingsSoundMix)
+	{
+		return;
+	}
+
+	UObject* WorldContext = GetGameInstance();
+	if (!WorldContext)
+	{
+		return;
+	}
+
+	UGameplayStatics::SetSoundMixClassOverride(
+		WorldContext,
+		PlayerSettingsSoundMix,
+		SoundClass,
+		FMath::Clamp(Volume, 0.f, 1.f),
+		1.f,
+		0.f,
+		bApplyToChildren);
 }
