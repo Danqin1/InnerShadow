@@ -14,23 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Progression/UpgradeTrigger.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TopDownRPG/Progression/UpgradeTrigger.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowBlast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Abilities/Effects/BP_AbilityEffect_ShadowBlast.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_HitCameraShake.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_HitCameraShake.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Animations/Anim_DKM_Run_Alert_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Animations/Anim_DKM_Run_Alert_Fwd.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Animations/Anim_DKM_Walk_Fwd.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Dark_Knight/Dark_Knight_Male/Animations/Anim_DKM_Walk_Fwd.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Game/BP_LockGate.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Game/BP_LockGate.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Upgrades/WBP_UpgradeChoice.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Upgrades/WBP_UpgradeChoice.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Upgrades/WBP_UpgradeChoiceCard.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Upgrades/WBP_UpgradeChoiceCard.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spawners/WaveSpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveData.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Save/SaveSystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/UI/Progression/RunUpgradeChoiceUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/UI/Progression/RunUpgradeChoiceUI.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="19945" />
+    <option name="cachedIndexableFilesCount" value="19946" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -264,7 +250,8 @@
       <workItem from="1777349033001" duration="1770000" />
       <workItem from="1777540760650" duration="6727000" />
       <workItem from="1777547782553" duration="2313000" />
-      <workItem from="1777575289814" duration="3548000" />
+      <workItem from="1777575289814" duration="4115000" />
+      <workItem from="1778009823117" duration="1919000" />
     </task>
     <servers />
   </component>
