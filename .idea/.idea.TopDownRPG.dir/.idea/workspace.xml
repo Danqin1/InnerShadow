@@ -14,81 +14,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9988c4b5-f0de-4fda-b1f7-1b2a2bd00d76" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/AdventureGameMusicPack/Wavs/Fight_Till_Dying__looped_.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/AdventureGameMusicPack/Wavs/Fight_Till_Dying__looped_.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/Cues/Army_of_Death__looped__Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Cues/Army_of_Death__looped__Cue.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/Cues/Fight_Till_Dying__looped__Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Cues/Fight_Till_Dying__looped__Cue.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/Free_Sounds_Pack/cue/Bag_Handle_1-5_Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Free_Sounds_Pack/cue/Bag_Handle_1-5_Cue.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Audio/Free_Sounds_Pack/wav/Ambient_Wind_Loop_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Free_Sounds_Pack/wav/Ambient_Wind_Loop_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_GameInstance.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_MainMenuGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_MainMenuGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Core/BP_RPGGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Core/BP_RPGGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Dodge/Rolling_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/RPG/Animations/Dodge/Rolling_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Default.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Game.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Game.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Village.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Village.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/_GENERATED/Piotr/CombinedMainMenuPath_6C785640.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/Map/Overwiew_Map_LDT.umap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_GroundRock_01.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_GroundRock_02.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_GroundRock_03.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_GroundRock_04.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_Rock_01.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_Rock_02.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/MI_Rock_Pebbles.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/M_GroundRock_Master.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Materials/Rock/M_Rock_Master.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_01_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_01_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_02.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_03.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_04_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_GroundRock_04_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Pebbles_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Pebbles_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Pebbles_3.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Pebbles_4.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Rock_01_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Rock_01_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Rock_02_1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/StaticMesh/SM_Rock_02_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock1_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock1_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock2_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock2_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock3_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock3_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock4_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_GroundRock4_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Pebbles_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Pebbles_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Rock01_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Rock01_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Rock02_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Rocks/T_Rock02_N.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Surface/T_Grass1_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Meshes/StylizedPainterlyRockPack/Textures/Surface/T_PaintedLook_D.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Jump/sfx_meta_footsteps_jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Jump/sfx_meta_footsteps_jump.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_dirt.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_dirt.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_grass.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_grass.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_stone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_stone.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_water.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_water.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_wood.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Land/sfx_meta_footsteps_land_wood.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_dirt.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_dirt.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_grass.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_grass.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_stone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_stone.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_water.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_water.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_wood.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/MetaSounds/Footsteps/Run/sfx_meta_footsteps_run_wood.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/Sound_Classes/soundclass_footsteps.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Audio/Sound_Classes/soundclass_master.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Audio/Sound_Classes/soundclass_master.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_bush.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/FT_bush.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Foliage/Meshes/SM_bush_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Foliage/Meshes/SM_bush_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Placeables/Rocks/SM_rock_03.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Placeables/Rocks/SM_rock_03.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Necropolis/Placeables/Ruins_Update/LI_ruins_large_01.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Necropolis/Placeables/Ruins_Update/LI_ruins_large_01.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/LoadingScreen/WBP_LoadingScreen.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/LoadingScreen/WBP_LoadingScreen.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/MainMenu/WBP_MainMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TopDownRPG.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/BP_EnemyAIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/BP_EnemyAIController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Shadow/BP_Shadow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_Spectrum.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_Spectrum.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_SpectrumAtkEffect.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BP_SpectrumAtkEffect.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BT_Spectrum.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Enemy/Spectrum/BT_Spectrum.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/AnimNotifiers/ANS_SpectrumAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/AnimNotifiers/ANS_SpectrumAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Enemy/Shadow/Animations/Attacks/AM_ShadowAttackv3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Enemy/Shadow/Animations/Attacks/AM_ShadowAttackv3.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Enemy/Spectrum/Animations/AM_SpectrumAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Enemy/Spectrum/Animations/AM_SpectrumAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnigh_01_full.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnigh_01_full.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnight_01_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/SKnight_modular/Skeleton_Knight_01/mesh/SK_SKnight_01_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Shadow/Animations/Anim_Ssanggeom_Attack2_Soldier.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/FX_AirFireBlow.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/VFX/FX_SpectrumDarkness.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCharacterBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCombatBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCombatBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCombatBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Base/EnemyCombatBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spectrum/SpectrumCombat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spectrum/SpectrumCombat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spectrum/SpectrumCombat.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Enemy/Spectrum/SpectrumCombat.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TopDownRPG/Interfaces/EnemyInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TopDownRPG/Interfaces/EnemyInterface.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,6 +271,7 @@
       <workItem from="1777575289814" duration="4115000" />
       <workItem from="1778009823117" duration="1919000" />
       <workItem from="1778100187181" duration="144000" />
+      <workItem from="1778173794393" duration="6224000" />
     </task>
     <servers />
   </component>

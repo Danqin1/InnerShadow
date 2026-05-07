@@ -38,4 +38,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Freeze(bool isFrozen) PURE_VIRTUAL();
+	
+	UFUNCTION(BlueprintCallable)
+	virtual void ChargeAttack(bool start) PURE_VIRTUAL();
 };

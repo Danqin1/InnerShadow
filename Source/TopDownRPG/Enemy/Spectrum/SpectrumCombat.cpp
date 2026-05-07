@@ -39,11 +39,11 @@ void USpectrumCombat::OnDamaged(float CurrentHealth)
 	}
 }
 
-void USpectrumCombat::Attack()
+float USpectrumCombat::Attack()
 {
-	Super::Attack();
 	lastAttackTime = UGameplayStatics::GetTimeSeconds(GetWorld());
 	DevDebug::OnScreenLog("Spectrum attack");
+	return Super::Attack();
 }
 
 bool USpectrumCombat::CanAttack()

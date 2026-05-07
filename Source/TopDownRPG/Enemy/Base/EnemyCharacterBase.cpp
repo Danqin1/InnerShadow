@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "NiagaraComponent.h"
 #include "TopDownRPG/Database/FEnemyData.h"
 #include "TopDownRPG/Enemy/AI/EnemyAIController.h"
 #include "TopDownRPG/Interfaces/PlayerInterface.h"
@@ -21,6 +22,11 @@ AEnemyCharacterBase::AEnemyCharacterBase()
 
 	LifeBar = CreateDefaultSubobject<UWidgetComponent>("Life Bar");
 	LifeBar->SetupAttachment(GetRootComponent());
+
+	ChargeAttackVFX = CreateDefaultSubobject<UNiagaraComponent>(TEXT("ChargeAttackVFX"));
+	ChargeAttackVFX->SetupAttachment(GetMesh(), ChargeAttackVFXSocketName);
+	ChargeAttackVFX->SetAutoActivate(false);
+	ChargeAttackVFX->DeactivateImmediate();
 
 	if(GetMesh())
 	{
@@ -159,6 +165,20 @@ void AEnemyCharacterBase::BeginPlay()
 		{
 			HPBar->HPBar->SetPercent(CurrentHP / MaxHP);
 		}
+		
+	}
+
+	if (ChargeAttackVFX && GetMesh())
+	{
+		const FName SocketToUse = ChargeAttackVFXSocketName.IsNone() ? NAME_None : ChargeAttackVFXSocketName;
+		if (SocketToUse != NAME_None && GetMesh()->DoesSocketExist(SocketToUse))
+		{
+			ChargeAttackVFX->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, SocketToUse);
+		}
+		else
+		{
+			ChargeAttackVFX->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		}
 	}
 }
 
@@ -185,8 +205,7 @@ void AEnemyCharacterBase::SetAirborne(bool isAirborne)
 
 float AEnemyCharacterBase::PerformAttack()
 {
-	Combat->Attack();
-	return 1;
+	return Combat->Attack();
 }
 
 bool AEnemyCharacterBase::CanAttack()
@@ -236,6 +255,23 @@ void AEnemyCharacterBase::Freeze(bool isFrozen)
 	{
 		GetMesh()->bPauseAnims = false;
 		ClearState(Frozen);
+	}
+}
+
+void AEnemyCharacterBase::ChargeAttack(bool start)
+{
+	if (!ChargeAttackVFX)
+	{
+		return;
+	}
+
+	if (start)
+	{
+		ChargeAttackVFX->Activate(true);
+	}
+	else
+	{
+		ChargeAttackVFX->Deactivate();
 	}
 }
 

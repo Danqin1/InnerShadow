@@ -53,6 +53,6 @@ public:
 	void StartAttackTrace();
 	void EndAttackTrace();
 	virtual void OnSkillReaction(UAnimMontage* ReactionMontage);
-	virtual void Attack();
+	virtual float Attack();
 	virtual bool CanAttack(){return true;}
 };

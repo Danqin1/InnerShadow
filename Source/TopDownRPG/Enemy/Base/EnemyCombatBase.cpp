@@ -56,12 +56,14 @@ void UEnemyCombatBase::OnSkillReaction(UAnimMontage* ReactionMontage)
 	}
 }
 
-void UEnemyCombatBase::Attack()
+float UEnemyCombatBase::Attack()
 {
 	if (ACharacter* Character = Cast<ACharacter>(GetOwner()))
 	{
 		Character->PlayAnimMontage(AttackAnimation);
+		return AttackAnimation->GetPlayLength();
 	}
+	return 3;
 }
 
 void UEnemyCombatBase::TickComponent(float DeltaTime, ELevelTick TickType,

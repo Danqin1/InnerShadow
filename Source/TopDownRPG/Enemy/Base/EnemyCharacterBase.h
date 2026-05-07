@@ -10,6 +10,8 @@
 #include "TopDownRPG/Interfaces/EnemyInterface.h"
 #include "EnemyCharacterBase.generated.h"
 
+class UNiagaraComponent;
+
 UCLASS()
 class TOPDOWNRPG_API AEnemyCharacterBase : public ACharacter, public IEnemyInterface, public ICombatInterface
 {
@@ -28,6 +30,12 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UEnemyCombatBase* Combat;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="VFX")
+	UNiagaraComponent* ChargeAttackVFX;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="VFX")
+	FName ChargeAttackVFXSocketName = "weapon_r";
 	
 	ECharacterState CurrentState = Nothing;
 	
@@ -85,4 +93,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Freeze(bool isFrozen) override;
+	
+	UFUNCTION(BlueprintCallable)
+	virtual void ChargeAttack(bool start) override;
 };

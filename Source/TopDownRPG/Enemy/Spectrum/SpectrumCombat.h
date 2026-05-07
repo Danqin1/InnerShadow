@@ -36,6 +36,6 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 	virtual void OnDamaged(float CurrentHealth) override;
-	virtual void Attack() override;
+	virtual float Attack() override;
 	virtual bool CanAttack() override;
 };
